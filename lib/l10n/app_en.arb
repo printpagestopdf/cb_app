@@ -1,0 +1,200 @@
+{
+  "accountLoginName": "Account login name",
+  "accountOrApplicationPasswordMustBeFilled": "Account- or Apllication password must be filled",
+  "accountPassword": "Account password",
+  "addAccount": "Add Account",
+  "addComment": "Add comment",
+  "address": "Address",
+  "addService": "Add Service",
+  "addValidLink": "Please use valid Url",
+  "anErrorOccured": "An error has occurred",
+  "appExtensionAPITest": "App Extension API Test",
+  "applicationPassword": "Application password",
+  "appName": "CB App",
+  "articleInfo": "Article Info",
+  "@articleInfo": {
+    "description": "Added from file location_info_dialog.dart"
+  },
+  "askForDeletion": "Do you really want to delete this {topic}?",
+  "@askForDeletion": {
+    "description": "Ask if deletion is ok",
+    "placeholders": {
+      "topic": {
+        "example": "Account",
+        "type": "String"
+      }
+    }
+  },
+  "availabilities": "Availabilities",
+  "booking": "Booking",
+  "bookingCancelButton": "{isHorizontal, select, true{Cancel\nbooking} false{Cancel booking} other{}}",
+  "@bookingCancelButton": {
+    "description": "A gendered message",
+    "placeholders": {
+      "isHorizontal": {
+        "type": "String"
+      }
+    }
+  },
+  "bookingComment": "Comments for this Booking",
+  "bookingConfirmButton": "{isHorizontal, select, true{Confirm\nbooking} false{Confirm booking} other{}}",
+  "@bookingConfirmButton": {
+    "description": "A gendered message",
+    "placeholders": {
+      "isHorizontal": {
+        "type": "String"
+      }
+    }
+  },
+  "bookinglimits": "Bookinglimits",
+  "bookItem": "Book item",
+  "calendar": "Calendar",
+  "cancel": "Cancel",
+  "cbAPITest": "CommonsBooking API Test",
+  "changeViewButtonTooltip": "{isMainViewMap, select, true{Switch to list view} false{Switch to map view} other{}}",
+  "@changeViewButtonTooltip": {
+    "placeholders": {
+      "isMainViewMap": {
+        "type": "String"
+      }
+    }
+  },
+  "clearDateSelection": "Clear date selection",
+  "close": "Close",
+  "common": "Common",
+  "confirm": "confirm",
+  "contact": "Contact",
+  "data": "Data",
+  "delete": "Delete",
+  "deleteOfflineData": "Clear offline data",
+  "displayName": "Displayname",
+  "edit": "edit {topic}",
+  "@edit": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "emptyBookingList": "No current or future bookings available",
+  "enableOfflineUse": "Offline use {isOfflineEnabled, select, true{enabled} false{disabled} other{}}",
+  "@enableOfflineUse": {
+    "placeholders": {
+      "isOfflineEnabled": {
+        "type": "String"
+      }
+    }
+  },
+  "english": "english",
+  "errLoginFailed": "Login failed",
+  "errNoConnectionCacheEmpty": "No Service connection and empty cache",
+  "errRetrieveAppPassword": "Error: Application password not determined\n",
+  "errSaveAccountAnyway": "Application password error: Save account anyway?",
+  "fieldMustNotBeEmpty": "Field must not be empty",
+  "filter": "Filter",
+  "from": "From",
+  "german": "german",
+  "gotoCurrentLocation": "Goto current location",
+  "hdrStartupAction": "App startup action",
+  "imageDisplayNotPossible": "Image display not possible",
+  "infoAppPassword": "An application password is required to log in to the service provider.\n\nIf you have an account with the service provider, it is sufficient to enter your Accountpassword the application password will then be generated automatically.\n\nIf you have received an application password from the service provider, or if you have created on your own, you can enter it directly in the Application password field instead.",
+  "infoSelectServiceprovider": "Select\nServiceprovider!",
+  "language": "language",
+  "lastUpdated": "Last updated: {dateTime}",
+  "@lastUpdated": {
+    "placeholders": {
+      "dateTime": {
+        "example": "12.05.2023 14:45:20",
+        "type": "String"
+      }
+    }
+  },
+  "link": "link",
+  "@link": {
+    "description": "Added from file location_info_dialog.dart"
+  },
+  "linkForInternettest": "Url for testing Connectivity",
+  "logIn": "Log in",
+  "loginname": "Loginname",
+  "loginTest": "Login Test",
+  "loginWithNewAccount": "Do you want to log in with the new account now?",
+  "menu": "Menu",
+  "msgAppAPIavailable": "App Extension API available!",
+  "msgAppLoginAvailable": "App Login active",
+  "msgCacheDeleted": "Offline-Data deleted for this Serviceprovider",
+  "msgCbAPIAvailable": "CommonsBooking API available!",
+  "msgCheckUrl": "Check Url",
+  "msgDataModified": "Data changed",
+  "msgFailed": "Failed!",
+  "msgLinkAvailable": "Url connected successfully!",
+  "msgNetworkAvailable": "Network available",
+  "msgNetworkUnavailable": "Network unavailable",
+  "msgRequestFinishedWithError": "Request finished with error code: ",
+  "msgRestAPIAvailable": "Rest API available!",
+  "netTimeoutInSeconds": "Network timeout in seconds",
+  "netwokTest": "Test Network Connectivity",
+  "newText": "New",
+  "noRentalInThisPeriod": "No rental in this period",
+  "noService": "No service",
+  "notLoggedIn": "not logged in",
+  "ok": "OK",
+  "openBookingCalendar": "Bookingcalendar",
+  "openInNewWindow": "Open in new Window",
+  "optStartupAction": "{startupAction, select, none{None} last{Last service/user (online)} last_offline{Last service/user (offline)} other{}}",
+  "@optStartupAction": {
+    "placeholders": {
+      "startupAction": {
+        "type": "String"
+      }
+    }
+  },
+  "orAddAccountPassword": "alternatively add Account password",
+  "orAddApplicationPassword": "alternatively add Application password",
+  "pickupInstructions": "Pickup Instructions",
+  "pleaseSelect": "please select",
+  "questStillContinue": "Changes exist do you still want to continue",
+  "register": "register {topic}",
+  "@register": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "reload": "Reload",
+  "reloadLocations": "Reload ....",
+  "resetMapView": "Reset Map View",
+  "restAPITest": "REST API connectivity",
+  "save": "Save",
+  "savedSuccessfully": "Saved successfully",
+  "seconds": "seconds",
+  "select": "select {topic}",
+  "@select": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "service": "Service",
+  "serviceprovider": "Serviceprovider",
+  "setTimeoutUnlimited": "Set timeout to unlimited",
+  "settings": "Settings",
+  "shortInfo": "Shortinfo",
+  "showBookingsList": "Show Bookings List",
+  "showZoomButtons": "Show zoom buttons on map",
+  "siteConnectionTest": "Website connectivity",
+  "station": "Station",
+  "stationInfo": "Stationinfo",
+  "storno": "cancel",
+  "titleCreateAccount": "Create Account",
+  "tooltipFilter": "Restrict display according to certain criteria",
+  "unknownHTTPStatus": "unknown HTTP Status",
+  "unlimited": "unlimited",
+  "until": "Until",
+  "useNewServiceQuestion": "Should the new service be used now?",
+  "yourBookings": "Your Bookings",
+  "@yourBookings": {
+    "description": "Headline Bookings List"
+  }
+}
