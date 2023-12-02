@@ -604,7 +604,9 @@ class _CBAppMainState extends State<CBAppMain> {
                   child: SizedBox(
                     width: 45,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
