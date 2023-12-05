@@ -54,7 +54,7 @@ class MyHttpOverrides extends HttpOverrides {
 final pageBucket = PageStorageBucket();
 
 void main() async {
-  if (kDebugMode) HttpOverrides.global = MyHttpOverrides();
+  /* if (kDebugMode) */ HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
