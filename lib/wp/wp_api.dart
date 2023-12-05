@@ -3,7 +3,7 @@ import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/data/booking_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-// import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:typed_data';
 import 'cb_bookings_data.dart';
 import 'package:cb_app/data/host_info_provider.dart';
@@ -324,25 +324,25 @@ class WpApi {
     String? restApiUrl;
 
     hostInfo.hasNetwork = LoadingState.loading;
-    // final connectivityResult = await (Connectivity().checkConnectivity());
-    // if (connectivityResult == ConnectivityResult.none) {
-    bool connectionTestFailed = true;
-    if (hostInfo.connectionTestUri != null) {
-      try {
-        Response response = await dio.headUri(hostInfo.connectionTestUri!);
-        if (response.statusCode == null) throw Exception(l10n().unknownHTTPStatus);
-        if (response.statusCode! >= 200 && response.statusCode! < 400) {
-          connectionTestFailed = false;
-        }
-      } catch (_) {}
-    }
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      bool connectionTestFailed = true;
+      if (hostInfo.connectionTestUri != null) {
+        try {
+          Response response = await dio.headUri(hostInfo.connectionTestUri!);
+          if (response.statusCode == null) throw Exception(l10n().unknownHTTPStatus);
+          if (response.statusCode! >= 200 && response.statusCode! < 400) {
+            connectionTestFailed = false;
+          }
+        } catch (_) {}
+      }
 
-    if (connectionTestFailed) {
-      hostInfo.msgs["hasNetworkConnection"] = l10n().msgNetworkUnavailable;
-      hostInfo.hasNetwork = LoadingState.failed;
-      return;
+      if (connectionTestFailed) {
+        hostInfo.msgs["hasNetworkConnection"] = l10n().msgNetworkUnavailable;
+        hostInfo.hasNetwork = LoadingState.failed;
+        return;
+      }
     }
-    // }
     hostInfo.msgs["hasNetworkConnection"] = l10n().msgNetworkAvailable;
     hostInfo.hasNetwork = LoadingState.loaded;
 
