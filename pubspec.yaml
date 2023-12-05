@@ -59,7 +59,7 @@ dependencies:
   html2md: ^1.3.1
   expandable: ^5.0.1
   loader_overlay: any #^2.3.2
-  connectivity_plus: ^5.0.1
+  connectivity_plus: ^5.0.2
   dio: ^5.3.3
   flutter_localizations:
     sdk: flutter
