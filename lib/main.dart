@@ -3,7 +3,8 @@
 
 // import 'package:cb_app/wp/cb_location_list.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:cb_app/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
 import 'package:cb_app/forms/marker_popup.dart';
