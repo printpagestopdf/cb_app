@@ -276,17 +276,32 @@ class _CBAppMainState extends State<CBAppMain> {
 
     if (filters.isEmpty) {
       List<LRMarker> markers = modelMap.mapList.mapLocations.entries
-          .map((e) => LRMarker(
+          .map(
+            (e) => LRMarker(
               locationId: e.key,
               // anchorPos: AnchorPos.align(AnchorAlign.center),
               point: LatLng(e.value.lat, e.value.lon),
-              width: 20.0,
-              height: 20.0,
-              builder: (context) => const Icon(
-                    Icons.directions_bike,
-                    size: 20,
-                    color: Colors.blue,
-                  )))
+              width: 24.0,
+              height: 24.0,
+              builder: (context) => Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(1),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  // borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: const Color.fromRGBO(32, 70, 130, 1),
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1.5,
+                  ),
+                ),
+                child: Icon(Icons.pedal_bike_outlined,
+                    size: 16,
+                    // color: Colors.blue,
+                    color: Colors.white.withOpacity(0.75)),
+              ),
+            ),
+          )
           .toList();
       return markers;
     }

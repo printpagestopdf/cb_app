@@ -123,5 +123,6 @@ flutter:
 
   assets:
   - assets/images/line.png
+  - assets/images/Fahrradweg22.png
   - assets/test_data.json
 

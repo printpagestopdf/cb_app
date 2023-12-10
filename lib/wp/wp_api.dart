@@ -121,6 +121,7 @@ class WpApi {
         },
       ),
     );
+
     Map<String, dynamic> responseBody = jsonDecode(response.data);
     if (response.statusCode == null) throw Exception("HTTP Status is NULL");
     if (response.statusCode! < 200 || response.statusCode! >= 400) {
@@ -377,7 +378,6 @@ class WpApi {
         hostInfo.mainUrlConnection = LoadingState.failed;
       } else {
         hostInfo.msgs["mainUrlConnection"] = l10n().msgLinkAvailable;
-        // print(response.headers['link']);
         hostInfo.mainUrlConnection = LoadingState.loaded;
         if (response.headers.map.containsKey('link')) {
           final match = regex.firstMatch(response.headers.map['link']!.first);
