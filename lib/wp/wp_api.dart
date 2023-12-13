@@ -3,7 +3,7 @@ import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/data/booking_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:typed_data';
 import 'cb_bookings_data.dart';
 import 'package:cb_app/data/host_info_provider.dart';
@@ -325,8 +325,9 @@ class WpApi {
     String? restApiUrl;
 
     hostInfo.hasNetwork = LoadingState.loading;
-    final connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.none) {
+    // final connectivityResult = await (Connectivity().checkConnectivity());
+    // if (connectivityResult == ConnectivityResult.none) {
+    if (true) {
       bool connectionTestFailed = true;
       if (hostInfo.connectionTestUri != null) {
         try {
