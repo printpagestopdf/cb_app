@@ -229,7 +229,7 @@ class _CBAppMainState extends State<CBAppMain> {
             // popupController: _popupController,
             selectedMarkerBuilder: (context, marker) => const Icon(
               Icons.directions_bike,
-              size: 20,
+              size: 24,
               color: Color.fromARGB(255, 243, 33, 33),
             ),
 
@@ -313,17 +313,20 @@ class _CBAppMainState extends State<CBAppMain> {
       if (e.value.idxItems.isNotEmpty &&
           e.value.idxItems.values.first.terms != null &&
           filters.keys.every((element) => e.value.idxItems.values.first.terms!.contains(element))) {
-        markers.add(LRMarker(
+        markers.add(
+          LRMarker(
             locationId: e.key,
             // anchorPos: AnchorPos.align(AnchorAlign.center),
             point: LatLng(e.value.lat, e.value.lon),
-            width: 20.0,
-            height: 20.0,
+            width: 24.0,
+            height: 24.0,
             builder: (context) => const Icon(
-                  Icons.directions_bike,
-                  size: 20,
-                  color: Colors.red,
-                )));
+              Icons.directions_bike,
+              size: 24,
+              color: Colors.red,
+            ),
+          ),
+        );
       }
     }
     return markers;

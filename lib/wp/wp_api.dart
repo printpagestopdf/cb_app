@@ -3,7 +3,7 @@ import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/data/booking_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-// import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:typed_data';
 import 'cb_bookings_data.dart';
 import 'package:cb_app/data/host_info_provider.dart';
@@ -14,17 +14,7 @@ import 'site_info.dart' as wpsite;
 import 'dart:convert';
 import 'dart:async';
 
-// Uri _baseUri = Uri(scheme: 'https', host: 'www.freie-lastenradl.de');
-// Uri _baseUri = Uri(scheme: 'https', host: 'freie-lasten.org'); //keine API
-// Uri _baseUri = Uri(scheme: 'https', host: 'flotte-berlin.de');
-// Uri _baseUri = Uri(scheme: 'https', host: 'essener-lastenrad.de');
-
 Uri _baseUri = Uri(scheme: 'http', host: 'localhost', port: 8888);
-
-// Uri _baseUri = Uri(scheme: 'https', host: 'laptrr.rr.net.eu.org');
-
-// String _wp_app_password_pm = 'PetraMaier:izL4 OgBn xsMx Fndr nc3N NqDf';
-// String _wp_app_password_gen = 'Gen:ZuFl idwj 6trR SF5M tisd WVlz';
 
 class BookingResult {
   final String msg;
@@ -325,9 +315,8 @@ class WpApi {
     String? restApiUrl;
 
     hostInfo.hasNetwork = LoadingState.loading;
-    // final connectivityResult = await (Connectivity().checkConnectivity());
-    // if (connectivityResult == ConnectivityResult.none) {
-    if (true) {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
       bool connectionTestFailed = true;
       if (hostInfo.connectionTestUri != null) {
         try {
