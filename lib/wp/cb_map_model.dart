@@ -239,10 +239,11 @@ class ModelMapData extends ChangeNotifier {
 
     checkLocationService();
 
-    if (settings.hostList.isEmpty) {
-      fireRegisterNewHost();
-      return;
-    }
+    if (await onHostlistEmpty()) return;
+    // if (settings.hostList.isEmpty) {
+    //   fireRegisterNewHost();
+    //   return;
+    // }
 
     onChange();
     if (startupAction == "none") return;
@@ -254,6 +255,16 @@ class ModelMapData extends ChangeNotifier {
     } else {
       openHost(lastHost['host'], lastHost['user']);
     }
+  }
+
+  Future<bool> onHostlistEmpty() async {
+    if (settings.hostList.isNotEmpty) return false;
+
+    String hostKey = addHostSync({"hostUrl": "https://cbappapi.rr.net.eu.org", "title": "Demo Serviceanbieter"});
+    settings.addOrUpdateUser(hostKey, {"name": "Demobenutzer 1", "key": "demo1", "login": "demo1"});
+    updateAppPassword("demo1", "EGF2xiTfxokFQnzxkwCUOxdJ", hostKey);
+
+    return false;
   }
 
   bool displayStartup = true;

@@ -64,6 +64,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   recase: any #^4.1.0
+  file_saver: ^0.2.9
 
   #flutter_map_marker_cluster: any # or the latest version on Pub
 

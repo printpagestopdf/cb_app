@@ -5,6 +5,7 @@
 // import 'package:flutter_localizations/flutter_localizations.dart';
 // import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cb_app/l10n/app_localizations.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
 import 'package:cb_app/forms/marker_popup.dart';
@@ -402,6 +403,7 @@ class _CBAppMainState extends State<CBAppMain> {
             backgroundColor: Theme.of(context).cardColor.withOpacity(0.95),
             child: SafeArea(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(
                     height: 40,
@@ -591,7 +593,7 @@ class _CBAppMainState extends State<CBAppMain> {
                     // key: ValueKey(_tileLayerKey),
                     urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     subdomains: const ['a', 'b', 'c'],
-                    userAgentPackageName: 'com.commonsapi.app',
+                    userAgentPackageName: 'org.cbappapi.app',
                     errorTileCallback: (tile, error, stackTrace) {
                       if (value.mapTilesAvailable != LoadingState.failed) {
                         value.mapTilesAvailable = LoadingState.failed;
@@ -939,39 +941,18 @@ class _CBAppMainState extends State<CBAppMain> {
     return Consumer<ModelMapData>(builder: (context, map, child) {
       return SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ExpansionTile(
-              key: const PageStorageKey<String>('hostsExpansionTile'),
-              shape: Border.all(style: BorderStyle.none),
-              title: Tooltip(
-                message: _connectInfoTooltip,
-                child: Text(context.l10n.service),
+            ListTile(
+              title: Column(
+                children: _hostMenuItemsDrawer(map),
               ),
-              initiallyExpanded: true,
-              leading: Stack(children: [
-                (map.isLoggedIn)
-                    ? const Icon(
-                        Icons.person_outline_outlined,
-                      )
-                    : const Icon(Icons.person_off_outlined),
-                IconButton(
-                  tooltip: _connectInfoTooltip,
-                  icon: Icon(
-                    Icons.public_outlined,
-                    color: map.isCache
-                        ? Colors.amber
-                        : ((map.siteInfoLoadingState == LoadingState.loaded)
-                            ? null //Theme.of(context).primaryColor
-                            : Theme.of(context).colorScheme.error),
-                  ),
-                  onPressed: () {},
-                ),
-              ]),
-              childrenPadding: const EdgeInsets.only(left: 15), //children padding
-              children: _hostMenuItemsDrawer(map),
             ),
             const Divider(
               indent: 20,
+              height: 5,
             ),
             if (map.isLoggedIn || map.hasBookingCache)
               ListTile(
@@ -1397,6 +1378,113 @@ class _CBAppMainState extends State<CBAppMain> {
       ]);
   }
 
+  List<DropdownMenuItem<String>> _hostUsers(ModelMapData map) {
+    List<DropdownMenuItem<String>> retVal = <DropdownMenuItem<String>>[];
+
+    for (MapEntry<dynamic, dynamic> hostEntry in map.settings.hostList.entries) {
+      retVal.add(DropdownMenuItem<String>(
+        value: hostEntry.key,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            (hostEntry.key == map.currentHost)
+                ? Icon(
+                    Icons.cloud_done_outlined,
+                    color: map.isCache
+                        ? Colors.amber
+                        : ((map.siteInfoLoadingState == LoadingState.loaded) ? Colors.lightGreen : Colors.red),
+                  )
+                : const Icon(Icons.cloud_off_outlined),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Text(
+                (hostEntry.value['title']?.isEmpty ?? true) ? hostEntry.value['domain'] : hostEntry.value['title'],
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+      ));
+
+      for (MapEntry<dynamic, dynamic> userEntry in hostEntry.value['users'].entries) {
+        Map<String, dynamic> params = _userStyleParams(map, hostEntry.key, userEntry.key);
+        retVal.add(DropdownMenuItem<String>(
+          value: "${hostEntry.key}###${userEntry.key}",
+          child: //Text("${userEntry.value['name']}"),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                const SizedBox(
+                  width: 15,
+                ),
+                Icon(
+                  Icons.person_outline_outlined, //Icons.check_outlined,
+                  color: params['color'],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Text(
+                    "${userEntry.value['name']}",
+                    style: params['textStyle'],
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ]),
+        ));
+      }
+    }
+
+    return retVal;
+  }
+
+  Map<String, dynamic> _userStyleParams(ModelMapData map, String hostKey, String userKey) {
+    if (hostKey == map.currentHost && userKey == map.currentUser) {
+      Color userColor = map.isCache ? Colors.amber : Colors.lightGreen;
+      return {
+        "color": userColor,
+        "textStyle": TextStyle(
+            color: userColor, decoration: TextDecoration.underline, decorationStyle: TextDecorationStyle.dashed)
+      };
+    } else {
+      return {"color": Theme.of(context).iconTheme.color!, "textStyle": const TextStyle()};
+    }
+  }
+
+  void _openHost(ModelMapData map, String strHost, [String? strUser]) {
+    _popupController.hideAllPopups();
+    _closeMenuDrawer();
+    if (strUser != null) {
+      if (map.currentHost == strHost && map.currentUser == strUser) return;
+
+      if (!Provider.of<ModelMapData>(context, listen: false).hasAppPassword(strHost, strUser)) {
+        _requestAuthData(strHost, strUser).then((value) {
+          if (value) {
+            Provider.of<ModelMapData>(context, listen: false).openHost(strHost, strUser).onError((error, stackTrace) =>
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+          } else {
+            showModalBottomMsg(context, context.l10n.errLoginFailed, true);
+          }
+        });
+        return;
+      }
+
+      Provider.of<ModelMapData>(context, listen: false).openHost(strHost, strUser).onError(
+          (error, stackTrace) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+    } else {
+      if (map.currentHost == strHost && map.currentUser.isEmpty) return;
+      Provider.of<ModelMapData>(context, listen: false).openHost(strHost).onError(
+          (error, stackTrace) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+    }
+  }
+
   List<Widget> _hostMenuItemsDrawer(ModelMapData map) {
     Map<dynamic, dynamic> registeredHosts = map.settings.hostList;
 
@@ -1408,7 +1496,7 @@ class _CBAppMainState extends State<CBAppMain> {
         ListTile(
           leading: const Icon(size: 14, Icons.library_add_outlined),
           // leadingIcon: const Icon(null),
-          onTap: () => _registerHost(), //Provider.of<ModelMapData>(context, listen: false).fireRegisterNewHost(),
+          onTap: () => _registerHost(),
           title: Text(
             context.l10n.addService,
             style: const TextStyle(
@@ -1417,93 +1505,99 @@ class _CBAppMainState extends State<CBAppMain> {
         ),
       ];
     }
-    return registeredHosts.entries
-        .map<Widget>(
-          (e) => ExpansionTile(
-            shape: const Border(bottom: BorderSide(style: BorderStyle.none)),
-            childrenPadding: const EdgeInsets.only(left: 15), //children padding
-            initiallyExpanded: (e.key == map.currentHost && map.currentUser.isNotEmpty),
-            children: e.value['users'].entries
-                .map<Widget>(
-                  (MapEntry<dynamic, dynamic> entry) => ListTile(
-                      leading: (e.key == map.currentHost && entry.key == map.currentUser)
-                          ? Icon(
-                              Icons.check_outlined,
-                              color: map.isCache ? Colors.amber : Colors.lightGreen,
-                            )
-                          : const Icon(null),
-                      title: Text(
-                        "${entry.value['name']}",
-                      ),
-                      onTap: () {
-                        if (!Provider.of<ModelMapData>(context, listen: false).hasAppPassword(e.key, entry.key)) {
-                          _requestAuthData(e.key, entry.key).then((value) {
-                            if (value) {
-                              _popupController.hideAllPopups();
-                              _closeMenuDrawer();
-                              Provider.of<ModelMapData>(context, listen: false).openHost(e.key, entry.key);
-                            } else {
-                              showModalBottomMsg(context, context.l10n.errLoginFailed, true);
-                            }
-                          });
-                        } else {
-                          _popupController.hideAllPopups();
-                          _closeMenuDrawer();
-                          Provider.of<ModelMapData>(context, listen: false).openHost(e.key, entry.key);
-                        }
-                      }),
-                )
-                .toList()
-              ..addAll([
-                // const Divider(
-                //   height: 1,
-                // ),
-                ListTile(
-                  leading: const Icon(size: 14, Icons.person_add_alt_outlined),
-                  // leadingIcon: const Icon(null),
-                  onTap: () => _registerAccount(e.key),
-                  title: Text(
-                    context.l10n.addAccount,
-                    style: const TextStyle(
-                        fontStyle: FontStyle.italic, decoration: TextDecoration.underline, color: Colors.blueGrey),
+
+    return [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text(
+            context.l10n.select(context.l10n.service),
+            style: const TextStyle(fontSize: 12, color: Colors.grey),
+          ),
+        ],
+      ),
+      DropdownButtonFormField<String>(
+        isExpanded: true,
+        decoration: const InputDecoration(
+          isCollapsed: true,
+          border: UnderlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.all(Radius.circular(5))),
+          contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+        ),
+        value: map.currentHost,
+        items: _hostUsers(map),
+        onChanged: (host) {
+          if (host == null) return;
+          List<String> parts = host.split("###");
+          _openHost(map, parts[0], parts.length == 2 ? parts[1] : null);
+        },
+      ),
+      ...registeredHosts[map.currentHost]['users'].entries.map<Widget>((MapEntry<dynamic, dynamic> entry) {
+        Map<String, dynamic> params = _userStyleParams(map, map.currentHost, entry.key);
+        return ListTile(
+          dense: true,
+          horizontalTitleGap: 0,
+          contentPadding: const EdgeInsets.only(left: 20),
+          leading: Icon(
+            Icons.person_outline_outlined, //Icons.check_outlined,
+            color: params['color'],
+          ),
+          title: Text(
+            "${entry.value['name']}",
+            style: (params['textStyle'] as TextStyle).copyWith(fontSize: 16),
+          ),
+          onTap: () {
+            _openHost(map, map.currentHost, entry.key);
+          },
+        );
+      }),
+      const Divider(indent: 60, thickness: 0.5, height: 5),
+      Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Wrap(
+              alignment: WrapAlignment.end,
+              spacing: 0,
+              runSpacing: 5,
+              runAlignment: WrapAlignment.start,
+              children: [
+                TextButton.icon(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.blueGrey,
+                    textStyle: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  onPressed: () => _registerHost(),
+                  icon: const Icon(size: 16, Icons.library_add_outlined),
+                  label: Text(
+                    context.l10n.addService,
                   ),
                 ),
-              ]),
-            leading: GestureDetector(
-              onTap: () {
-                _popupController.hideAllPopups();
-                _closeMenuDrawer();
-                Provider.of<ModelMapData>(context, listen: false).openHost(e.key).onError((error, stackTrace) =>
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
-              },
-              child: (e.key == map.currentHost)
-                  ? Icon(
-                      Icons.cloud_done_outlined,
-                      color: map.isCache
-                          ? Colors.amber
-                          : ((map.siteInfoLoadingState == LoadingState.loaded) ? Colors.lightGreen : Colors.red),
-                    )
-                  : const Icon(Icons.cloud_off_outlined),
+                TextButton.icon(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.blueGrey,
+                    textStyle: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  onPressed: map.currentHost.isNotEmpty ? () => _registerAccount(map.currentHost) : null,
+                  icon: const Icon(size: 16, Icons.person_add_alt_outlined),
+                  label: Text(
+                    context.l10n.addAccount,
+                  ),
+                ),
+              ],
             ),
-            title: Text((e.value['title']?.isEmpty ?? true) ? e.value['domain'] : e.value['title']),
           ),
-          // }
-        )
-        .toList()
-      ..addAll([
-        // const Divider(
-        //   height: 1,
-        // ),
-        ListTile(
-          leading: const Icon(size: 14, Icons.library_add_outlined),
-          onTap: () => _registerHost(),
-          title: Text(
-            context.l10n.addService,
-            style: const TextStyle(
-                fontStyle: FontStyle.italic, decoration: TextDecoration.underline, color: Colors.blueGrey),
-          ),
-        ),
-      ]);
+        ],
+      ),
+    ];
   }
 
   void _appBarAction(String action) {

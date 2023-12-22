@@ -7,6 +7,9 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
+  String get account => 'Account';
+
+  @override
   String get accountLoginName => 'Account login name';
 
   @override

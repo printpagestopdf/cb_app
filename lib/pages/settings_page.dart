@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
+import 'package:file_saver/file_saver.dart';
+import 'package:hive/hive.dart';
 import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/forms/register_host.dart';
 import 'package:cb_app/parts/utils.dart';
@@ -1072,21 +1074,34 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Booking Stats",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
           TextButton(
-              onPressed: () {
-                WpApi.getBookingStats().then((value) => setState(
-                      () {
-                        print(value);
-                        _bookingStats = encoder.convert(value);
-                      },
-                    ));
+              onPressed: () async {
+                String cache = encoder.convert(modelMap.settings.encryptedBox.toMap());
+                // Map<dynamic, dynamic>? mapLocations =
+                //     await Hive.lazyBox('cbappCaching').get("maplocations_https://laptrr.rr.net.eu.org");
+                // if (mapLocations == null || (mapLocations["json"] == null && mapLocations["jsonCBAPI"] == null)) {
+                //   //no cache data available
+                //   throw Exception("No Service connection and empty cache");
+                // } else {
+                //   // if (mapLocations["date"] != null) locationCacheDateTime = mapLocations["date"];
+                //   cache = (mapLocations["json"] != null) ? mapLocations["json"] : mapLocations["jsonCBAPI"];
+                // }
+
+                FileSaver.instance.saveFile(
+                  name: "settings.json",
+                  bytes: const Utf8Encoder().convert(cache),
+                  // ext: "json",
+                  mimeType: MimeType.other,
+                );
+
+                // WpApi.getBookingStats().then((value) => setState(
+                //       () {
+                //         print(value);
+                //         _bookingStats = encoder.convert(value);
+                //       },
+                //     ));
               },
-              child: const Text("Booking Stats")),
-          (_bookingStats == null) ? const SizedBox.shrink() : Text(_bookingStats as String),
+              child: const Text("Export")),
           Text(
             "Settings",
             style: Theme.of(context).textTheme.titleLarge,

@@ -1,4 +1,5 @@
 {
+  "account": "Account",
   "accountLoginName": "Account login name",
   "accountOrApplicationPasswordMustBeFilled": "Account- or Apllication password must be filled",
   "accountPassword": "Account password",

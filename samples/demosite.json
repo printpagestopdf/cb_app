@@ -1,0 +1,10 @@
+{
+    "hostUrl": "https://cbappapi.rr.net.eu.org",
+    "title": "Demo Serviceanbieter",
+    "user": {
+        "name": "Demobenutzer 1",
+        "key": "demo1",
+        "login": "demo1",
+        "appPassword": "EGF2xiTfxokFQnzxkwCUOxdJ"
+    }
+}

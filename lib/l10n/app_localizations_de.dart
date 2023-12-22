@@ -7,6 +7,9 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
+  String get account => 'Account';
+
+  @override
   String get accountLoginName => 'Account Login Name';
 
   @override
@@ -16,7 +19,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get accountPassword => 'Accountpasswort';
 
   @override
-  String get addAccount => 'Account hinzufügen';
+  String get addAccount => 'Account neu';
 
   @override
   String get addComment => 'Bemerkung hinzufügen';
@@ -25,7 +28,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get address => 'Adresse';
 
   @override
-  String get addService => 'Service hinzufügen';
+  String get addService => 'Service neu';
 
   @override
   String get addValidLink => 'Bitte einen gültigen Link eingeben';
