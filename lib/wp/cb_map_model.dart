@@ -1,5 +1,6 @@
 // import 'dart:js_interop';
 import 'dart:async';
+import 'dart:convert';
 // import 'dart:ffi';
 // import 'dart:js_interop';
 import 'package:cb_app/wp/cb_bookings_data.dart';
@@ -151,6 +152,12 @@ class ModelMapData extends ChangeNotifier {
     return ret;
   }
 
+  Uri? get currentHostUri {
+    if (currentHostMap.isEmpty) return null;
+    Map<dynamic, dynamic> host = currentHostMap;
+    return Uri(scheme: host['prot'], host: host['domain'], port: int.tryParse(host['port']));
+  }
+
   Map<dynamic, dynamic> get currentHostMap {
     if (currentHost.isEmpty || !settings.hostList.containsKey(currentHost)) return <dynamic, dynamic>{};
     return settings.hostList[currentHost];
@@ -259,10 +266,33 @@ class ModelMapData extends ChangeNotifier {
 
   Future<bool> onHostlistEmpty() async {
     if (settings.hostList.isNotEmpty) return false;
+    // if (settings.hostList["cbappapi.rr.net.eu.org"] != null) return false;
 
-    String hostKey = addHostSync({"hostUrl": "https://cbappapi.rr.net.eu.org", "title": "Demo Serviceanbieter"});
-    settings.addOrUpdateUser(hostKey, {"name": "Demobenutzer 1", "key": "demo1", "login": "demo1"});
-    updateAppPassword("demo1", "EGF2xiTfxokFQnzxkwCUOxdJ", hostKey);
+    Map<dynamic, dynamic> demo;
+    try {
+      String demositeJsonStr =
+          (await WpApi.dio.get("https://raw.githubusercontent.com/printpagestopdf/cb_app/main/samples/demosite.json"))
+              .data;
+      demo = jsonDecode(demositeJsonStr);
+    } catch (_) {
+      demo = {
+        "hostUrl": "https://cbappapi.rr.net.eu.org",
+        "title": "Demo Serviceanbieter",
+        "user": {"name": "Demobenutzer 1", "key": "demo1", "login": "demo1", "appPassword": "EGF2xiTfxokFQnzxkwCUOxdJ"}
+      };
+    }
+
+    String hostKey = addHostSync({"hostUrl": demo["hostUrl"], "title": demo["title"]});
+    if (demo["user"] != null) {
+      settings.addOrUpdateUser(
+          hostKey, {"name": demo["user"]["name"], "key": demo["user"]["key"], "login": demo["user"]["login"]});
+      updateAppPassword(demo["user"]["login"], demo["user"]["appPassword"], hostKey);
+    }
+
+    settings.putSetting('lastHost', <dynamic, dynamic>{
+      'host': hostKey,
+      'user': (demo["user"] != null) ? demo["user"]["key"] : '',
+    });
 
     return false;
   }

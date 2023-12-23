@@ -1074,6 +1074,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /*
           TextButton(
               onPressed: () async {
                 String cache = encoder.convert(modelMap.settings.encryptedBox.toMap());
@@ -1102,6 +1103,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
                 //     ));
               },
               child: const Text("Export")),
+              */
           Text(
             "Settings",
             style: Theme.of(context).textTheme.titleLarge,

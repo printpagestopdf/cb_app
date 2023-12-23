@@ -759,10 +759,16 @@ class _CBAppMainState extends State<CBAppMain> {
                     Flexible(
                       child: (map.siteInfo?.name != null &&
                               (map.siteInfoLoadingState == LoadingState.loaded || map.isCache))
-                          ? Text(
-                              map.siteInfo!.name!,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
+                          ? InkWell(
+                              child: Text(
+                                map.siteInfo!.name!,
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    decoration:
+                                        (map.currentHostUri != null) ? TextDecoration.underline : TextDecoration.none),
+                              ),
+                              onTap: () => (map.currentHostUri != null) ? launchUrl(map.currentHostUri!) : null,
                             )
                           : Text(
                               "${context.l10n.appName} (${context.l10n.noService})",
@@ -1387,7 +1393,7 @@ class _CBAppMainState extends State<CBAppMain> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             (hostEntry.key == map.currentHost)
                 ? Icon(
@@ -1418,7 +1424,7 @@ class _CBAppMainState extends State<CBAppMain> {
               Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                 const SizedBox(
                   width: 15,

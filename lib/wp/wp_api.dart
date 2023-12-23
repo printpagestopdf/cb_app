@@ -201,6 +201,22 @@ class WpApi {
     return cbMapList;
   }
 
+  static Future<dynamic> requestUrl(String url,
+      {Object? data,
+      Map<String, dynamic>? queryParameters,
+      CancelToken? cancelToken,
+      Options? options,
+      ProgressCallback? onSendProgress,
+      ProgressCallback? onReceiveProgress}) async {
+    return dio.request(url,
+        data: data,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
+        options: options,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress);
+  }
+
   static Future<String> registerUser(String userName, String password, String clientId, {Uri? hostUri}) async {
     final url = (hostUri == null)
         ? WpApi.currentHost.replace(path: '$basePath/apputils/register')
