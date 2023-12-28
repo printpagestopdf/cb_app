@@ -569,7 +569,7 @@ class _CBAppMainState extends State<CBAppMain> {
             .settings
             .getSetting("lastMapCenter", {'latitude': 0.0, 'longitude': 0.0, 'zoom': 13});
 
-        LatLng lastMapCenter = LatLng(lastCenter['latitude'], lastCenter['longitude']);
+        LatLng lastMapCenter = LatLng(lastCenter['latitude'] ?? 0, lastCenter['longitude'] ?? 0);
 
         return /* Expanded(
           child: */
@@ -585,7 +585,7 @@ class _CBAppMainState extends State<CBAppMain> {
                 mapController: mapController,
                 options: MapOptions(
                   center: lastMapCenter,
-                  zoom: lastCenter['zoom'],
+                  zoom: lastCenter['zoom'] ?? 13,
                   // onPositionChanged: (position, hasGesture) {
                   //   print(position.bounds);
                   //   print(position.center);
