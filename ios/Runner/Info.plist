@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>If you want to use current location allow this in settings.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>If you want to use current location allow this in settings.</string>	
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

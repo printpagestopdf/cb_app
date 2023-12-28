@@ -585,7 +585,7 @@ class _CBAppMainState extends State<CBAppMain> {
                 mapController: mapController,
                 options: MapOptions(
                   center: lastMapCenter,
-                  zoom: lastCenter['zoom'] ?? 13,
+                  zoom: lastCenter['zoom'] ?? 9.2,
                   // onPositionChanged: (position, hasGesture) {
                   //   print(position.bounds);
                   //   print(position.center);
