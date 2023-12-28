@@ -26,12 +26,14 @@ import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
 import 'package:url_launcher/url_launcher.dart';
 // import 'package:flutter_map/plugin_api.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:osm_nominatim/osm_nominatim.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/forms/lr_marker.dart';
 import 'package:cb_app/forms/availabilities_calendar.dart';
 import 'package:provider/provider.dart';
 // import 'wp/wp_api.dart';
+import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -53,7 +55,6 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 // final navigatorKey = GlobalKey<NavigatorState>();
-final pageBucket = PageStorageBucket();
 
 void main() async {
   /* if (kDebugMode) */ HttpOverrides.global = MyHttpOverrides();
@@ -130,6 +131,11 @@ class _CBAppMainState extends State<CBAppMain> {
   final SuperclusterImmutableController _immutableController = SuperclusterImmutableController();
   final MapController mapController = MapController();
   late String _connectInfoTooltip = context.l10n.noService;
+  final TextEditingController _radiusMarkerCtrl = TextEditingController();
+  final MenuController _addressSearchMenuCtrl = MenuController();
+  final List<MenuItemButton> _addressSearchItems = <MenuItemButton>[];
+  final GlobalKey<FormFieldState> _addressSearchKey = GlobalKey<FormFieldState>();
+  final _menuDrawerBucket = PageStorageBucket();
 
   LatLngBounds _getMaxBounds(Iterable<Marker> markers) {
     var lngs = markers.map<double>((m) => m.point.longitude).toList();
@@ -161,7 +167,11 @@ class _CBAppMainState extends State<CBAppMain> {
           LatLng(rightMost, topMost),
           LatLng(leftMost, bottomMost),
         );
-        _doFitMapBounds(bounds);
+
+        if (!Provider.of<ModelMapData>(context, listen: false).isInitiallyCentered) {
+          _doFitMapBounds(bounds);
+          Provider.of<ModelMapData>(context, listen: false).isInitiallyCentered = true;
+        }
       });
     }
   }
@@ -169,10 +179,14 @@ class _CBAppMainState extends State<CBAppMain> {
   void _doFitMapBounds(LatLngBounds bounds) {
     mapController
       ..fitBounds(bounds, options: const FitBoundsOptions(padding: EdgeInsets.all(20.0)))
-      ..move(mapController.center, mapController.zoom + 0.00001);
+      ..moveAndRotate(mapController.center, mapController.zoom + 0.00001, 0);
+    // ..move(mapController.center, mapController.zoom + 0.00001);
 
-    Provider.of<ModelMapData>(context, listen: false).settings.putSetting("lastMapCenter",
-        <String, double>{"latitude": mapController.center.latitude, "longitude": mapController.center.longitude});
+    Provider.of<ModelMapData>(context, listen: false).settings.putSetting("lastMapCenter", <String, double>{
+      "latitude": mapController.center.latitude,
+      "longitude": mapController.center.longitude,
+      "zoom": mapController.zoom
+    });
   }
 
   Future<Position> _determinePosition() async {
@@ -388,7 +402,7 @@ class _CBAppMainState extends State<CBAppMain> {
         child: _responsiveAppBar(),
       ),
       drawer: PageStorage(
-        bucket: pageBucket,
+        bucket: _menuDrawerBucket,
         child: ConstrainedBox(
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width - 30,
@@ -534,6 +548,14 @@ class _CBAppMainState extends State<CBAppMain> {
         }
 
         if (value.isMainViewMap == false || value.mapTilesAvailable == LoadingState.failed) {
+          try {
+            Provider.of<ModelMapData>(context, listen: false).settings.putSetting("lastMapCenter", <String, double>{
+              "latitude": mapController.center.latitude,
+              "longitude": mapController.center.longitude,
+              "zoom": mapController.zoom
+            });
+          } catch (_) {}
+
           return const Center(child: LocationItemsList());
           // return const Expanded(child: LocationItemsList());
         }
@@ -545,7 +567,7 @@ class _CBAppMainState extends State<CBAppMain> {
 
         Map<dynamic, dynamic> lastCenter = Provider.of<ModelMapData>(context, listen: false)
             .settings
-            .getSetting("lastMapCenter", {'latitude': 0.0, 'longitude': 0.0});
+            .getSetting("lastMapCenter", {'latitude': 0.0, 'longitude': 0.0, 'zoom': 13});
 
         LatLng lastMapCenter = LatLng(lastCenter['latitude'], lastCenter['longitude']);
 
@@ -563,6 +585,7 @@ class _CBAppMainState extends State<CBAppMain> {
                 mapController: mapController,
                 options: MapOptions(
                   center: lastMapCenter,
+                  zoom: lastCenter['zoom'],
                   // onPositionChanged: (position, hasGesture) {
                   //   print(position.bounds);
                   //   print(position.center);
@@ -601,16 +624,35 @@ class _CBAppMainState extends State<CBAppMain> {
                       }
                     },
                   ),
-                  if (value.currentMapLocation != null)
+                  if (value.currentMapLocation != null && value.showLocationRadius)
+                    CircleLayer(
+                      circles: [
+                        CircleMarker(
+                          point: value.currentMapLocation!,
+                          radius: value.mapRadiusMarker,
+                          useRadiusInMeter: true,
+                          color: Theme.of(context).canvasColor.withOpacity(0.4),
+                          borderColor: Colors.grey,
+                          borderStrokeWidth: 1,
+                        ),
+                      ],
+                    ),
+                  if (value.currentMapLocation != null && value.currentMapLocationType > 0)
                     MarkerLayer(
                       markers: [
                         Marker(
                           point: value.currentMapLocation!,
-                          width: 40,
-                          height: 40,
-                          builder: (context) => const Icon(
-                            Icons.navigation,
-                            color: Colors.green,
+                          width: 35,
+                          height: 35,
+                          builder: (context) => Icon(
+                            // Icons.navigation,
+                            switch (value.currentMapLocationType) {
+                              1 => Icons.navigation, // Icons.my_location,
+                              2 => Icons.location_on,
+                              _ => null
+                            },
+                            size: 35,
+                            color: Theme.of(context).primaryColor, //   .primaryColorDark, //Colors.green,
                           ),
                         ),
                       ],
@@ -658,6 +700,66 @@ class _CBAppMainState extends State<CBAppMain> {
                           ),
                           child: const Icon(Icons.remove),
                           onPressed: () => mapController.move(mapController.center, mapController.zoom - 1.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              if (value.currentMapLocation != null && value.showLocationRadius)
+                Positioned(
+                  bottom: 10,
+                  left: 10,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor.withOpacity(0.7),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SliderTheme(
+                          data: const SliderThemeData(
+                            thumbShape: RoundSliderThumbShape(
+                              enabledThumbRadius: 8,
+                            ),
+                            overlayShape: RoundSliderOverlayShape(overlayRadius: 10),
+                          ),
+                          child: Slider.adaptive(
+                            value:
+                                value.mapRadiusMarker > 10000 ? 10000 : value.mapRadiusMarker, // _currentSliderValue,
+                            max: 10000,
+                            divisions: 500,
+                            label: value.mapRadiusMarker.round().toString(),
+                            onChanged: (double value) {
+                              Provider.of<ModelMapData>(context, listen: false).mapRadiusMarker = value;
+                              _radiusMarkerCtrl.text = value.round().toString();
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: 80,
+                          child: TextField(
+                            controller: _radiusMarkerCtrl..text = value.mapRadiusMarker.round().toString(),
+                            textAlign: TextAlign.end,
+                            decoration: const InputDecoration(
+                                border: UnderlineInputBorder(
+                                  borderSide: BorderSide.none, /* borderRadius: BorderRadius.all(Radius.circular(5)) */
+                                ),
+                                isCollapsed: true,
+                                suffixText: "m",
+                                suffixStyle: TextStyle(fontWeight: FontWeight.bold),
+                                contentPadding: EdgeInsets.only(right: 10)),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], // Only numbers can be entered
+                            onChanged: (value) {
+                              Provider.of<ModelMapData>(context, listen: false).mapRadiusMarker = double.parse(value);
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -913,7 +1015,7 @@ class _CBAppMainState extends State<CBAppMain> {
                         (map.locationPermission == LocationPermission.whileInUse ||
                             map.locationPermission == LocationPermission.always))
                       IconButton(
-                        icon: const Icon(Icons.my_location),
+                        icon: const Icon(Icons.location_searching),
                         tooltip: context.l10n.gotoCurrentLocation,
                         onPressed: () => _appBarAction("gotoLocation"),
                       ),
@@ -943,6 +1045,14 @@ class _CBAppMainState extends State<CBAppMain> {
     CBApp.cbAppKey.currentState!.closeDrawer();
   }
 
+  void _centerLocation(double lat, double lon, int type) {
+    _popupController.hideAllPopups();
+    _closeMenuDrawer();
+    Provider.of<ModelMapData>(context, listen: false).currentMapLocationType = type;
+    Provider.of<ModelMapData>(context, listen: false).currentMapLocation = LatLng(lat, lon);
+    mapController.move(LatLng(lat, lon), mapController.zoom);
+  }
+
   Widget _drawerMenu(BuildContext context) {
     return Consumer<ModelMapData>(builder: (context, map, child) {
       return SingleChildScrollView(
@@ -969,12 +1079,16 @@ class _CBAppMainState extends State<CBAppMain> {
                 },
               ),
             ExpansionTile(
-              key: const PageStorageKey<String>('filtersExpansionTile'),
+              initiallyExpanded:
+                  PageStorage.of(context).readState(context, identifier: "filtersExpansionTile") ?? false, // false,
+              onExpansionChanged: (value) {
+                PageStorage.of(context).writeState(context, value, identifier: "filtersExpansionTile");
+              },
               title: Tooltip(
                 message: context.l10n.tooltipFilter,
                 child: Text(context.l10n.filter),
               ),
-              initiallyExpanded: false,
+              // initiallyExpanded: false,
               leading: Icon(Icons.filter_alt_outlined, color: (map.filters.isEmpty) ? null : Colors.red),
               childrenPadding: const EdgeInsets.only(left: 30), //children padding
               children: _filterMenuItems(map),
@@ -991,25 +1105,125 @@ class _CBAppMainState extends State<CBAppMain> {
               indent: 20,
             ),
             if (map.isMainViewMap)
-              ListTile(
-                leading: const Icon(Icons.adjust_outlined),
-                title: Text(context.l10n.resetMapView),
-                onTap: () {
-                  _closeMenuDrawer();
-                  _appBarAction("fitMap");
+              ExpansionTile(
+                title: Text(context.l10n.mapTools),
+                initiallyExpanded:
+                    PageStorage.of(context).readState(context, identifier: "mapTools") ?? false, // false,
+                onExpansionChanged: (value) {
+                  PageStorage.of(context).writeState(context, value, identifier: "mapTools");
                 },
-              ),
-            if (map.isMainViewMap &&
-                map.locationServiceEnabled &&
-                (map.locationPermission == LocationPermission.whileInUse ||
-                    map.locationPermission == LocationPermission.always))
-              ListTile(
-                leading: const Icon(Icons.location_searching_outlined),
-                title: Text(context.l10n.gotoCurrentLocation),
-                onTap: () {
-                  _closeMenuDrawer();
-                  _appBarAction("gotoLocation");
-                },
+                leading: const Icon(
+                  Icons.map_outlined,
+                ),
+                shape: InputBorder.none,
+                childrenPadding: const EdgeInsets.only(left: 15),
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.adjust_outlined),
+                    title: Text(context.l10n.resetMapView),
+                    onTap: () {
+                      _closeMenuDrawer();
+                      _appBarAction("fitMap");
+                    },
+                  ),
+                  if (map.isMainViewMap &&
+                      map.locationServiceEnabled &&
+                      (map.locationPermission == LocationPermission.whileInUse ||
+                          map.locationPermission == LocationPermission.always))
+                    ListTile(
+                      leading: const Icon(Icons.location_searching_outlined),
+                      title: Text(context.l10n.gotoCurrentLocation),
+                      onTap: () {
+                        _closeMenuDrawer();
+                        _appBarAction("gotoLocation");
+                      },
+                    ),
+                  ListTile(
+                    title: Text(context.l10n.showZoomButtons),
+                    contentPadding: const EdgeInsets.only(left: 10),
+                    leading: Switch(
+                      value: map.showZoom,
+                      activeColor: Theme.of(context).primaryColor,
+                      onChanged: (bool value) {
+                        map.showZoom = value;
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(context.l10n.showLocationRadius),
+                    contentPadding: const EdgeInsets.only(left: 10),
+                    leading: Switch(
+                      value: map.showLocationRadius,
+                      activeColor: Theme.of(context).primaryColor,
+                      onChanged: (bool value) {
+                        Provider.of<ModelMapData>(context, listen: false).showLocationRadius =
+                            !Provider.of<ModelMapData>(context, listen: false).showLocationRadius;
+                      },
+                    ),
+                  ),
+                  MenuAnchor(
+                    controller: _addressSearchMenuCtrl,
+                    menuChildren: _addressSearchItems,
+                    child: Focus(
+                      onFocusChange: (gotFocus) {
+                        if (gotFocus && _addressSearchMenuCtrl.isOpen) {
+                          _addressSearchMenuCtrl.close();
+                        }
+                      },
+                      child: TextFormField(
+                        key: _addressSearchKey,
+                        decoration: InputDecoration(
+                          border: const UnderlineInputBorder(borderSide: BorderSide.none),
+                          hintText: context.l10n.addAddress,
+                          suffixIcon: IconButton(
+                            color: Theme.of(context).colorScheme.tertiary,
+                            onPressed: () {
+                              _addressSearchKey.currentState!.save();
+                            },
+                            icon: const Icon(Icons.keyboard_return),
+                          ),
+                          prefixIcon: const Icon(Icons.search),
+                        ),
+                        onFieldSubmitted: (newValue) {
+                          //catch RETURN
+                          _addressSearchKey.currentState!.save();
+                        },
+                        onSaved: (adr) {
+                          Nominatim.searchByName(query: adr, limit: 50).then((List<Place> places) {
+                            if (places.length == 1) {
+                              _centerLocation(places[0].lat, places[0].lon, 2);
+                            } else if (places.isNotEmpty) {
+                              _addressSearchItems.clear();
+                              _addressSearchItems.addAll(places.map<MenuItemButton>((e) => MenuItemButton(
+                                    style: TextButton.styleFrom(
+                                        side: BorderSide(width: 1, color: Colors.grey.withOpacity(0.8)),
+                                        shape: LinearBorder.bottom(),
+                                        padding: const EdgeInsets.symmetric(vertical: 15)),
+                                    child: ConstrainedBox(
+                                      constraints:
+                                          BoxConstraints(maxWidth: max(300, MediaQuery.of(context).size.width * 0.7)),
+                                      child: Text(
+                                        e.displayName,
+                                        overflow: TextOverflow.visible,
+                                        softWrap: true,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      _centerLocation(e.lat, e.lon, 2);
+                                    },
+                                  )));
+                              _addressSearchMenuCtrl.open();
+                            } else {
+                              showModalBottomMsg(context, context.l10n.msgNoAddress, true);
+                            }
+                          }).onError((error, stackTrace) {
+                            showModalBottomMsg(context, "${context.l10n.msgNoAddress}: ${error.toString()}", true);
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
             if (map.isMainViewMap)
               const Divider(
@@ -1070,9 +1284,10 @@ class _CBAppMainState extends State<CBAppMain> {
               .hasAppPassword(result['newHostKey']!, result['newUserKey']!)) {
             yesNoDialog(context, context.l10n.logIn, context.l10n.loginWithNewAccount).then((value) {
               if (value) {
-                _popupController.hideAllPopups();
-                _closeMenuDrawer();
-                Provider.of<ModelMapData>(context, listen: false).openHost(result['newHostKey']!, result['newUserKey']);
+                // _popupController.hideAllPopups();
+                // _closeMenuDrawer();
+                // Provider.of<ModelMapData>(context, listen: false).openHost(result['newHostKey']!, result['newUserKey']);
+                _openHost(result['newHostKey']!, result['newUserKey']);
               } else {
                 Provider.of<ModelMapData>(context, listen: false).onChange();
               }
@@ -1083,9 +1298,10 @@ class _CBAppMainState extends State<CBAppMain> {
         } else {
           yesNoDialog(context, context.l10n.serviceprovider, context.l10n.useNewServiceQuestion).then((value) {
             if (value) {
-              _popupController.hideAllPopups();
-              _closeMenuDrawer();
-              Provider.of<ModelMapData>(context, listen: false).openHost(result['newHostKey']!, "");
+              // _popupController.hideAllPopups();
+              // _closeMenuDrawer();
+              // Provider.of<ModelMapData>(context, listen: false).openHost(result['newHostKey']!, "");
+              _openHost(result['newHostKey']!, "");
             } else {
               Provider.of<ModelMapData>(context, listen: false).onChange();
             }
@@ -1119,9 +1335,10 @@ class _CBAppMainState extends State<CBAppMain> {
           yesNoDialog(context, context.l10n.logIn, context.l10n.loginWithNewAccount).then((value) {
             // yesNoDialog(context, "Anmelden", "Wollen sie sich mit dem neuen Account jetzt anmelden?").then((value) {
             if (value) {
-              _popupController.hideAllPopups();
-              _closeMenuDrawer();
-              Provider.of<ModelMapData>(context, listen: false).openHost(hostKey, result['newUserKey']);
+              // _popupController.hideAllPopups();
+              // _closeMenuDrawer();
+              // Provider.of<ModelMapData>(context, listen: false).openHost(hostKey, result['newUserKey']);
+              _openHost(hostKey, result['newUserKey']);
             } else {
               Provider.of<ModelMapData>(context, listen: false).onChange();
             }
@@ -1316,17 +1533,20 @@ class _CBAppMainState extends State<CBAppMain> {
                       if (!Provider.of<ModelMapData>(context, listen: false).hasAppPassword(e.key, entry.key)) {
                         _requestAuthData(e.key, entry.key).then((value) {
                           if (value) {
-                            _popupController.hideAllPopups();
-                            _closeMenuDrawer();
-                            Provider.of<ModelMapData>(context, listen: false).openHost(e.key, entry.key);
+                            // _popupController.hideAllPopups();
+                            // _closeMenuDrawer();
+                            // Provider.of<ModelMapData>(context, listen: false).openHost(e.key, entry.key);
+                            _openHost(e.key, entry.key);
                           } else {
-                            showModalBottomMsg(context, context.l10n.errLoginFailed, true);
+                            _scaffoldError(context.l10n.errLoginFailed);
+                            // showModalBottomMsg(context, context.l10n.errLoginFailed, true);
                           }
                         });
                       } else {
-                        _popupController.hideAllPopups();
-                        _closeMenuDrawer();
-                        Provider.of<ModelMapData>(context, listen: false).openHost(e.key, entry.key);
+                        // _popupController.hideAllPopups();
+                        // _closeMenuDrawer();
+                        // Provider.of<ModelMapData>(context, listen: false).openHost(e.key, entry.key);
+                        _openHost(e.key, entry.key);
                       }
                     },
                   ),
@@ -1358,9 +1578,10 @@ class _CBAppMainState extends State<CBAppMain> {
                   )
                 : GestureDetector(
                     onTap: () {
-                      _popupController.hideAllPopups();
-                      Provider.of<ModelMapData>(context, listen: false).openHost(e.key).onError((error, stackTrace) =>
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+                      // _popupController.hideAllPopups();
+                      // Provider.of<ModelMapData>(context, listen: false).openHost(e.key).onError((error, stackTrace) =>
+                      //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+                      _openHost(e.key);
                     },
                     child: const Icon(Icons.cloud_off_outlined)), // Icon(Icons.cloud_off_outlined),
             child: Text((e.value['title']?.isEmpty ?? true) ? e.value['domain'] : e.value['title']),
@@ -1464,31 +1685,39 @@ class _CBAppMainState extends State<CBAppMain> {
     }
   }
 
-  void _openHost(ModelMapData map, String strHost, [String? strUser]) {
+  void _openHost(String strHost, [String? strUser]) {
+    ModelMapData map = Provider.of<ModelMapData>(context, listen: false);
     _popupController.hideAllPopups();
     _closeMenuDrawer();
     if (strUser != null) {
       if (map.currentHost == strHost && map.currentUser == strUser) return;
 
-      if (!Provider.of<ModelMapData>(context, listen: false).hasAppPassword(strHost, strUser)) {
+      if (!map.hasAppPassword(strHost, strUser)) {
         _requestAuthData(strHost, strUser).then((value) {
           if (value) {
-            Provider.of<ModelMapData>(context, listen: false).openHost(strHost, strUser).onError((error, stackTrace) =>
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+            map.openHost(strHost, strUser).onError((error, stackTrace) => _scaffoldError(error.toString()));
           } else {
-            showModalBottomMsg(context, context.l10n.errLoginFailed, true);
+            _scaffoldError(context.l10n.errLoginFailed);
           }
         });
         return;
       }
 
-      Provider.of<ModelMapData>(context, listen: false).openHost(strHost, strUser).onError(
-          (error, stackTrace) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+      map.openHost(strHost, strUser).onError((error, stackTrace) => _scaffoldError(error.toString()));
     } else {
       if (map.currentHost == strHost && map.currentUser.isEmpty) return;
-      Provider.of<ModelMapData>(context, listen: false).openHost(strHost).onError(
-          (error, stackTrace) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
+      map.openHost(strHost).onError((error, stackTrace) => _scaffoldError(error.toString()));
     }
+  }
+
+  FutureOr<Null> _scaffoldError(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        showCloseIcon: true,
+        backgroundColor: Theme.of(context).colorScheme.error,
+        content: Text(
+          msg,
+          textAlign: TextAlign.center,
+        )));
   }
 
   List<Widget> _hostMenuItemsDrawer(ModelMapData map) {
@@ -1535,7 +1764,7 @@ class _CBAppMainState extends State<CBAppMain> {
         onChanged: (host) {
           if (host == null) return;
           List<String> parts = host.split("###");
-          _openHost(map, parts[0], parts.length == 2 ? parts[1] : null);
+          _openHost(parts[0], parts.length == 2 ? parts[1] : null);
         },
       ),
       ...registeredHosts[map.currentHost]['users'].entries.map<Widget>((MapEntry<dynamic, dynamic> entry) {
@@ -1553,7 +1782,7 @@ class _CBAppMainState extends State<CBAppMain> {
             style: (params['textStyle'] as TextStyle).copyWith(fontSize: 16),
           ),
           onTap: () {
-            _openHost(map, map.currentHost, entry.key);
+            _openHost(map.currentHost, entry.key);
           },
         );
       }),
@@ -1609,23 +1838,24 @@ class _CBAppMainState extends State<CBAppMain> {
   void _appBarAction(String action) {
     switch (action) {
       case "fitMap":
+        Provider.of<ModelMapData>(context, listen: false).currentMapLocation = null;
         _immutableController.all().then((markers) {
           _doFitMapBounds(_getMaxBounds(markers));
         });
         break;
 
       case "reloadMap":
+        Provider.of<ModelMapData>(context, listen: false).currentMapLocation = null;
         Provider.of<ModelMapData>(context, listen: false)
             .loadLocations(fromCache: Provider.of<ModelMapData>(context, listen: false).isCache)
-            .onError((error, stackTrace) => showModalBottomMsg(context, "Error reloading Map $error", true));
+            .onError((error, stackTrace) => _scaffoldError(
+                "Error reloading Map $error")); // showModalBottomMsg(context, "Error reloading Map $error", true));
         break;
 
       case "gotoLocation":
         _determinePosition().then((position) {
-          Provider.of<ModelMapData>(context, listen: false).currentMapLocation =
-              LatLng(position.latitude, position.longitude);
-          mapController.move(Provider.of<ModelMapData>(context, listen: false).currentMapLocation!, mapController.zoom);
-        });
+          _centerLocation(position.latitude, position.longitude, 1);
+        }).onError((error, stackTrace) => _scaffoldError(error.toString()));
         break;
 
       case "bookingsList":

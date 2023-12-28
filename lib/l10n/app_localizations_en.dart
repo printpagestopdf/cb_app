@@ -22,6 +22,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addAccount => 'Add Account';
 
   @override
+  String get addAddress => 'Search address';
+
+  @override
   String get addComment => 'Add comment';
 
   @override
@@ -192,7 +195,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get german => 'german';
 
   @override
-  String get gotoCurrentLocation => 'Goto current location';
+  String get gotoCurrentLocation => 'Show current location';
 
   @override
   String get hdrStartupAction => 'App startup action';
@@ -233,6 +236,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginWithNewAccount => 'Do you want to log in with the new account now?';
 
   @override
+  String get mapTools => 'Map';
+
+  @override
   String get menu => 'Menu';
 
   @override
@@ -264,6 +270,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get msgNetworkUnavailable => 'Network unavailable';
+
+  @override
+  String get msgNoAddress => 'No suitable address was found';
 
   @override
   String get msgRequestFinishedWithError => 'Request finished with error code: ';
@@ -375,6 +384,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get showBookingsList => 'Show Bookings List';
+
+  @override
+  String get showLocationRadius => 'Show surrounding radius';
 
   @override
   String get showZoomButtons => 'Show zoom buttons on map';

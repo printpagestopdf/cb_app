@@ -4,7 +4,7 @@ import 'dart:convert';
 // import 'dart:ffi';
 // import 'dart:js_interop';
 import 'package:cb_app/wp/cb_bookings_data.dart';
-import 'package:flutter/foundation.dart';
+import 'package:dio/dio.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
 import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/wp/site_info.dart' as wpsite;
@@ -112,6 +112,19 @@ class ModelMapData extends ChangeNotifier {
       onChange();
     }
   }
+
+  int currentMapLocationType = 0;
+
+  bool _showLocationRadius = false;
+  bool get showLocationRadius => _showLocationRadius;
+  set showLocationRadius(bool show) {
+    if (show != _showLocationRadius) {
+      _showLocationRadius = show;
+      onChange();
+    }
+  }
+
+  bool isInitiallyCentered = false;
 
   bool loadingPhasesFinished = false;
   bool openHostRunning = false;
@@ -329,6 +342,15 @@ class ModelMapData extends ChangeNotifier {
     }
   }
 
+  double _mapRadiusMarker = 1000;
+  double get mapRadiusMarker => _mapRadiusMarker;
+  set mapRadiusMarker(double value) {
+    if (value != _mapRadiusMarker) {
+      _mapRadiusMarker = value;
+      onChange();
+    }
+  }
+
   void updateNetworkTimeout([String? strTimeout]) {
     int? timeout;
     if (strTimeout != null) {
@@ -437,6 +459,7 @@ class ModelMapData extends ChangeNotifier {
       hasCorsLimitation = false;
       _hasBookingCache = null;
       bookingStats = null;
+      isInitiallyCentered = false;
       onChange();
 
       final dynamic host = settings.hostList[strHost];
@@ -536,6 +559,18 @@ class ModelMapData extends ChangeNotifier {
       await loadLocations();
       if (WpApi.useCache) {
         fireCacheLoading();
+      }
+    } on DioException catch (dEx) {
+      if (WpApi.useCache) {
+        await loadSiteInfo(fromCache: true);
+        await loadLocations(fromCache: true);
+        isCache = true;
+        throw Exception(dEx.message);
+      } else {
+        mapDataLoadingState = LoadingState.failed;
+        siteInfoLoadingState = LoadingState.failed;
+        isLoggedIn = false;
+        mapDataErrMsg = "An error occured!\n${dEx.toString()}";
       }
     } catch (ex) {
       mapDataLoadingState = LoadingState.failed;

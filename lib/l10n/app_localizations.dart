@@ -123,6 +123,12 @@ abstract class AppLocalizations {
   /// **'Add Account'**
   String get addAccount;
 
+  /// No description provided for @addAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Search address'**
+  String get addAddress;
+
   /// No description provided for @addComment.
   ///
   /// In en, this message translates to:
@@ -378,7 +384,7 @@ abstract class AppLocalizations {
   /// No description provided for @gotoCurrentLocation.
   ///
   /// In en, this message translates to:
-  /// **'Goto current location'**
+  /// **'Show current location'**
   String get gotoCurrentLocation;
 
   /// No description provided for @hdrStartupAction.
@@ -453,6 +459,12 @@ abstract class AppLocalizations {
   /// **'Do you want to log in with the new account now?'**
   String get loginWithNewAccount;
 
+  /// No description provided for @mapTools.
+  ///
+  /// In en, this message translates to:
+  /// **'Map'**
+  String get mapTools;
+
   /// No description provided for @menu.
   ///
   /// In en, this message translates to:
@@ -518,6 +530,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Network unavailable'**
   String get msgNetworkUnavailable;
+
+  /// No description provided for @msgNoAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'No suitable address was found'**
+  String get msgNoAddress;
 
   /// No description provided for @msgRequestFinishedWithError.
   ///
@@ -710,6 +728,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Show Bookings List'**
   String get showBookingsList;
+
+  /// No description provided for @showLocationRadius.
+  ///
+  /// In en, this message translates to:
+  /// **'Show surrounding radius'**
+  String get showLocationRadius;
 
   /// No description provided for @showZoomButtons.
   ///
