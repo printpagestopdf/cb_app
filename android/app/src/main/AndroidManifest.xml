@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cb_app">
+    package="com.example.cb_app" >
+    <!-- <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.theripper.cb_app" > -->
     <!-- Required to fetch data from the internet. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

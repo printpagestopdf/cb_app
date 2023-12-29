@@ -567,7 +567,7 @@ class _CBAppMainState extends State<CBAppMain> {
 
         Map<dynamic, dynamic> lastCenter = Provider.of<ModelMapData>(context, listen: false)
             .settings
-            .getSetting("lastMapCenter", {'latitude': 0.0, 'longitude': 0.0, 'zoom': 13});
+            .getSetting("lastMapCenter", {'latitude': 0.0, 'longitude': 0.0, 'zoom': 9.2});
 
         LatLng lastMapCenter = LatLng(lastCenter['latitude'] ?? 0, lastCenter['longitude'] ?? 0);
 
@@ -585,7 +585,7 @@ class _CBAppMainState extends State<CBAppMain> {
                 mapController: mapController,
                 options: MapOptions(
                   center: lastMapCenter,
-                  zoom: lastCenter['zoom'] ?? 9.2,
+                  zoom: ((lastCenter['zoom'] ?? 9.2) as double),
                   // onPositionChanged: (position, hasGesture) {
                   //   print(position.bounds);
                   //   print(position.center);
@@ -617,6 +617,9 @@ class _CBAppMainState extends State<CBAppMain> {
                     urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     subdomains: const ['a', 'b', 'c'],
                     userAgentPackageName: 'org.cbappapi.app',
+                    // tileBounds: LatLngBounds(const LatLng(54.073206224834365, 1.5235210776232293),
+                    //     const LatLng(50.55519593132786, 1.5235210776232293)), // uk bounds
+
                     errorTileCallback: (tile, error, stackTrace) {
                       if (value.mapTilesAvailable != LoadingState.failed) {
                         value.mapTilesAvailable = LoadingState.failed;

@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
-import 'package:file_saver/file_saver.dart';
 import 'package:hive/hive.dart';
 import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/forms/register_host.dart';
