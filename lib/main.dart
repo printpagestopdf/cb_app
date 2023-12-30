@@ -1159,8 +1159,9 @@ class _CBAppMainState extends State<CBAppMain> {
                       value: map.showLocationRadius,
                       activeColor: Theme.of(context).primaryColor,
                       onChanged: (bool value) {
-                        Provider.of<ModelMapData>(context, listen: false).showLocationRadius =
-                            !Provider.of<ModelMapData>(context, listen: false).showLocationRadius;
+                        // Provider.of<ModelMapData>(context, listen: false).showLocationRadius =
+                        //     !Provider.of<ModelMapData>(context, listen: false).showLocationRadius;
+                        Provider.of<ModelMapData>(context, listen: false).showLocationRadius = value;
                       },
                     ),
                   ),
