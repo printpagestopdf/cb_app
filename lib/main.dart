@@ -730,10 +730,13 @@ class _CBAppMainState extends State<CBAppMain> {
                             ),
                             overlayShape: RoundSliderOverlayShape(overlayRadius: 10),
                           ),
-                          child: Slider.adaptive(
-                            value:
-                                value.mapRadiusMarker > 10000 ? 10000 : value.mapRadiusMarker, // _currentSliderValue,
-                            max: 10000,
+                          // child: Slider.adaptive(
+                          child: Slider(
+                            value: value.mapRadiusMarker > 10000.0
+                                ? 10000.0
+                                : value.mapRadiusMarker, // _currentSliderValue,
+                            max: 10000.0,
+                            min: 1.0,
                             divisions: 500,
                             label: value.mapRadiusMarker.round().toString(),
                             onChanged: (double value) {

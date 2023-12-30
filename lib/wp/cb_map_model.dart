@@ -342,7 +342,7 @@ class ModelMapData extends ChangeNotifier {
     }
   }
 
-  double _mapRadiusMarker = 1000;
+  double _mapRadiusMarker = 1000.0;
   double get mapRadiusMarker => _mapRadiusMarker;
   set mapRadiusMarker(double value) {
     if (value != _mapRadiusMarker) {
