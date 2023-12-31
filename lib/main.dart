@@ -407,15 +407,16 @@ class _CBAppMainState extends State<CBAppMain> {
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width - 30,
           ),
-          child: Drawer(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(20),
-                topRight: Radius.circular(20),
+          child: SafeArea(
+            maintainBottomViewPadding: false,
+            child: Drawer(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
               ),
-            ),
-            backgroundColor: Theme.of(context).cardColor.withOpacity(0.95),
-            child: SafeArea(
+              backgroundColor: Theme.of(context).cardColor.withOpacity(0.95),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -459,6 +460,7 @@ class _CBAppMainState extends State<CBAppMain> {
                   Expanded(
                     child: _drawerMenu(context),
                   ),
+                  SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
                 ],
               ),
             ),
@@ -1109,6 +1111,7 @@ class _CBAppMainState extends State<CBAppMain> {
             ),
             const Divider(
               indent: 20,
+              height: 0,
             ),
             if (map.isMainViewMap)
               ExpansionTile(
@@ -1168,73 +1171,76 @@ class _CBAppMainState extends State<CBAppMain> {
                       },
                     ),
                   ),
-                  MenuAnchor(
-                    controller: _addressSearchMenuCtrl,
-                    menuChildren: _addressSearchItems,
-                    child: Focus(
-                      onFocusChange: (gotFocus) {
-                        if (gotFocus && _addressSearchMenuCtrl.isOpen) {
-                          _addressSearchMenuCtrl.close();
-                        }
-                      },
-                      child: TextFormField(
-                        key: _addressSearchKey,
-                        decoration: InputDecoration(
-                          border: const UnderlineInputBorder(borderSide: BorderSide.none),
-                          hintText: context.l10n.addAddress,
-                          suffixIcon: IconButton(
-                            color: Theme.of(context).colorScheme.tertiary,
-                            onPressed: () {
-                              _addressSearchKey.currentState!.save();
-                            },
-                            icon: const Icon(Icons.keyboard_return),
-                          ),
-                          prefixIcon: const Icon(Icons.search),
-                        ),
-                        onFieldSubmitted: (newValue) {
-                          //catch RETURN
+                  TextFormField(
+                    key: _addressSearchKey,
+                    decoration: InputDecoration(
+                      border: const UnderlineInputBorder(borderSide: BorderSide.none),
+                      hintText: context.l10n.addAddress,
+                      suffixIcon: IconButton(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        onPressed: () {
                           _addressSearchKey.currentState!.save();
                         },
-                        onSaved: (adr) {
-                          Nominatim.searchByName(query: adr, limit: 50).then((List<Place> places) {
-                            if (places.length == 1) {
-                              _centerLocation(places[0].lat, places[0].lon, 2);
-                            } else if (places.isNotEmpty) {
-                              _addressSearchItems.clear();
-                              _addressSearchItems.addAll(places.map<MenuItemButton>((e) => MenuItemButton(
-                                    style: TextButton.styleFrom(
-                                        side: BorderSide(width: 1, color: Colors.grey.withOpacity(0.8)),
-                                        shape: LinearBorder.bottom(),
-                                        padding: const EdgeInsets.symmetric(vertical: 15)),
-                                    child: ConstrainedBox(
-                                      constraints:
-                                          BoxConstraints(maxWidth: max(300, MediaQuery.of(context).size.width * 0.7)),
-                                      child: Text(
-                                        e.displayName,
-                                        overflow: TextOverflow.visible,
-                                        softWrap: true,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      _centerLocation(e.lat, e.lon, 2);
-                                    },
-                                  )));
-                              _addressSearchMenuCtrl.open();
-                            } else {
-                              showModalBottomMsg(context, context.l10n.msgNoAddress, true);
-                            }
-                          }).onError((error, stackTrace) {
-                            showModalBottomMsg(context, "${context.l10n.msgNoAddress}: ${error.toString()}", true);
-                          });
-                        },
+                        icon: const Icon(Icons.keyboard_return),
                       ),
+                      prefixIcon: const Icon(Icons.search),
                     ),
+                    onFieldSubmitted: (newValue) {
+                      //catch RETURN
+                      _addressSearchKey.currentState!.save();
+                    },
+                    onSaved: (adr) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      Nominatim.searchByName(query: adr, limit: 50).then((List<Place> places) {
+                        if (places.length == 1) {
+                          _centerLocation(places[0].lat, places[0].lon, 2);
+                        } else if (places.isNotEmpty) {
+                          showDialog(
+                              context: context,
+                              builder: (_) {
+                                return AlertDialog(
+                                  title: const Text("adrChoice"),
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width: double.maxFinite,
+                                          height: MediaQuery.of(context).size.height * 0.8,
+                                          child: ListView.separated(
+                                            separatorBuilder: (context, index) => const Divider(),
+                                            itemCount: places.length,
+                                            itemBuilder: (_, i) {
+                                              return ListTile(
+                                                // ignore: unnecessary_string_interpolations
+                                                title: Text("${places[i].displayName}"),
+                                                onTap: () {
+                                                  _centerLocation(places[i].lat, places[i].lon, 2);
+                                                  Navigator.pop(context);
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
+                        } else {
+                          showModalBottomMsg(context, context.l10n.msgNoAddress, true);
+                        }
+                      }).onError((error, stackTrace) {
+                        showModalBottomMsg(context, "${context.l10n.msgNoAddress}: ${error.toString()}", true);
+                      });
+                    },
                   ),
                 ],
               ),
             if (map.isMainViewMap)
               const Divider(
                 indent: 20,
+                height: 0,
               ),
             ListTile(
               leading: const Icon(Icons.settings),
