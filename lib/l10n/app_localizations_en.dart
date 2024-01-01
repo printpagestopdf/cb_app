@@ -201,6 +201,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hdrStartupAction => 'App startup action';
 
   @override
+  String get hintPassword => 'Password';
+
+  @override
   String get imageDisplayNotPossible => 'Image display not possible';
 
   @override
@@ -216,6 +219,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String lastUpdated(String dateTime) {
     return 'Last updated: $dateTime';
   }
+
+  @override
+  String get lblMarkerSize => 'Map marker size (Reload map afterwards)';
 
   @override
   String get link => 'link';
@@ -410,6 +416,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tooltipFilter => 'Restrict display according to certain criteria';
 
   @override
+  String get ttResetMarkerSize => 'Reset marker size to original value';
+
+  @override
   String get unknownHTTPStatus => 'unknown HTTP Status';
 
   @override
@@ -420,6 +429,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get useNewServiceQuestion => 'Should the new service be used now?';
+
+  @override
+  String get userName => 'Username';
 
   @override
   String get yourBookings => 'Your Bookings';

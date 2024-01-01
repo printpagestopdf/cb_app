@@ -29,6 +29,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
   String? currentUserKey;
   final GlobalKey<FormFieldState<bool>> _switchCacheEnabledKey = GlobalKey<FormFieldState<bool>>();
   final GlobalKey<FormFieldState<bool>> _switchShowZoomKey = GlobalKey<FormFieldState<bool>>();
+  final GlobalKey<FormFieldState<double>> _sliderMarkerSizeKey = GlobalKey<FormFieldState<double>>();
   final selectedColor = Colors.red;
   static const double formFieldSpacing = 5.0;
   int currentTab = 0;
@@ -43,6 +44,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
   bool _initEnableOfflineHost = true;
   bool _initShowZoom = false;
   late ModelMapData modelMap;
+  double _sliderMarkerSize = 16.0;
 
   dynamic _bookingStats;
 
@@ -149,6 +151,8 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
     }
 
     _initShowZoom = modelMap.showZoom;
+
+    _sliderMarkerSize = modelMap.markerIconSize;
 
     _settingsFormModified = false;
   }
@@ -398,7 +402,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
                         DropdownButtonFormField<Locale>(
                           decoration: InputDecoration(
                               labelText: toBeginningOfSentenceCase(context.l10n.select(context.l10n.language)),
-                              prefixIcon: const Icon(Icons.cloud_done_outlined)),
+                              prefixIcon: const Icon(Icons.language)),
                           value: modelMap.currentLocale,
                           items: <DropdownMenuItem<Locale>>[
                             DropdownMenuItem<Locale>(
@@ -449,6 +453,89 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
                             },
                           ),
                         ),
+                        const SizedBox(height: formFieldSpacing),
+
+                        InputDecorator(
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.zoom_out_map),
+                            labelText: context.l10n.lblMarkerSize,
+                            suffixIcon: IconButton(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              padding: const EdgeInsets.only(top: 15),
+                              tooltip: context.l10n.ttResetMarkerSize,
+                              onPressed: () {
+                                _sliderMarkerSize = 24.00;
+                                _sliderMarkerSizeKey.currentState!.didChange(24.0);
+                              },
+                              icon: const Icon(Icons.undo),
+                            ),
+                          ),
+                          child: FormField<double>(
+                            key: _sliderMarkerSizeKey,
+                            initialValue: _sliderMarkerSize,
+                            builder: (FormFieldState<double> field) {
+                              return SliderTheme(
+                                data: Theme.of(context).sliderTheme.copyWith(
+                                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10),
+                                      trackHeight: 4,
+                                      overlayShape: const RoundSliderOverlayShape(overlayRadius: 16),
+                                    ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  // color: Theme.of(context).inputDecorationTheme.fillColor,
+                                  children: [
+                                    SizedBox(
+                                      width: _sliderMarkerSize,
+                                      height: _sliderMarkerSize,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        padding: const EdgeInsets.all(1),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: const Color.fromRGBO(32, 70, 130, 1),
+                                          border: Border.all(
+                                            color: Colors.white,
+                                            width: 1.5,
+                                          ),
+                                        ),
+                                        child: Icon(Icons.pedal_bike_outlined,
+                                            size: _sliderMarkerSize - 8, color: Colors.white.withOpacity(0.75)),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Slider(
+                                        value: _sliderMarkerSize,
+                                        min: 10,
+                                        max: 50,
+                                        divisions: 40,
+                                        label: _sliderMarkerSize.round().toString(),
+                                        onChanged: (double value) {
+                                          _sliderMarkerSize = value;
+                                          field.didChange(value);
+                                          // setState(() {
+                                          //   _sliderMarkerSize = value;
+                                          // });
+                                        },
+                                      ),
+                                    ),
+                                    Badge.count(
+                                      count: _sliderMarkerSize.round(),
+                                      textColor: Theme.of(context).textTheme.labelMedium!.color,
+                                      backgroundColor: Theme.of(context).cardColor,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            onSaved: (newValue) {
+                              if (newValue != null) {
+                                modelMap.markerIconSize = newValue;
+                              }
+                            },
+                          ),
+                        ),
+
                         const SizedBox(height: formFieldSpacing),
                         TextFormField(
                           controller: _txtControllers.ctrl("netTimeout")
@@ -525,6 +612,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
                         const SizedBox(height: formFieldSpacing),
                         TextFormField(
                           initialValue: modelMap.settings.getSetting("connectionTestUrl", "https://1.1.1.1/"),
+                          keyboardType: TextInputType.url,
                           decoration: InputDecoration(
                             labelText: context.l10n.linkForInternettest,
                             prefixIcon: const Icon(Icons.link),
@@ -657,6 +745,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
                         children: [
                           TextFormField(
                             controller: _txtControllers.ctrl("hostUrl"),
+                            keyboardType: TextInputType.url,
                             decoration: InputDecoration(
                               labelText: 'Url',
                               prefixIcon: const Icon(Icons.link),

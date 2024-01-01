@@ -271,6 +271,7 @@ class _RegisterHost extends State<RegisterHost> with TickerProviderStateMixin {
             ),
             const SizedBox(height: 20.0),
             TextFormField(
+              keyboardType: TextInputType.url,
               autofocus: true,
               initialValue: formHostDataMap['hostUrl'], // hostUrl,
               onSaved: (newValue) => formHostDataMap['hostUrl'] = newValue,

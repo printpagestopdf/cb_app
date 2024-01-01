@@ -132,8 +132,6 @@ class _CBAppMainState extends State<CBAppMain> {
   final MapController mapController = MapController();
   late String _connectInfoTooltip = context.l10n.noService;
   final TextEditingController _radiusMarkerCtrl = TextEditingController();
-  final MenuController _addressSearchMenuCtrl = MenuController();
-  final List<MenuItemButton> _addressSearchItems = <MenuItemButton>[];
   final GlobalKey<FormFieldState> _addressSearchKey = GlobalKey<FormFieldState>();
   final _menuDrawerBucket = PageStorageBucket();
 
@@ -291,31 +289,45 @@ class _CBAppMainState extends State<CBAppMain> {
     Map<dynamic, dynamic> filters = modelMap.filters;
 
     if (filters.isEmpty) {
+      double markerIconSize = modelMap.markerIconSize;
       List<LRMarker> markers = modelMap.mapList.mapLocations.entries
           .map(
             (e) => LRMarker(
               locationId: e.key,
               // anchorPos: AnchorPos.align(AnchorAlign.center),
               point: LatLng(e.value.lat, e.value.lon),
-              width: 24.0,
-              height: 24.0,
+              // width: 24.0,
+              // height: 24.0,
+              width: markerIconSize,
+              height: markerIconSize,
               builder: (context) => Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  // borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: const Color.fromRGBO(32, 70, 130, 1),
                   border: Border.all(
                     color: Colors.white,
                     width: 1.5,
                   ),
                 ),
-                child: Icon(Icons.pedal_bike_outlined,
-                    size: 16,
-                    // color: Colors.blue,
-                    color: Colors.white.withOpacity(0.75)),
+                child:
+                    Icon(Icons.pedal_bike_outlined, size: markerIconSize - 8.0, color: Colors.white.withOpacity(0.75)),
               ),
+
+              // builder: (context) => Container(
+              //   alignment: Alignment.center,
+              //   padding: const EdgeInsets.all(1),
+              //   decoration: BoxDecoration(
+              //     shape: BoxShape.circle,
+              //     color: const Color.fromRGBO(32, 70, 130, 1),
+              //     border: Border.all(
+              //       color: Colors.white,
+              //       width: 1.5,
+              //     ),
+              //   ),
+              //   child: Icon(Icons.pedal_bike_outlined, size: 16, color: Colors.white.withOpacity(0.75)),
+              // ),
             ),
           )
           .toList();
@@ -582,7 +594,7 @@ class _CBAppMainState extends State<CBAppMain> {
           // ),
           child: Stack(
             children: [
-              /* child: */ FlutterMap(
+              FlutterMap(
                 key: CBApp.flutterMapKey,
                 mapController: mapController,
                 options: MapOptions(
@@ -619,8 +631,6 @@ class _CBAppMainState extends State<CBAppMain> {
                     urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     subdomains: const ['a', 'b', 'c'],
                     userAgentPackageName: 'org.cbappapi.app',
-                    // tileBounds: LatLngBounds(const LatLng(54.073206224834365, 1.5235210776232293),
-                    //     const LatLng(50.55519593132786, 1.5235210776232293)), // uk bounds
 
                     errorTileCallback: (tile, error, stackTrace) {
                       if (value.mapTilesAvailable != LoadingState.failed) {
@@ -1432,9 +1442,9 @@ class _CBAppMainState extends State<CBAppMain> {
                   },
                   controller: ctrlUserName,
                   // initialValue: ctrl.currentUser['login'],
-                  decoration: const InputDecoration(
-                    labelText: 'Benutzername',
-                    prefixIcon: Icon(Icons.person),
+                  decoration: InputDecoration(
+                    labelText: context.l10n.userName,
+                    prefixIcon: const Icon(Icons.person),
                   ),
                 ),
                 const SizedBox(height: 10.0),
@@ -1444,9 +1454,9 @@ class _CBAppMainState extends State<CBAppMain> {
                   },
                   controller: ctrlPassword,
                   obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Passwort',
-                    prefixIcon: Icon(Icons.lock),
+                  decoration: InputDecoration(
+                    labelText: context.l10n.hintPassword,
+                    prefixIcon: const Icon(Icons.lock),
                   ),
                 ),
                 const SizedBox(height: 20.0),

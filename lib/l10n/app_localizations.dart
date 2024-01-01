@@ -393,6 +393,12 @@ abstract class AppLocalizations {
   /// **'App startup action'**
   String get hdrStartupAction;
 
+  /// No description provided for @hintPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get hintPassword;
+
   /// No description provided for @imageDisplayNotPossible.
   ///
   /// In en, this message translates to:
@@ -422,6 +428,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Last updated: {dateTime}'**
   String lastUpdated(String dateTime);
+
+  /// No description provided for @lblMarkerSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Map marker size (Reload map afterwards)'**
+  String get lblMarkerSize;
 
   /// Added from file location_info_dialog.dart
   ///
@@ -777,6 +789,12 @@ abstract class AppLocalizations {
   /// **'Restrict display according to certain criteria'**
   String get tooltipFilter;
 
+  /// No description provided for @ttResetMarkerSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset marker size to original value'**
+  String get ttResetMarkerSize;
+
   /// No description provided for @unknownHTTPStatus.
   ///
   /// In en, this message translates to:
@@ -800,6 +818,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Should the new service be used now?'**
   String get useNewServiceQuestion;
+
+  /// No description provided for @userName.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get userName;
 
   /// Headline Bookings List
   ///

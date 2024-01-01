@@ -255,6 +255,7 @@ class ModelMapData extends ChangeNotifier {
   Future<void> onStartup() async {
     await settings.initStorages(); //initialize the service singleton
     isMainViewMap = settings.getSetting("lastIsMainViewMap", true);
+    _markerIconSize = settings.getSetting("markerIconSize", 24.0);
     updateNetworkTimeout();
 
     checkLocationService();
@@ -348,6 +349,16 @@ class ModelMapData extends ChangeNotifier {
     if (value != _mapRadiusMarker) {
       _mapRadiusMarker = value;
       onChange();
+    }
+  }
+
+  double _markerIconSize = 24.0;
+  double get markerIconSize => _markerIconSize;
+  set markerIconSize(double value) {
+    if (value != _markerIconSize) {
+      _markerIconSize = value;
+      settings.putSetting("markerIconSize", value);
+      // onChange();
     }
   }
 

@@ -201,6 +201,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hdrStartupAction => 'Aktion beim Starten der App';
 
   @override
+  String get hintPassword => 'Passwort';
+
+  @override
   String get imageDisplayNotPossible => 'Bildanzeige nicht möglich';
 
   @override
@@ -216,6 +219,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String lastUpdated(String dateTime) {
     return 'Zuletzt aktualisiert: $dateTime';
   }
+
+  @override
+  String get lblMarkerSize => 'Größe der Kartenmarker (Karte danach neu laden)';
 
   @override
   String get link => 'link';
@@ -410,6 +416,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get tooltipFilter => 'Anzeige nach best. Kriterien einschränken';
 
   @override
+  String get ttResetMarkerSize => 'Markergröße auf Ursprungswert zurücksetzen';
+
+  @override
   String get unknownHTTPStatus => 'unbekannter HTTP Status';
 
   @override
@@ -420,6 +429,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get useNewServiceQuestion => 'Soll der neue Service jetzt verwendet werden?';
+
+  @override
+  String get userName => 'Benutzername';
 
   @override
   String get yourBookings => 'Ihre Buchungen';

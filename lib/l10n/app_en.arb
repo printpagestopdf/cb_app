@@ -98,6 +98,7 @@
   "german": "german",
   "gotoCurrentLocation": "Show current location",
   "hdrStartupAction": "App startup action",
+  "hintPassword": "Password",
   "imageDisplayNotPossible": "Image display not possible",
   "infoAppPassword": "An application password is required to log in to the service provider.\n\nIf you have an account with the service provider, it is sufficient to enter your Accountpassword the application password will then be generated automatically.\n\nIf you have received an application password from the service provider, or if you have created on your own, you can enter it directly in the Application password field instead.",
   "infoSelectServiceprovider": "Select\nServiceprovider!",
@@ -111,6 +112,7 @@
       }
     }
   },
+  "lblMarkerSize": "Map marker size (Reload map afterwards)",
   "link": "link",
   "@link": {
     "description": "Added from file location_info_dialog.dart"
@@ -194,10 +196,12 @@
   "storno": "cancel",
   "titleCreateAccount": "Create Account",
   "tooltipFilter": "Restrict display according to certain criteria",
+  "ttResetMarkerSize": "Reset marker size to original value",
   "unknownHTTPStatus": "unknown HTTP Status",
   "unlimited": "unlimited",
   "until": "Until",
   "useNewServiceQuestion": "Should the new service be used now?",
+  "userName": "Username",
   "yourBookings": "Your Bookings",
   "@yourBookings": {
     "description": "Headline Bookings List"
