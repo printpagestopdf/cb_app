@@ -1,21 +1,12 @@
 import 'package:cb_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'package:cb_app/forms/location_info_dialog.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:cb_app/forms/lr_marker.dart' as globals;
-import 'package:flutter_map/plugin_api.dart';
 import 'package:cb_app/forms/overview_calendar.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
-import 'package:flutter/gestures.dart';
-import 'lr_marker.dart';
-import 'dart:math';
-import 'package:cb_app/forms/availabilities_calendar.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 
 class MarkerPopupItem extends StatelessWidget {

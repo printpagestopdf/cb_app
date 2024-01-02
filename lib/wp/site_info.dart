@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_this
+// ignore_for_file: unnecessary_this, depend_on_referenced_packages
 import 'package:collection/collection.dart';
 
 class SiteInfo {
@@ -248,7 +248,6 @@ class Curies {
   }
 }
 
-/******************************************************************* */
 class Embedded {
   List<WpFeaturedmedia>? wpFeaturedmedia;
 

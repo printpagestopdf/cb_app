@@ -1,10 +1,5 @@
-import 'dart:convert';
 import 'dart:typed_data';
-
-import 'package:html/dom.dart' as dom;
-import 'package:html/parser.dart' as html_parser;
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
@@ -15,7 +10,6 @@ import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:html2md/html2md.dart' as html2md;
 
 class LocationInfoDialog {
-  final List<TapGestureRecognizer> _tapGestureRecognizers = List<TapGestureRecognizer>.empty(growable: true);
   final BuildContext context;
   final List<ValueNotifier<Uint8List?>> _notifiers = <ValueNotifier<Uint8List?>>[];
 
@@ -287,14 +281,14 @@ class LocationInfoDialog {
     );
   }
 
-  bool _hasText(List<TextSpan> spanList) {
-    String textOnly = "";
-    for (TextSpan ts in spanList) {
-      textOnly += ts.toPlainText(includePlaceholders: false, includeSemanticsLabels: false);
-    }
+  // bool _hasText(List<TextSpan> spanList) {
+  //   String textOnly = "";
+  //   for (TextSpan ts in spanList) {
+  //     textOnly += ts.toPlainText(includePlaceholders: false, includeSemanticsLabels: false);
+  //   }
 
-    return textOnly.replaceAll(RegExp(r'[\n\r\t\s]*'), '').isNotEmpty;
-  }
+  //   return textOnly.replaceAll(RegExp(r'[\n\r\t\s]*'), '').isNotEmpty;
+  // }
 
   String _prepareHtml(String text) {
     final Pattern unicodePattern = RegExp(r'\\u([0-9A-Fa-f]{4})');
@@ -314,124 +308,124 @@ class LocationInfoDialog {
     // html = html.replaceAll(RegExp(r'[\n\r]'), "");
   }
 
-  List<TextSpan> _html2text(String html) {
-    String text = _prepareHtml(html);
-    var fragment = html_parser.parseFragment(_prepareHtml(text));
+  // List<TextSpan> _html2text(String html) {
+  //   String text = _prepareHtml(html);
+  //   var fragment = html_parser.parseFragment(_prepareHtml(text));
 
-    if (fragment.children.isEmpty) {
-      //seems to be pure text
-      text = text.replaceAll(RegExp(r'\\r\\n'), "\n");
-      text = text.replaceAll(RegExp(r'\\n'), "\n");
-      return <TextSpan>[
-        TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium),
-      ];
-    }
+  //   if (fragment.children.isEmpty) {
+  //     //seems to be pure text
+  //     text = text.replaceAll(RegExp(r'\\r\\n'), "\n");
+  //     text = text.replaceAll(RegExp(r'\\n'), "\n");
+  //     return <TextSpan>[
+  //       TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium),
+  //     ];
+  //   }
 
-    List<TextSpan> spanList = List<TextSpan>.empty(growable: true);
-    _walk(fragment.nodes, spanList);
-    return spanList;
-  }
+  //   List<TextSpan> spanList = List<TextSpan>.empty(growable: true);
+  //   _walk(fragment.nodes, spanList);
+  //   return spanList;
+  // }
 
-  void _walk(dom.NodeList nodes, List<TextSpan> spanList, [String text = ""]) {
-    for (dom.Node node in nodes) {
-      switch (node.nodeType) {
-        case dom.Node.TEXT_NODE:
-          if ((node.text ??= "").isNotEmpty) {
-            text += node.text!;
-          }
-          break;
+  // void _walk(dom.NodeList nodes, List<TextSpan> spanList, [String text = ""]) {
+  //   for (dom.Node node in nodes) {
+  //     switch (node.nodeType) {
+  //       case dom.Node.TEXT_NODE:
+  //         if ((node.text ??= "").isNotEmpty) {
+  //           text += node.text!;
+  //         }
+  //         break;
 
-        case dom.Node.ELEMENT_NODE:
-          switch ((node as dom.Element).localName) {
-            case "br":
-              text += "\n";
-              break;
-            case "p":
-              if (text.isNotEmpty) {
-                spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-                text = "";
-              }
-              spanList.add(TextSpan(text: "\n", style: Theme.of(context).textTheme.bodyMedium));
-              _walk(node.nodes, spanList, text);
-              spanList.add(TextSpan(text: "\n", style: Theme.of(context).textTheme.bodyMedium));
-              break;
-            case "b":
-            case "strong":
-              if (text.isNotEmpty) {
-                spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-                text = "";
-              }
-              spanList.add(
-                TextSpan(
-                  text: node.text,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-              );
-              break;
-            case "i":
-              if (text.isNotEmpty) {
-                spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-                text = "";
-              }
-              spanList.add(TextSpan(
-                text: node.text,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontStyle: FontStyle.italic,
-                    ),
-              ));
-              break;
-            case "u":
-              if (text.isNotEmpty) {
-                spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-                text = "";
-              }
-              spanList.add(TextSpan(
-                text: node.text,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      decoration: TextDecoration.underline,
-                    ),
-              ));
-              break;
-            case "a":
-              if (text.isNotEmpty) {
-                spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-                text = "";
-              }
-              spanList.add(TextSpan(
-                text: node.text,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                    ),
-                recognizer: (() {
-                  TapGestureRecognizer t = TapGestureRecognizer();
-                  _tapGestureRecognizers.add(t);
-                  return t..onTap = () => _launchURL(node.attributes['href']);
-                })(),
-              ));
-              break;
-            default:
-              if (node.hasChildNodes()) {
-                if (text.isNotEmpty) {
-                  spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-                  text = "";
-                }
-                _walk(node.nodes, spanList, text);
-              }
-              break;
-          }
-          break;
-        default:
-          break;
-      }
-    }
+  //       case dom.Node.ELEMENT_NODE:
+  //         switch ((node as dom.Element).localName) {
+  //           case "br":
+  //             text += "\n";
+  //             break;
+  //           case "p":
+  //             if (text.isNotEmpty) {
+  //               spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //               text = "";
+  //             }
+  //             spanList.add(TextSpan(text: "\n", style: Theme.of(context).textTheme.bodyMedium));
+  //             _walk(node.nodes, spanList, text);
+  //             spanList.add(TextSpan(text: "\n", style: Theme.of(context).textTheme.bodyMedium));
+  //             break;
+  //           case "b":
+  //           case "strong":
+  //             if (text.isNotEmpty) {
+  //               spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //               text = "";
+  //             }
+  //             spanList.add(
+  //               TextSpan(
+  //                 text: node.text,
+  //                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+  //                       fontWeight: FontWeight.bold,
+  //                     ),
+  //               ),
+  //             );
+  //             break;
+  //           case "i":
+  //             if (text.isNotEmpty) {
+  //               spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //               text = "";
+  //             }
+  //             spanList.add(TextSpan(
+  //               text: node.text,
+  //               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+  //                     fontStyle: FontStyle.italic,
+  //                   ),
+  //             ));
+  //             break;
+  //           case "u":
+  //             if (text.isNotEmpty) {
+  //               spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //               text = "";
+  //             }
+  //             spanList.add(TextSpan(
+  //               text: node.text,
+  //               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+  //                     decoration: TextDecoration.underline,
+  //                   ),
+  //             ));
+  //             break;
+  //           case "a":
+  //             if (text.isNotEmpty) {
+  //               spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //               text = "";
+  //             }
+  //             spanList.add(TextSpan(
+  //               text: node.text,
+  //               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+  //                     color: Colors.blue,
+  //                     decoration: TextDecoration.underline,
+  //                   ),
+  //               recognizer: (() {
+  //                 TapGestureRecognizer t = TapGestureRecognizer();
+  //                 _tapGestureRecognizers.add(t);
+  //                 return t..onTap = () => _launchURL(node.attributes['href']);
+  //               })(),
+  //             ));
+  //             break;
+  //           default:
+  //             if (node.hasChildNodes()) {
+  //               if (text.isNotEmpty) {
+  //                 spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //                 text = "";
+  //               }
+  //               _walk(node.nodes, spanList, text);
+  //             }
+  //             break;
+  //         }
+  //         break;
+  //       default:
+  //         break;
+  //     }
+  //   }
 
-    if (text.isNotEmpty) {
-      spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
-    }
-  }
+  //   if (text.isNotEmpty) {
+  //     spanList.add(TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium));
+  //   }
+  // }
 
   void _launchURL(String? strUrl) async {
     if (strUrl == null) return;

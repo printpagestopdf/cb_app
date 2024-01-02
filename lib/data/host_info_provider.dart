@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/parts/utils.dart';
-import 'dart:async';
 
 class HostInfoProvider extends ChangeNotifier {
   final Uri hostUrl;

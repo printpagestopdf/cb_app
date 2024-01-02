@@ -684,7 +684,6 @@ class ModelMapData extends ChangeNotifier {
     if (fromCache) {
       await WpApi.fetchCbMap({'fromCache': 'true'}).then((values) {
         _mapList = values;
-        // print("Locations+availabilities loaded");
         mapDataLoadingState = LoadingState.loaded;
         loadingPhasesFinished = true;
         onChange();

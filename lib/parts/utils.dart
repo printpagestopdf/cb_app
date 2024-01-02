@@ -1,12 +1,6 @@
-// import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cb_app/l10n/app_localizations.dart';
 import 'dart:convert';
-import 'dart:developer';
 import 'package:hive/hive.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:nanoid/nanoid.dart';
@@ -51,8 +45,6 @@ class CbAppService {
     settingsBox = await Hive.openBox('cbappSettings');
 
     cachingBox = await Hive.openLazyBox('cbappCaching');
-
-    await loadTestSettings();
 
     String? myClientNanoId;
     if ((myClientNanoId = getSetting('clientNanoId')) == null) {
@@ -216,26 +208,6 @@ class CbAppService {
 
   dynamic getSetting(String key, [dynamic defaultValue]) {
     return settingsBox.get(key, defaultValue: defaultValue);
-  }
-
-  Future<void> loadTestSettings() async {
-    return;
-    if (!kDebugMode || settingsBox.isNotEmpty) return;
-
-    final String response = await rootBundle.loadString('assets/test_data.json');
-    final data = await json.decode(response);
-
-    await settingsBox.deleteFromDisk();
-    settingsBox = await Hive.openBox('cbappSettings');
-    await encryptedBox.clear();
-
-    Map<String, dynamic> authKeys = data['authKeys'];
-    (data as Map<String, dynamic>).remove('authKeys');
-
-    await settingsBox.putAll(data);
-    encryptedBox.putAll(authKeys);
-    // inspect(data['servers']);
-    // print(rootBundle.loadString('test_data.json'));
   }
 
   Map<dynamic, dynamic> get hostList {

@@ -1,16 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:expandable/expandable.dart';
 import 'package:recase/recase.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
-import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/data/host_info_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:async';
 
@@ -532,6 +527,7 @@ class _RegisterHost extends State<RegisterHost> with TickerProviderStateMixin {
                     }
                     return context.l10n.accountOrApplicationPasswordMustBeFilled;
                   }
+                  return null;
                 },
                 onSaved: (newValue) {
                   formUserDataMap['appPassword'] = newValue;

@@ -1,11 +1,6 @@
-import 'dart:developer';
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cb_app/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/wp_api.dart';
@@ -18,11 +13,6 @@ import 'package:provider/provider.dart';
 import 'package:cb_app/forms/background_animation.dart';
 import 'dart:async';
 import 'dart:ui';
-
-// import 'package:html/dom.dart' as dom;
-// import 'package:html/dom_parsing.dart' as dom_parser;
-// import 'package:html/html_escape.dart';
-// import 'package:html/parser.dart' as html_parser;
 
 class BookingsPage extends StatefulWidget {
   const BookingsPage({super.key});

@@ -498,7 +498,7 @@ class WpApi {
       Map<String, dynamic> responseBody = jsonDecode(response.data);
       // inspect(responseBody);
       if (response.statusCode == null) throw Exception("HTTP Status is NULL");
-      if (response.statusCode!! >= 400) {
+      if (response.statusCode! >= 400) {
         return BookingResult(msg: responseBody['message'], isError: true, statusCode: response.statusCode!);
       } else {
         return BookingResult(msg: responseBody['message'], statusCode: response.statusCode!);

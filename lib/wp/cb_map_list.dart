@@ -195,7 +195,7 @@ class MapLocation implements LocationInfoInterface {
         "lon": lon,
         "location_name": locationName,
         "location_link": locationLink,
-        "closed_days": List<dynamic>.from(closedDays!.map((x) => x)),
+        "closed_days": List<dynamic>.from(closedDays.map((x) => x)),
         "address": address.toJson(),
         // "items":  List<dynamic>.from(items!.map((x) => x.toJson())),
         "idxItems": List<dynamic>.from(idxItems.values.map((x) => x.toJson())),
@@ -361,6 +361,7 @@ class Availability {
       };
 }
 
+// ignore: constant_identifier_names
 enum Status { AVAILABLE, LOCKED, BOOKED, HOLIDAY, PARTIALLY_BOOKED, OUT_OF_TIMEFRAME }
 
 final statusValues = EnumValues({

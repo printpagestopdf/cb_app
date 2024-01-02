@@ -4,23 +4,18 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
-import 'package:scrollable_clean_calendar/widgets/days_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/wp/wp_api.dart';
 import 'dart:math';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
-import 'package:cb_app/main.dart';
 import 'package:scrollable_clean_calendar/controllers/clean_calendar_controller.dart';
 import 'package:scrollable_clean_calendar/scrollable_clean_calendar.dart';
 import 'package:scrollable_clean_calendar/utils/enums.dart';
 import 'package:scrollable_clean_calendar/utils/extensions.dart';
 import 'package:scrollable_clean_calendar/models/day_values_model.dart';
-import 'package:intl/intl.dart';
-import 'dart:developer';
 import 'dart:ui';
-import 'dart:async';
 
 class _BookingDates extends ValueNotifier<Map<String, dynamic>> {
   _BookingDates(Map<String, dynamic> value) : super(value);
@@ -76,7 +71,6 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
   late int _maxBookingdays;
 
   static Border dayBorder = Border.all(width: 0.5, color: const Color.fromARGB(255, 0, 0, 0));
-  static const BorderRadius dayBorderRadius = BorderRadius.all(Radius.circular(6.0));
   static const Color redColor = Color.fromRGBO(213, 66, 92, 1.0);
   static const Color greenColor = Color.fromRGBO(116, 206, 60, 1.0);
   static const Color grayColor = Color.fromRGBO(221, 221, 221, 1.0);

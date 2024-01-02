@@ -1,16 +1,8 @@
-import 'dart:developer';
-import 'package:cb_app/main.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:cb_app/l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:flutter/material.dart';
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
-import 'package:hive/hive.dart';
-import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/forms/register_host.dart';
 import 'package:cb_app/parts/utils.dart';
-import 'dart:async';
 import 'dart:math';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -45,8 +37,6 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
   bool _initShowZoom = false;
   late ModelMapData modelMap;
   double _sliderMarkerSize = 16.0;
-
-  dynamic _bookingStats;
 
   final FormItemControllers<TextEditingController> _txtControllers =
       FormItemControllers<TextEditingController>(() => TextEditingController());

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cb_app/parts/utils.dart';
 import 'dart:math';
-import 'dart:ui' as ui;
-// import 'dart:math' as math;
 
 class _SpiralCircle {
   double x, y, radius, angle, speed, angularSpeed;

@@ -1,30 +1,18 @@
-// import 'package:cb_app/wp/cb_item_list.dart';
-// import 'dart:js_interop';
-
-// import 'package:cb_app/wp/cb_location_list.dart';
-// import 'package:flutter_localizations/flutter_localizations.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:cb_app/l10n/app_localizations.dart';
-import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
 import 'package:cb_app/forms/marker_popup.dart';
 import 'package:cb_app/forms/background_animation.dart';
 import 'package:cb_app/forms/register_host.dart';
 import 'package:cb_app/forms/location_items_list.dart';
-import 'package:cb_app/wp/site_info.dart' as wpsite;
 import 'package:cb_app/wp/wp_api.dart';
 import 'package:cb_app/pages/bookings_page.dart';
 import 'package:cb_app/pages/settings_page.dart';
-// import 'package:cb_app/forms/lr_marker.dart' as globals;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map/plugin_api.dart';
-// import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
-// import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:flutter_map/plugin_api.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:osm_nominatim/osm_nominatim.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -32,7 +20,6 @@ import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/forms/lr_marker.dart';
 import 'package:cb_app/forms/availabilities_calendar.dart';
 import 'package:provider/provider.dart';
-// import 'wp/wp_api.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:io';
@@ -40,8 +27,6 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
-import 'dart:developer';
-// import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -229,14 +214,15 @@ class _CBAppMainState extends State<CBAppMain> {
       List<LRMarker> markers = _getMapMarkers(value);
 
       _initialMapBounds(value.mapList); //show all map items
-
       return SuperclusterLayer.immutable(
           initialMarkers: markers, // Provide your own
           indexBuilder: IndexBuilders.computeWithOriginalMarkers,
+          maxClusterRadius: value.markerIconSize.round() * 4, // 100,
           //controller: SuperclusterImmutableController(),
           controller: _immutableController,
           calculateAggregatedClusterData: true,
-          clusterWidgetSize: const Size(20, 20),
+          clusterWidgetSize:
+              Size(value.markerIconSize, value.markerIconSize), // const Size(50, 50), //const Size(20, 20),
           anchor: AnchorPos.align(AnchorAlign.center),
           popupOptions: PopupOptions(
             // popupController: _popupController,
@@ -249,17 +235,16 @@ class _CBAppMainState extends State<CBAppMain> {
             popupDisplayOptions: PopupDisplayOptions(
               builder: (BuildContext context, Marker marker) => MarkerPopup(marker as LRMarker, _popupController),
               snap: PopupSnap.markerTop,
-              // animation: const PopupAnimation.fade(
-              //     duration: Duration(seconds: 1), curve: Curves.fastLinearToSlowEaseIn),
             ),
           ),
           builder: (context, position, markerCount, extraClusterData) {
             return Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.blue),
+              decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
               child: Center(
                 child: Text(
                   markerCount.toString(),
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white, fontSize: value.markerIconSize * (8 / 14)), // value.mapRadiusMarker * 0.5),
                 ),
               ),
             );
@@ -600,24 +585,10 @@ class _CBAppMainState extends State<CBAppMain> {
                 options: MapOptions(
                   center: lastMapCenter,
                   zoom: ((lastCenter['zoom'] ?? 9.2) as double),
-                  // onPositionChanged: (position, hasGesture) {
-                  //   print(position.bounds);
-                  //   print(position.center);
-                  //   print(position.zoom);
-                  // },
-                  // center: const LatLng(48.1363743, 11.5222377),
-                  // zoom: 11,
-                  // interactiveFlags: ~InteractiveFlag.doubleTapZoom,
                   onTap: (_, __) {
                     _popupController.hideAllPopups();
                   }, // Hide popup when the map is tapped.
-                  // onMapEvent: (p0) => print(p0),
-                  // onMapReady: () {
-                  //   mapController.mapEventStream.listen((evt) {
-                  //     print(evt);
-                  //   });
-                  //   // And any other `MapController` dependent non-movement methods
-                  // },
+                  maxZoom: 22,
                 ),
                 nonRotatedChildren: [
                   SimpleAttributionWidget(
@@ -631,6 +602,8 @@ class _CBAppMainState extends State<CBAppMain> {
                     urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     subdomains: const ['a', 'b', 'c'],
                     userAgentPackageName: 'org.cbappapi.app',
+                    maxNativeZoom: 19,
+                    maxZoom: 22,
 
                     errorTileCallback: (tile, error, stackTrace) {
                       if (value.mapTilesAvailable != LoadingState.failed) {
@@ -657,8 +630,8 @@ class _CBAppMainState extends State<CBAppMain> {
                       markers: [
                         Marker(
                           point: value.currentMapLocation!,
-                          width: 35,
-                          height: 35,
+                          width: value.markerIconSize, // 35,
+                          height: value.markerIconSize, // 35,
                           builder: (context) => Icon(
                             // Icons.navigation,
                             switch (value.currentMapLocationType) {
@@ -666,7 +639,7 @@ class _CBAppMainState extends State<CBAppMain> {
                               2 => Icons.location_on,
                               _ => null
                             },
-                            size: 35,
+                            size: value.markerIconSize, // 35,
                             color: Theme.of(context).primaryColor, //   .primaryColorDark, //Colors.green,
                           ),
                         ),
@@ -722,8 +695,9 @@ class _CBAppMainState extends State<CBAppMain> {
                 ),
               if (value.currentMapLocation != null && value.showLocationRadius)
                 Positioned(
-                  bottom: 10,
+                  bottom: 15,
                   left: 10,
+                  width: min(350, MediaQuery.of(context).size.width * 0.7),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor.withOpacity(0.7),
@@ -1869,10 +1843,16 @@ class _CBAppMainState extends State<CBAppMain> {
 
       case "reloadMap":
         Provider.of<ModelMapData>(context, listen: false).currentMapLocation = null;
-        Provider.of<ModelMapData>(context, listen: false)
-            .loadLocations(fromCache: Provider.of<ModelMapData>(context, listen: false).isCache)
-            .onError((error, stackTrace) => _scaffoldError(
-                "Error reloading Map $error")); // showModalBottomMsg(context, "Error reloading Map $error", true));
+        if (Provider.of<ModelMapData>(context, listen: false).currentUser.isEmpty &&
+            !Provider.of<ModelMapData>(context, listen: false).isCache) {
+          Provider.of<ModelMapData>(context, listen: false)
+              .loadLocationsCBAPI()
+              .onError((error, stackTrace) => _scaffoldError("Error reloading Map $error"));
+        } else {
+          Provider.of<ModelMapData>(context, listen: false)
+              .loadLocations(fromCache: Provider.of<ModelMapData>(context, listen: false).isCache)
+              .onError((error, stackTrace) => _scaffoldError("Error reloading Map $error"));
+        }
         break;
 
       case "gotoLocation":
