@@ -18,7 +18,7 @@ import 'package:scrollable_clean_calendar/models/day_values_model.dart';
 import 'dart:ui';
 
 class _BookingDates extends ValueNotifier<Map<String, dynamic>> {
-  _BookingDates(Map<String, dynamic> value) : super(value);
+  _BookingDates(super.value);
 
   void reset() {
     value.updateAll((key, value) => value = null);

@@ -13,7 +13,7 @@ class MarkerPopupItem extends StatelessWidget {
   final LocationItem item;
   final String locationId;
 
-  const MarkerPopupItem(this.item, this.locationId, {Key? key}) : super(key: key);
+  const MarkerPopupItem(this.item, this.locationId, {super.key});
 
   @override
   Widget build(BuildContext context) {

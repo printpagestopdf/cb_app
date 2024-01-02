@@ -176,26 +176,33 @@ class _BookingsPage extends State<BookingsPage> {
     late final bool btnVisibility;
     late final String newStatus;
 
-    switch (booking.content?.status?.value) {
-      case "confirmed":
-        newStatus = "canceled";
-        btnText = context.l10n.bookingCancelButton((isHorizontal).toString());
-        btnColor = CustomMaterialColor(202, 66, 211).mdColor;
-        btnVisibility = true;
-        break;
-      case "unconfirmed":
-        newStatus = "confirmed";
-        btnText = context.l10n.bookingConfirmButton((isHorizontal).toString());
-        btnColor = CustomMaterialColor(11, 83, 143).mdColor;
-        btnVisibility = true;
-        break;
+    if (modelMap.isLoggedIn) {
+      switch (booking.content?.status?.value) {
+        case "confirmed":
+          newStatus = "canceled";
+          btnText = context.l10n.bookingCancelButton((isHorizontal).toString());
+          btnColor = CustomMaterialColor(202, 66, 211).mdColor;
+          btnVisibility = true;
+          break;
+        case "unconfirmed":
+          newStatus = "confirmed";
+          btnText = context.l10n.bookingConfirmButton((isHorizontal).toString());
+          btnColor = CustomMaterialColor(11, 83, 143).mdColor;
+          btnVisibility = true;
+          break;
 
-      default:
-        newStatus = "canceled";
-        btnText = "Buchung\nuncancelled";
-        btnColor = CustomMaterialColor(11, 83, 143).mdColor;
-        btnVisibility = false;
-        break;
+        default:
+          newStatus = "canceled";
+          btnText = "Buchung\nuncancelled";
+          btnColor = CustomMaterialColor(11, 83, 143).mdColor;
+          btnVisibility = false;
+          break;
+      }
+    } else {
+      newStatus = "canceled";
+      btnText = "Not\nloggedin";
+      btnColor = CustomMaterialColor(11, 83, 143).mdColor;
+      btnVisibility = false;
     }
 
     LocationItem? locationItem;

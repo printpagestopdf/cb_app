@@ -92,7 +92,7 @@ class OverviewCalendar extends StatelessWidget {
     fontSize: 11.0,
   );
 
-  const OverviewCalendar(this.locationId, this.itemId, {Key? key}) : super(key: key);
+  const OverviewCalendar(this.locationId, this.itemId, {super.key});
 
   @override
   Widget build(BuildContext context) {

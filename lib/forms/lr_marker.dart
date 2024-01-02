@@ -5,24 +5,15 @@ class LRMarker extends Marker {
 
   LRMarker({
     required this.locationId,
-    required point,
-    required builder,
-    key,
-    width = 30.0,
-    height = 30.0,
-    rotate,
-    rotateOrigin,
-    rotateAlignment,
-  }) : super(
-          point: point,
-          builder: builder,
-          key: key,
-          width: width,
-          height: height,
-          rotate: rotate,
-          rotateOrigin: rotateOrigin,
-          rotateAlignment: rotateAlignment,
-        );
+    required super.point,
+    required super.builder,
+    super.key,
+    super.width = 30.0,
+    super.height = 30.0,
+    super.rotate,
+    super.rotateOrigin,
+    super.rotateAlignment,
+  });
 }
 
 // extension ExtMarker on Marker {

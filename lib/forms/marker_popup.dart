@@ -17,7 +17,7 @@ class MarkerPopup extends StatefulWidget {
   final LRMarker marker;
   final PopupController _popupController;
 
-  const MarkerPopup(this.marker, this._popupController, {Key? key}) : super(key: key);
+  const MarkerPopup(this.marker, this._popupController, {super.key});
 
   @override
   State<StatefulWidget> createState() => _MarkerPopupState();
