@@ -31,7 +31,7 @@ jobs:
       - run: flutter pub get
       #- run: flutter format --set-exit-if-changed .
       - run: flutter analyze .
-      - run: flutter build apk --release --no-pub
+      - run: flutter build apk --release
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
