@@ -32,6 +32,11 @@ jobs:
       #- run: flutter format --set-exit-if-changed .
       - run: flutter analyze .
       - run: flutter build apk --release
+
+      - name: Start Border0 in case of failure.
+        if: failure()
+        uses: valeriangalliat/action-sshd-cloudflared@v1
+
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
