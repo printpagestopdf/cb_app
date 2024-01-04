@@ -33,11 +33,11 @@ jobs:
       - run: flutter analyze .
       - run: flutter build apk --release
 
-      - name: gradle direct
-        if: ${{ failure() }}
-        run: |
-          cd android
-          ./gradlew build --info
+      # - name: gradle direct
+      #   if: ${{ failure() }}
+      #   run: |
+      #     cd android
+      #     ./gradlew build --info
 
       - name: Setup upterm session
         uses: lhotari/action-upterm@v1
