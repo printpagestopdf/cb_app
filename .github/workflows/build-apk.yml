@@ -31,20 +31,21 @@ jobs:
           channel: 'stable'
       - run: flutter --version
       - run: flutter pub get
-      #- run: flutter format --set-exit-if-changed .
       - run: flutter analyze .
       - run: flutter build apk --release
 
-      # - name: Setup upterm session
-      #   uses: lhotari/action-upterm@v1
-      #   if: ${{ failure() }}
-      #   with:
-      #     ## If no one connects after 5 minutes, shut down server.
-      #     wait-timeout-minutes: 5
-
-
-      - uses: actions/upload-artifact@v1
+      - name: "Prerelease"
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          name: release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Preview Build"
+          files: |
+            build/app/outputs/flutter-apk/app-release.apk
+
+      # - uses: actions/upload-artifact@v1
+      #   with:
+      #     name: release-apk
+      #     path: build/app/outputs/flutter-apk/app-release.apk
           
