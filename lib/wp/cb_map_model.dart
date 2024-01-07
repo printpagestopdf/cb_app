@@ -7,6 +7,7 @@ import 'package:cb_app/wp/cb_bookings_data.dart';
 import 'package:dio/dio.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
 import 'package:cb_app/wp/wp_api.dart';
+import 'package:cb_app/main.dart';
 import 'package:cb_app/wp/site_info.dart' as wpsite;
 import 'package:cb_app/data/host_info_provider.dart';
 import 'package:cb_app/parts/utils.dart';
@@ -257,8 +258,11 @@ class ModelMapData extends ChangeNotifier {
     isMainViewMap = settings.getSetting("lastIsMainViewMap", true);
     _markerIconSize = settings.getSetting("markerIconSize", 24.0);
     updateNetworkTimeout();
-
-    checkLocationService();
+    if (CBApp.currentPlattform != "TargetPlatform.linux") {
+      checkLocationService();
+    } else {
+      _locationServiceEnabled = false;
+    }
 
     if (await onHostlistEmpty()) return;
     // if (settings.hostList.isEmpty) {

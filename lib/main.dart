@@ -1856,9 +1856,11 @@ class _CBAppMainState extends State<CBAppMain> {
         break;
 
       case "gotoLocation":
-        _determinePosition().then((position) {
-          _centerLocation(position.latitude, position.longitude, 1);
-        }).onError((error, stackTrace) => _scaffoldError(error.toString()));
+        if (CBApp.currentPlattform != "TargetPlatform.linux") {
+          _determinePosition().then((position) {
+            _centerLocation(position.latitude, position.longitude, 1);
+          }).onError((error, stackTrace) => _scaffoldError(error.toString()));
+        }
         break;
 
       case "bookingsList":
