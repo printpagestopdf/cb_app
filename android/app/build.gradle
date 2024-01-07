@@ -81,6 +81,17 @@ android {
            signingConfig signingConfigs.release
        }
    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            universalApk true  // If true, It will also generate a universal APK
+            //include "armeabi-v7a", "arm64-v8a", "x86"
+            include "armeabi-v7a", "arm64-v8a", "x86_64"
+        }
+    }
+
 }
 
 flutter {

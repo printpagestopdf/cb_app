@@ -21,7 +21,6 @@ jobs:
           echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-          cat android/key.properties
   
       - uses: actions/setup-java@v1
         with:
@@ -34,15 +33,23 @@ jobs:
       - run: flutter analyze .
       - run: flutter build apk --release
 
+      - name: Rename results
+        run: |
+          [ -f build/app/outputs/flutter-apk/app-arm64-v8a-release.apk ] && mv build/app/outputs/flutter-apk/app-arm64-v8a-release.apk build/app/outputs/flutter-apk/cb_app-arm64-v8a.apk
+          [ -f build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk ] && mv build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk build/app/outputs/flutter-apk/cb_app-armeabi-v7a.apk
+          [ -f build/app/outputs/flutter-apk/app-x86_64-release.apk ] && mv build/app/outputs/flutter-apk/app-x86_64-release.apk build/app/outputs/flutter-apk/cb_app-x86_64.apk
+          [ -f build/app/outputs/flutter-apk/app-release.apk ] && mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/cb_app.apk
+
       - name: "Prerelease"
         uses: "marvinpinto/action-automatic-releases@v1.2.1"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
-          prerelease: true
+          # prerelease: true
+          draft: true
           title: "Preview Build"
           files: |
-            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/flutter-apk/*.apk
 
       # - uses: actions/upload-artifact@v1
       #   with:
