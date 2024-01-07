@@ -29,10 +29,15 @@ jobs:
           type: 'zip'
           filename: CbApp-${{github.ref_name}}-linux.zip
           directory: build/linux/x64/release/bundle
-      - name: Linux Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Linux Release
+      #   uses: softprops/action-gh-release@v1
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     files: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
+
+      - uses: actions/upload-artifact@v1
         with:
-          files: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
+          name: release-linux
+          path: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
