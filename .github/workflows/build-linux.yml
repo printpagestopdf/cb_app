@@ -26,8 +26,8 @@ jobs:
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
-          type: 'tar'
-          filename: cb_app-linux.tar.gz
+          type: 'zip'
+          filename: cb_app-linux.zip
           directory: build/linux/x64/release/bundle
 
       - name: Upload binaries to release
@@ -36,7 +36,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: "latest"
           prerelease: true
-          file: build/linux/x64/release/bundle/cb_app-linux.tar.gz
+          file: build/linux/x64/release/bundle/cb_app-linux.zip
           overwrite: true
           body: "Preview binaries for testinstall"
 
