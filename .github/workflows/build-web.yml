@@ -1,0 +1,22 @@
+name: Build APK
+
+on:
+    workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter analyze .
+      - run: flutter build web --release
+  
+      - name: deploy to gh pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
