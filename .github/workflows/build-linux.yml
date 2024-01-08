@@ -24,12 +24,22 @@ jobs:
         run: flutter config --enable-linux-desktop
       - name: Build artifacts
         run: flutter build linux --release
-      # - name: Archive Release
-      #   uses: thedoctor0/zip-release@master
-      #   with:
-      #     type: 'zip'
-      #     filename: CbApp-${{github.ref_name}}-linux.zip
-      #     directory: build/linux/x64/release/bundle
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: CbApp-${{github.ref_name}}-linux.zip
+          directory: build/linux/x64/release/bundle
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "latest"
+          prerelease: true
+          file: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
+          overwrite: true
 
       # - name: Linux Release
       #   uses: softprops/action-gh-release@v1
@@ -39,8 +49,8 @@ jobs:
       #   with:
       #     files: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: cb_app-linux
-          path: build/linux/x64/release/bundle/
-          # path: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: cb_app-linux
+      #     path: build/linux/x64/release/bundle/
+      #     # path: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
