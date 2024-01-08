@@ -31,7 +31,7 @@ jobs:
       - run: flutter --version
       - run: flutter pub get
       - run: flutter analyze .
-      - run: flutter build apk --release
+      - run: flutter build apk --obfuscate --split-debug-info=$RUNNER_TEMP --release
 
       - name: Rename results
         run: |
@@ -40,15 +40,27 @@ jobs:
           [ -f build/app/outputs/flutter-apk/app-x86_64-release.apk ] && mv build/app/outputs/flutter-apk/app-x86_64-release.apk build/app/outputs/flutter-apk/cb_app-x86_64.apk
           [ -f build/app/outputs/flutter-apk/app-release.apk ] && mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/cb_app.apk
 
-      - name: "Prerelease"
-        uses: "marvinpinto/action-automatic-releases@v1.2.1"
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "latest"
           prerelease: true
-          title: "Preview Build"
-          files: |
-            build/app/outputs/flutter-apk/*.apk
+          file_glob: true
+          file: build/app/outputs/flutter-apk/*.apk
+          overwrite: true
+          body: "Preview binaries for testinstall"
+
+
+      # - name: "Prerelease"
+      #   uses: "marvinpinto/action-automatic-releases@v1.2.1"
+      #   with:
+      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #     automatic_release_tag: "latest"
+      #     prerelease: true
+      #     title: "Preview Build"
+      #     files: |
+      #       build/app/outputs/flutter-apk/*.apk
 
       # - uses: actions/upload-artifact@v1
       #   with:

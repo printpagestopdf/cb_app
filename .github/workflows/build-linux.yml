@@ -18,18 +18,16 @@ jobs:
         run: sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
       - name: Install project dependencies
         run: flutter pub get
-      # - name: Generate intermediates
-      #   run: flutter pub run build_runner build --delete-conflicting-outputs
       - name: Enable linux build
         run: flutter config --enable-linux-desktop
       - name: Build artifacts
-        run: flutter build linux --release
+        run: flutter build linux --obfuscate --split-debug-info=$RUNNER_TEMP --release
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
-          type: 'zip'
-          filename: CbApp-${{github.ref_name}}-linux.zip
+          type: 'tar'
+          filename: cb_app-linux.tar.gz
           directory: build/linux/x64/release/bundle
 
       - name: Upload binaries to release
@@ -38,19 +36,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: "latest"
           prerelease: true
-          file: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
+          file: build/linux/x64/release/bundle/cb_app-linux.tar.gz
           overwrite: true
+          body: "Preview binaries for testinstall"
 
-      # - name: Linux Release
-      #   uses: softprops/action-gh-release@v1
-      #   if: startsWith(github.ref, 'refs/tags/')
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     files: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
-
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: cb_app-linux
-      #     path: build/linux/x64/release/bundle/
-      #     # path: build/linux/x64/release/bundle/CbApp-${{github.ref_name}}-linux.zip
