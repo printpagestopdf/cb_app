@@ -37,6 +37,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addValidLink => 'Please use valid Url';
 
   @override
+  String get adrChoice => 'Select address';
+
+  @override
   String get anErrorOccured => 'An error has occurred';
 
   @override

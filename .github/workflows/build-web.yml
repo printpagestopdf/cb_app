@@ -15,9 +15,12 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze .
       - run: flutter build web --release
-  
+
+      - name: move app to tools
+        run: mv ./build/web ./tools/gh-pages/app
+
       - name: deploy to gh pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+          publish_dir: ./tools/gh-pages

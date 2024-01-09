@@ -1183,7 +1183,7 @@ class _CBAppMainState extends State<CBAppMain> {
                               context: context,
                               builder: (_) {
                                 return AlertDialog(
-                                  title: const Text("adrChoice"),
+                                  title: Text(context.l10n.adrChoice),
                                   content: SingleChildScrollView(
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,

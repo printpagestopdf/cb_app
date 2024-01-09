@@ -153,6 +153,12 @@ abstract class AppLocalizations {
   /// **'Please use valid Url'**
   String get addValidLink;
 
+  /// No description provided for @adrChoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Select address'**
+  String get adrChoice;
+
   /// No description provided for @anErrorOccured.
   ///
   /// In en, this message translates to:
