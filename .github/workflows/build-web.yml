@@ -19,7 +19,7 @@ jobs:
       - name: move app to tools
         run: |
           mv ./build/web ./tools/gh-pages/app
-          sed -i '/^\s*<base\s*href=/c\<base href="cb_app/app/">' ./tools/gh-pages/app/index.html
+          sed -i '/^\s*<base\s*href=/c\<base href=".">' ./tools/gh-pages/app/index.html
 
       - name: deploy to gh pages
         uses: peaceiris/actions-gh-pages@v3
