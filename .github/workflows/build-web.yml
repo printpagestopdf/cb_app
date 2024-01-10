@@ -16,8 +16,27 @@ jobs:
       - run: flutter analyze .
       - run: flutter build web --release
 
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: cb_app-web.zip
+          directory: build/web
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "latest"
+          prerelease: true
+          file: build/web/cb_app-web.zip
+          overwrite: true
+          body: "Preview binaries for testinstall"
+
+
       - name: move app to tools
         run: |
+          [ -f build/web/cb_app-web.zip ] && rm build/web/cb_app-web.zip
           mv ./build/web ./tools/gh-pages/app
           sed -i '/^\s*<base\s*href=/c\<base href=".">' ./tools/gh-pages/app/index.html
 
