@@ -288,9 +288,9 @@ class ModelMapData extends ChangeNotifier {
 
     Map<dynamic, dynamic> demo;
     try {
-      String demositeJsonStr =
-          (await WpApi.dio.get("https://raw.githubusercontent.com/printpagestopdf/cb_app/main/samples/demosite.json"))
-              .data;
+      String demositeJsonStr = (await WpApi.dio
+              .get("https://raw.githubusercontent.com/printpagestopdf/cb_app/main/tools/samples/demosite.json"))
+          .data;
       demo = jsonDecode(demositeJsonStr);
     } catch (_) {
       demo = {
