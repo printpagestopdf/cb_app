@@ -9,16 +9,11 @@ jobs:
     # runs-on: ubuntu-latest
 
     steps:
-      - name: download redist
-        uses: engineerd/configurator@v0.0.9
-        with:
-          name: "VC_redist.x64.exe"
-          url: "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
-      - name: move redist
+      - name: download and move redist
         run: |
-            dir
-            move VC_redist.x64.exe build\windows\x64\runner\Release\VC_redist.x64.exe
+          Invoke-WebRequest -URI  https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile VC_redist.x64.exe
+          move VC_redist.x64.exe build\windows\x64\runner\Release\VC_redist.x64.exe
 
 
       - uses: actions/checkout@v2
