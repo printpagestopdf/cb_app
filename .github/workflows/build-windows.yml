@@ -1,0 +1,50 @@
+name: Build Windows
+
+on:
+    workflow_dispatch
+
+jobs:
+  build-and-release-linux:
+    runs-on: windows-latest
+    # runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter --version
+
+      - name: Install project dependencies
+        run: flutter pub get --suppress-analytics
+      - name: Enable linux build
+        run: flutter config --enable-linux-desktop
+      - name: Build artifacts
+        run: flutter build windows --obfuscate --split-debug-info=$RUNNER_TEMP --release --suppress-analytics
+
+      - name: download redist
+        uses: engineerd/configurator@v0.0.9
+        with:
+          name: "vc_redist.x64.exe"
+          url: "https://aka.ms/vs/17/release/vc_redist.x64.exe"
+
+      - name: move redist
+        run: move vc_redist.x64.exe build\windows\x64\runner\Release\vc_redist.x64.exe
+
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: cb_app-windows.zip
+          directory: build\windows\x64\runner\Release
+
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: "latest"
+          prerelease: true
+          file: build\windows\x64\runner\Release\cb_app-windows.zip
+          overwrite: true
+          body: "Preview binaries for testinstall"
+
