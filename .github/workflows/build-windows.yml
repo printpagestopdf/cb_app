@@ -17,10 +17,9 @@ jobs:
 
       - name: Install project dependencies
         run: flutter pub get --suppress-analytics
-      - name: Enable linux build
-        run: flutter config --enable-linux-desktop
+
       - name: Build artifacts
-        run: flutter build windows --obfuscate --split-debug-info=$RUNNER_TEMP --release --suppress-analytics
+        run: flutter build windows --release --suppress-analytics
 
       - name: download redist
         uses: engineerd/configurator@v0.0.9
