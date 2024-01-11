@@ -9,13 +9,6 @@ jobs:
     # runs-on: ubuntu-latest
 
     steps:
-
-      - name: download and move redist
-        run: |
-          Invoke-WebRequest -URI  https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile VC_redist.x64.exe
-          move VC_redist.x64.exe build\windows\x64\runner\Release\VC_redist.x64.exe
-
-
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
@@ -28,16 +21,10 @@ jobs:
       - name: Build artifacts
         run: flutter build windows --release --suppress-analytics
 
-    #   - name: download redist
-    #     uses: engineerd/configurator@v0.0.9
-    #     with:
-    #       name: "VC_redist.x64.exe"
-    #       url: "https://aka.ms/vs/17/release/vc_redist.x64.exe"
-
-    #   - name: move redist
-    #     run: |
-    #         dir
-    #         move VC_redist.x64.exe build\windows\x64\runner\Release\VC_redist.x64.exe
+      - name: download and move redist
+        run: |
+          Invoke-WebRequest -URI  https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile VC_redist.x64.exe
+          move VC_redist.x64.exe build\windows\x64\runner\Release\VC_redist.x64.exe
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master
