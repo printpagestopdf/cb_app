@@ -19,7 +19,7 @@ jobs:
         run: flutter pub get --suppress-analytics
 
       - name: Build artifacts
-        run: flutter build windows --release --suppress-analytics
+        run: flutter build windows --obfuscate --split-debug-info=$env:RUNNER_TEMP --release --suppress-analytics
 
       - name: download and move redist
         run: |
