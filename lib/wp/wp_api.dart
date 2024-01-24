@@ -513,17 +513,19 @@ class WpApi {
       {required String bookingID,
       required String itemId,
       required String locationId,
-      required DateTime repetitionStart,
-      required DateTime repetitionEnd,
+      // required DateTime repetitionStart,
+      // required DateTime repetitionEnd,
+      required String repetitionStart,
+      required String repetitionEnd,
       String postStatus = "confirmed"}) async {
-    DateTime repititionStartUtc = DateTime.utc(repetitionStart.year, repetitionStart.month, repetitionStart.day);
-    DateTime repetitionEndUtc = DateTime.utc(repetitionEnd.year, repetitionEnd.month, repetitionEnd.day, 23, 59, 59);
+    // DateTime repititionStartUtc = DateTime.utc(repetitionStart.year, repetitionStart.month, repetitionStart.day);
+    // DateTime repetitionEndUtc = DateTime.utc(repetitionEnd.year, repetitionEnd.month, repetitionEnd.day, 23, 59, 59);
 
     return _bookingPATCH(bookingID, {
       'item-id': itemId,
       'location-id': locationId,
-      'repetition-start': (repititionStartUtc.millisecondsSinceEpoch ~/ 1000).toString(),
-      'repetition-end': (repetitionEndUtc.millisecondsSinceEpoch ~/ 1000).toString(),
+      'repetition-start': repetitionStart, // (repititionStartUtc.millisecondsSinceEpoch ~/ 1000).toString(),
+      'repetition-end': repetitionEnd, //(repetitionEndUtc.millisecondsSinceEpoch ~/ 1000).toString(),
       'post_status': postStatus,
     });
   }

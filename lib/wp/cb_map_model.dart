@@ -570,6 +570,10 @@ class ModelMapData extends ChangeNotifier {
       WpApi.auth = (user: strUser, secret: secret);
 
       isLoggedIn = await WpApi.checkAuth();
+      if (!isLoggedIn) {
+        fireLogin();
+        return;
+      }
 
       await loadLocations();
       if (WpApi.useCache) {
@@ -723,6 +727,13 @@ class ModelMapData extends ChangeNotifier {
     onChange();
 
     await Future.wait([
+      WpApi.fetchCbMapCBAPI().then((values) {
+        _mapList = values;
+        // print("Locations+availabilities loaded");
+        mapDataLoadingState = LoadingState.loaded;
+        loadingPhasesFinished = true;
+        onChange();
+      }),
       WpApi.fetchCbMapCBAPI(true).then((values) {
         if (_mapList.mapLocations.isEmpty) {
           _mapList = values;
@@ -730,13 +741,6 @@ class ModelMapData extends ChangeNotifier {
           mapDataLoadingState = LoadingState.loaded;
           onChange();
         }
-      }),
-      WpApi.fetchCbMapCBAPI().then((values) {
-        _mapList = values;
-        // print("Locations+availabilities loaded");
-        mapDataLoadingState = LoadingState.loaded;
-        loadingPhasesFinished = true;
-        onChange();
       }),
     ]);
   }

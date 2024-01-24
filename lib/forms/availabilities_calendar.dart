@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:non_uniform_border/non_uniform_border.dart';
 import 'package:expandable/expandable.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
@@ -16,6 +17,7 @@ import 'package:scrollable_clean_calendar/utils/enums.dart';
 import 'package:scrollable_clean_calendar/utils/extensions.dart';
 import 'package:scrollable_clean_calendar/models/day_values_model.dart';
 import 'dart:ui';
+import 'dart:async';
 
 class _BookingDates extends ValueNotifier<Map<String, dynamic>> {
   _BookingDates(super.value);
@@ -69,6 +71,10 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
   };
   // int _maxBookingdays = 3;
   late int _maxBookingdays;
+  double _bottomMsgHeight = 0;
+  String _bottomMsgTxt = "";
+  Color _bottomMsgColor = Colors.white;
+  Timer? _bottomMsgTimer;
 
   static Border dayBorder = Border.all(width: 0.5, color: const Color.fromARGB(255, 0, 0, 0));
   static const Color redColor = Color.fromRGBO(213, 66, 92, 1.0);
@@ -150,8 +156,33 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
 
   _AvailabilitiesCalendar();
 
+  void _showBottomMsg(String msg, [bool isError = false]) {
+    if (_bottomMsgTimer != null && _bottomMsgTimer!.isActive) {
+      _bottomMsgTimer!.cancel();
+    }
+
+    _bottomMsgTxt = msg;
+    _bottomMsgColor = (isError) ? Colors.red : Colors.white;
+
+    setState(() {
+      _bottomMsgHeight = 80;
+    });
+  }
+
+  void _hideBottomMsg() {
+    if (context.mounted && _bottomMsgHeight > 0) {
+      setState(() {
+        _bottomMsgHeight = 0;
+      });
+    }
+  }
+
   @override
   void dispose() {
+    if (_bottomMsgTimer != null && _bottomMsgTimer!.isActive) {
+      _bottomMsgTimer!.cancel();
+    }
+
     // Clean up the controller when the widget is disposed.
     _commentTextController.dispose();
     super.dispose();
@@ -170,99 +201,156 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
   Widget build(BuildContext context) {
     return Consumer<ModelMapData>(builder: (context, map, child) {
       return Expanded(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Column(key: _textInfoKey, children: [
-              _locationDescription(context, map.currentLocation!),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 8,
-                      right: 10,
-                      top: 5,
-                      bottom: 0,
-                    ),
-                    child: SizedBox(
-                      width: 75,
-                      height: 75,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
-                        child: FastCachedImage(
-                          height: 75.0,
-                          width: 75.0,
-                          filterQuality: FilterQuality.medium,
-                          url: WpApi.getItemThumbnailUrl(map.currentItem!),
-                          fit: BoxFit.cover,
-                          fadeInDuration: const Duration(milliseconds: 200),
-                          errorBuilder: (context, exception, stacktrace) {
-                            return Tooltip(
-                              message: context.l10n.imageDisplayNotPossible,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(color: Colors.grey.withOpacity(0.1)),
-                                child: const Icon(Icons.image_not_supported_outlined),
+        child: LoaderOverlay(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Column(key: _textInfoKey, children: [
+                    _locationDescription(context, map.currentLocation!),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 8,
+                            right: 10,
+                            top: 5,
+                            bottom: 0,
+                          ),
+                          child: SizedBox(
+                            width: 75,
+                            height: 75,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4.0),
+                              child: FastCachedImage(
+                                height: 75.0,
+                                width: 75.0,
+                                filterQuality: FilterQuality.medium,
+                                url: WpApi.getItemThumbnailUrl(map.currentItem!),
+                                fit: BoxFit.cover,
+                                fadeInDuration: const Duration(milliseconds: 200),
+                                errorBuilder: (context, exception, stacktrace) {
+                                  return Tooltip(
+                                    message: context.l10n.imageDisplayNotPossible,
+                                    child: DecoratedBox(
+                                      decoration: BoxDecoration(color: Colors.grey.withOpacity(0.1)),
+                                      child: const Icon(Icons.image_not_supported_outlined),
+                                    ),
+                                  );
+                                },
+                                loadingBuilder: (context, progress) {
+                                  return const Center(
+                                    child: CircularProgressIndicator(
+                                      color: Colors.indigoAccent,
+                                    ),
+                                  );
+                                },
                               ),
-                            );
-                          },
-                          loadingBuilder: (context, progress) {
-                            return const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.indigoAccent,
-                              ),
-                            );
-                          },
+                            ),
+                          ),
                         ),
-                      ),
+                        _cardDescription(context, map),
+                      ],
                     ),
-                  ),
-                  _cardDescription(context, map),
+                    const Divider(
+                      height: 0,
+                    ),
+                  ]),
+                  (map.currentItem!.availability != null &&
+                          map.currentItem!.availability!.isNotEmpty &&
+                          map.bookingStats != null)
+                      ? Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 10,
+                            ),
+                            child: Container(
+                              // color: Colors.white,
+                              child: _bookingCalendar(map),
+                            ),
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 40),
+                          child: Wrap(children: [
+                            Text(
+                              "${context.l10n.availabilities} ...",
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(),
+                            ),
+                            if (map.bookingStats == null)
+                              Text(
+                                "${context.l10n.bookinglimits} ...",
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(),
+                              ),
+                            const SizedBox.square(
+                              dimension: 20,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.0,
+                              ),
+                            ),
+                          ]),
+                        ),
                 ],
               ),
-              const Divider(
-                height: 0,
-              ),
-            ]),
-            (map.currentItem!.availability != null &&
-                    map.currentItem!.availability!.isNotEmpty &&
-                    map.bookingStats != null)
-                ? Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 10,
-                      ),
-                      child: Container(
-                        // color: Colors.white,
-                        child: _bookingCalendar(map),
+              AnimatedContainer(
+                decoration: BoxDecoration(
+                  borderRadius:
+                      const BorderRadiusDirectional.only(topStart: Radius.circular(5), topEnd: Radius.circular(5)),
+                  color: _bottomMsgColor,
+                ),
+                height: _bottomMsgHeight,
+                duration: Durations.medium4,
+                onEnd: () {
+                  if (_bottomMsgHeight > 0) {
+                    _bottomMsgTimer = Timer(const Duration(seconds: 5), () {
+                      _hideBottomMsg();
+                    });
+                  }
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            _bottomMsgTxt,
+                            softWrap: true,
+                          ),
+                        ),
                       ),
                     ),
-                  )
-                : Padding(
-                    padding: const EdgeInsets.only(top: 40),
-                    child: Wrap(children: [
-                      Text(
-                        "${context.l10n.availabilities} ...",
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(),
-                      ),
-                      if (map.bookingStats == null)
-                        Text(
-                          "${context.l10n.bookinglimits} ...",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(),
-                        ),
-                      const SizedBox.square(
-                        dimension: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2.0,
+                    GestureDetector(
+                      onTap: () {
+                        _hideBottomMsg();
+                      },
+                      child: const MouseRegion(
+                        cursor: MaterialStateMouseCursor.clickable,
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 5, right: 5),
+                          child: Icon(
+                            Icons.clear,
+                            size: 15,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
-                    ]),
-                  ),
-          ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       );
     });
@@ -386,6 +474,7 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
                             onPressed: (bookingDates["rangeMaxDate"] == null || bookingDates["rangeMinDate"] == null)
                                 ? null
                                 : () {
+                                    context.loaderOverlay.show();
                                     WpApi.bookingNew(
                                       itemId: map.currentItem!.id.toString(),
                                       locationId: map.currentLocation!.id,
@@ -394,10 +483,9 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
                                       comment: _commentTextController.text,
                                     ).then((value) {
                                       if (value.isError) {
-                                        showModalBottomMsg(
-                                            context, "${value.msg} (${value.statusCode.toString()})", true);
+                                        _showBottomMsg("${value.msg} (${value.statusCode.toString()})", true);
                                       } else {
-                                        showModalBottomMsg(context, value.msg, false);
+                                        _showBottomMsg(value.msg, false);
 
                                         DateTime current = bookingDates["rangeMinDate"];
                                         while (current.isSameDayOrBefore(bookingDates["rangeMaxDate"])) {
@@ -407,7 +495,7 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
                                         }
                                         map.onChange();
                                       }
-                                    });
+                                    }).whenComplete(() => context.loaderOverlay.hide());
                                   },
                             style: ElevatedButton.styleFrom(
                               shape: const RoundedRectangleBorder(

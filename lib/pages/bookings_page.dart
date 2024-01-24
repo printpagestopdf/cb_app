@@ -11,6 +11,7 @@ import 'package:cb_app/wp/cb_map_model.dart';
 import 'package:cb_app/wp/cb_map_list.dart';
 import 'package:provider/provider.dart';
 import 'package:cb_app/forms/background_animation.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'dart:async';
 import 'dart:ui';
 
@@ -73,59 +74,62 @@ class _BookingsPage extends State<BookingsPage> {
         future: futureBookings,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 1000,
-                  minWidth: 320,
-                ),
-                child: ((snapshot.data?.bookingsData?.data?.length ?? 0) > 0)
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (modelMap.isCache && modelMap.hasBookingCache) Text(titleCache),
-                          Expanded(
-                              child: ListView.builder(
-                            itemCount: snapshot.data?.bookingsData?.data?.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return _getListTile(context, snapshot.data?.bookingsData?.data?[index]);
-                            },
-                          ))
-                        ],
-                      )
-                    : Stack(
-                        children: [
-                          Center(
-                            child: AnimatedBackground(
-                              width: context.width,
-                              height: context.height,
+            return LoaderOverlay(
+              overlayWholeScreen: false,
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    maxWidth: 1000,
+                    minWidth: 320,
+                  ),
+                  child: ((snapshot.data?.bookingsData?.data?.length ?? 0) > 0)
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            if (modelMap.isCache && modelMap.hasBookingCache) Text(titleCache),
+                            Expanded(
+                                child: ListView.builder(
+                              itemCount: snapshot.data?.bookingsData?.data?.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return _getListTile(context, snapshot.data?.bookingsData?.data?[index]);
+                              },
+                            ))
+                          ],
+                        )
+                      : Stack(
+                          children: [
+                            Center(
+                              child: AnimatedBackground(
+                                width: context.width,
+                                height: context.height,
+                              ),
                             ),
-                          ),
-                          BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
-                            // filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                            child: Container(
-                              padding: const EdgeInsets.only(right: 20, top: 20),
-                              decoration: BoxDecoration(color: Colors.grey.shade200.withOpacity(0.2)),
+                            BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
+                              // filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                              child: Container(
+                                padding: const EdgeInsets.only(right: 20, top: 20),
+                                decoration: BoxDecoration(color: Colors.grey.shade200.withOpacity(0.2)),
+                              ),
                             ),
-                          ),
-                          Center(
-                            child: Container(
-                              // color: Color.fromARGB(214, 218, 63, 16),
-                              decoration: BoxDecoration(
-                                  color: const Color.fromARGB(214, 218, 63, 16),
-                                  border: Border.all(
+                            Center(
+                              child: Container(
+                                // color: Color.fromARGB(214, 218, 63, 16),
+                                decoration: BoxDecoration(
                                     color: const Color.fromARGB(214, 218, 63, 16),
-                                  ),
-                                  borderRadius: const BorderRadius.all(Radius.circular(30))),
-                              padding: const EdgeInsets.all(5.0),
-                              child: Text(context.l10n.emptyBookingList),
+                                    border: Border.all(
+                                      color: const Color.fromARGB(214, 218, 63, 16),
+                                    ),
+                                    borderRadius: const BorderRadius.all(Radius.circular(30))),
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(context.l10n.emptyBookingList),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                ),
               ),
             );
           } else if (snapshot.hasError) {
@@ -272,17 +276,21 @@ class _BookingsPage extends State<BookingsPage> {
               setState(() {
                 isBookUpdating = true;
               });
+              context.loaderOverlay.show();
               WpApi.bookingUpdate(
                 bookingID: booking.bookingId.toString(),
                 itemId: booking.itemId.toString(), // map.currentItem!.id.toString(),
                 locationId: booking.locationId.toString(), //  map.currentLocation!.id,
-                repetitionStart: DateTime.fromMillisecondsSinceEpoch(int.parse(booking.startDate!) * 1000,
-                    isUtc: true), // bookingDates["rangeMinDate"],
-                repetitionEnd: DateTime.fromMillisecondsSinceEpoch(int.parse(booking.endDate!) * 1000,
-                    isUtc: true), // bookingDates["rangeMaxDate"],
+                repetitionStart: booking.startDate!,
+                repetitionEnd: booking.endDate!,
+                // repetitionStart: DateTime.fromMillisecondsSinceEpoch(int.parse(booking.startDate!) * 1000,
+                //     isUtc: true),
+                // repetitionEnd: DateTime.fromMillisecondsSinceEpoch(int.parse(booking.endDate!) * 1000,
+                //     isUtc: true),
                 postStatus: newStatus,
               ).then((value) {
                 if (value.isError) {
+                  context.loaderOverlay.hide();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text("${value.msg} (${value.statusCode.toString()})"),
                     backgroundColor: Theme.of(context).colorScheme.error,
@@ -293,7 +301,7 @@ class _BookingsPage extends State<BookingsPage> {
                 } else {
                   setState(() {
                     isBookUpdating = false;
-                    futureBookings = WpApi.getBookings(args);
+                    futureBookings = WpApi.getBookings(args).whenComplete(() => context.loaderOverlay.hide());
                   });
                 }
               });

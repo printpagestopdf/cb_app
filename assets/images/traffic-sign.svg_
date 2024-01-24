@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    id="Layer_1"
+    version="1.1"
+    xml:space="preserve"
+    viewBox="0 0 508.204 277.561"
+    enable-background="new 0 0 508.204 277.561"
+    y="0px"
+    x="0px"
+  >
+<circle
+      stroke-width="14.173"
+      stroke="#000"
+      cy="200.55"
+      cx="76.181"
+      stroke-miterlimit="10"
+      r="69.094"
+      fill="none"
+  />
+<circle
+      cy="200.55"
+      cx="76.181"
+      r="7.81"
+  />
+<line
+      stroke-width="11.339"
+      y2="200.55"
+      y1="54.31"
+      stroke="#000"
+      stroke-miterlimit="10"
+      x2="190.99"
+      x1="117.99"
+      fill="none"
+  />
+<line
+      stroke-width="11.339"
+      y2="200.55"
+      y1="200.55"
+      stroke="#000"
+      stroke-linecap="round"
+      stroke-miterlimit="10"
+      x2="393.84"
+      x1="81.344"
+      fill="none"
+  />
+<line
+      stroke-width="11.339"
+      y2="200.55"
+      y1="131.46"
+      stroke="#000"
+      stroke-miterlimit="10"
+      x2="77.606"
+      x1="152.02"
+      fill="none"
+  />
+<path
+      stroke="#000"
+      stroke-width="11.339"
+      stroke-miterlimit="10"
+      d="m185.28 209.81"
+      fill="none"
+  />
+<path
+      stroke="#000"
+      stroke-width="11.339"
+      stroke-miterlimit="10"
+      d="m210.28 171.86"
+      fill="none"
+  />
+<g
+      stroke="#000"
+      stroke-width="11.339"
+      stroke-miterlimit="10"
+      fill="none"
+    >
+		<line
+        x2="215.88"
+        y1="238.2"
+        x1="166.27"
+        y2="162.9"
+    />
+		<line
+        x2="227.66"
+        y1="162.9"
+        x1="203.77"
+        y2="162.9"
+        stroke-linecap="round"
+    />
+		<line
+        x2="178.22"
+        y1="238.2"
+        x1="154.32"
+        y2="238.2"
+        stroke-linecap="round"
+    />
+</g
+  >
+<line
+      stroke-width="17.008"
+      y2="54.31"
+      y1="54.31"
+      stroke="#000"
+      stroke-linecap="round"
+      stroke-miterlimit="10"
+      x2="141.05"
+      x1="100.78"
+      fill="none"
+  />
+	<path
+      d="m502.54 195.81l-240-0.919c4.875 0 4.331-1.619 4.331-4.75v-140c0-1.565 0.647-3.062 1.788-4.133 1.142-1.071 2.665-1.625 4.237-1.525l230 14.5c2.987 0.188 5.313 2.666 5.313 5.658v125.5c-0.01 3.13-2.54 5.67-5.67 5.67z"
+  />
+<circle
+      stroke-width="14.173"
+      stroke="#000"
+      cy="207.97"
+      cx="394.62"
+      stroke-miterlimit="10"
+      r="62.505"
+      fill="#fff"
+  />
+<circle
+      cy="207.97"
+      cx="394.62"
+      r="11.31"
+  />
+<polyline
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke="#000"
+      points="271.28 50.31 260.42 27.81 228.28 6.31"
+      stroke-miterlimit="10"
+      stroke-width="8.5039"
+      fill="none"
+  />
+<circle
+      cy="6.31"
+      cx="228.28"
+      r="6.31"
+  />
+<metadata
+    ><rdf:RDF
+      ><cc:Work
+        ><dc:format
+          >image/svg+xml</dc:format
+        ><dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        /><cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        /><dc:publisher
+          ><cc:Agent
+              rdf:about="http://openclipart.org/"
+            ><dc:title
+              >Openclipart</dc:title
+            ></cc:Agent
+          ></dc:publisher
+        ><dc:title
+          >Cargo Bike (Tricycle)</dc:title
+        ><dc:date
+          >2013-06-20T10:33:47</dc:date
+        ><dc:description
+          >Cargo-Tricycle\nOwn work, released under public domain</dc:description
+        ><dc:source
+          >https://openclipart.org/detail/179432/cargo-bike-tricycle-by-joky-179432</dc:source
+        ><dc:creator
+          ><cc:Agent
+            ><dc:title
+              >joky</dc:title
+            ></cc:Agent
+          ></dc:creator
+        ><dc:subject
+          ><rdf:Bag
+            ><rdf:li
+              >bicycle</rdf:li
+            ><rdf:li
+              >cargo bicycle</rdf:li
+            ><rdf:li
+              >cargobike</rdf:li
+            ><rdf:li
+              >cycle logistic</rdf:li
+            ><rdf:li
+              >cyclelogistic</rdf:li
+            ><rdf:li
+              >lastenfahrrad</rdf:li
+            ><rdf:li
+              >lastenrad</rdf:li
+            ><rdf:li
+              >logistic</rdf:li
+            ></rdf:Bag
+          ></dc:subject
+        ></cc:Work
+      ><cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        ><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        /><cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        /></cc:License
+      ></rdf:RDF
+    ></metadata
+  ></svg
+>

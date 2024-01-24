@@ -65,6 +65,7 @@ dependencies:
     sdk: flutter
   recase: any #^4.1.0
   osm_nominatim: ^3.0.0
+  flutter_svg: ^2.0.9
 
   #flutter_map_marker_cluster: any # or the latest version on Pub
 
@@ -123,7 +124,5 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
   assets:
-  - assets/images/line.png
-  - assets/images/Fahrradweg22.png
-  - assets/test_data.json
-
+  - assets/images/traffic-sign.svg
+  

@@ -30,6 +30,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -279,25 +280,15 @@ class _CBAppMainState extends State<CBAppMain> {
           .map(
             (e) => LRMarker(
               locationId: e.key,
-              // anchorPos: AnchorPos.align(AnchorAlign.center),
               point: LatLng(e.value.lat, e.value.lon),
-              // width: 24.0,
-              // height: 24.0,
               width: markerIconSize,
               height: markerIconSize,
-              builder: (context) => Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color.fromRGBO(32, 70, 130, 1),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 1.5,
-                  ),
+              builder: (context) => SizedBox(
+                width: markerIconSize,
+                height: markerIconSize,
+                child: SvgPicture.asset(
+                  'assets/images/traffic-sign.svg',
                 ),
-                child:
-                    Icon(Icons.pedal_bike_outlined, size: markerIconSize - 8.0, color: Colors.white.withOpacity(0.75)),
               ),
 
               // builder: (context) => Container(
@@ -311,7 +302,8 @@ class _CBAppMainState extends State<CBAppMain> {
               //       width: 1.5,
               //     ),
               //   ),
-              //   child: Icon(Icons.pedal_bike_outlined, size: 16, color: Colors.white.withOpacity(0.75)),
+              //   child:
+              //       Icon(Icons.pedal_bike_outlined, size: markerIconSize - 8.0, color: Colors.white.withOpacity(0.75)),
               // ),
             ),
           )
@@ -363,7 +355,18 @@ class _CBAppMainState extends State<CBAppMain> {
     Provider.of<ModelMapData>(context, listen: false).addListener(() {
       if (Provider.of<ModelMapData>(context, listen: false).needsLogin) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          _showLoginPopup(context);
+          // _showLoginPopup(context);
+          String currentHost = Provider.of<ModelMapData>(context, listen: false).currentHost;
+          String currentUser = Provider.of<ModelMapData>(context, listen: false).currentUser;
+          _requestAuthData(currentHost, currentUser).then((value) {
+            if (value) {
+              Provider.of<ModelMapData>(context, listen: false)
+                  .openHost(currentHost, currentUser)
+                  .onError((error, stackTrace) => _scaffoldError(error.toString()));
+            } else {
+              _scaffoldError(context.l10n.errLoginFailed);
+            }
+          });
         });
       }
       if (Provider.of<ModelMapData>(context, listen: false).doCacheLoading &&
@@ -831,7 +834,10 @@ class _CBAppMainState extends State<CBAppMain> {
                                     alignment: Alignment.topLeft,
                                     child: (map.isLoggedIn)
                                         ? const Icon(Icons.person_outline_outlined)
-                                        : const Icon(Icons.person_off_outlined),
+                                        : const Icon(
+                                            Icons.person_off_outlined,
+                                            color: Colors.red,
+                                          ),
                                   ),
                                   Align(
                                     alignment: Alignment.bottomRight,
@@ -896,11 +902,17 @@ class _CBAppMainState extends State<CBAppMain> {
                               message: (map.siteInfoLoadingState == LoadingState.failed)
                                   ? map.siteInfoErrMsg
                                   : context.l10n.noService,
-                              child: const Icon(
-                                Icons.cloud_off_outlined,
-                                size: 28,
-                                color: Colors.red,
-                              ),
+                              child: map.mapDataLoadingState == LoadingState.failed
+                                  ? const Icon(
+                                      Icons.cloud_off_outlined,
+                                      size: 28,
+                                      color: Colors.red,
+                                    )
+                                  : const Icon(
+                                      Icons.cloud_outlined,
+                                      size: 28,
+                                      // color: map.loadings Colors.red,
+                                    ),
                             ),
                     ),
                   ],
@@ -928,7 +940,7 @@ class _CBAppMainState extends State<CBAppMain> {
                                     alignment: Alignment.topLeft,
                                     child: (map.isLoggedIn)
                                         ? const Icon(Icons.person_outline_outlined)
-                                        : const Icon(Icons.person_off_outlined),
+                                        : const Icon(Icons.person_off_outlined, color: Colors.red),
                                   ),
                                   Align(
                                     alignment: Alignment.bottomRight,
@@ -961,7 +973,7 @@ class _CBAppMainState extends State<CBAppMain> {
                         color: Theme.of(context).colorScheme.inversePrimary,
                       ),
                     ),
-                    if (map.isLoggedIn || map.hasBookingCache)
+                    if (map.isLoggedIn || (map.isCache && map.hasBookingCache))
                       IconButton(
                         icon: const Icon(Icons.calendar_month_outlined),
                         tooltip: context.l10n.showBookingsList,
@@ -1062,7 +1074,7 @@ class _CBAppMainState extends State<CBAppMain> {
               indent: 20,
               height: 5,
             ),
-            if (map.isLoggedIn || map.hasBookingCache)
+            if (map.isLoggedIn || (map.isCache && map.hasBookingCache))
               ListTile(
                 leading: const Icon(Icons.calendar_month_outlined),
                 title: Text(context.l10n.showBookingsList),
@@ -1298,7 +1310,7 @@ class _CBAppMainState extends State<CBAppMain> {
               // _popupController.hideAllPopups();
               // _closeMenuDrawer();
               // Provider.of<ModelMapData>(context, listen: false).openHost(result['newHostKey']!, "");
-              _openHost(result['newHostKey']!, "");
+              _openHost(result['newHostKey']!);
             } else {
               Provider.of<ModelMapData>(context, listen: false).onChange();
             }
@@ -1372,84 +1384,6 @@ class _CBAppMainState extends State<CBAppMain> {
     return (result != null && result['appPasswordSaved'] == "true");
   }
 
-  void _showLoginPopup(BuildContext context) {
-    showDialog(
-      context: context, // navigatorKey.currentContext!,
-      builder: (BuildContext context) {
-        ModelMapData ctrl = Provider.of<ModelMapData>(context, listen: false);
-        TextEditingController ctrlUserName = TextEditingController(); //..text = ctrl.currentUser['login'];
-        TextEditingController ctrlPassword = TextEditingController();
-
-        // ignore: no_leading_underscores_for_local_identifiers
-        void _submitForm() {
-          ctrl
-              .requestAppPassword(ctrlUserName.text, ctrlPassword.text)
-              .then((value) => Navigator.pop(context, true))
-              .onError((error, stackTrace) =>
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error.toString()))));
-        }
-
-        return Dialog(
-          insetPadding: context.dlgPadding,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Container(
-            constraints: const BoxConstraints(
-              maxWidth: 400,
-            ),
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'Anmelden',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                TextFormField(
-                  onFieldSubmitted: (_) {
-                    _submitForm(); // Diese Funktion wird aufgerufen, wenn Enter gedrückt wird.
-                  },
-                  controller: ctrlUserName,
-                  // initialValue: ctrl.currentUser['login'],
-                  decoration: InputDecoration(
-                    labelText: context.l10n.userName,
-                    prefixIcon: const Icon(Icons.person),
-                  ),
-                ),
-                const SizedBox(height: 10.0),
-                TextFormField(
-                  onFieldSubmitted: (_) {
-                    _submitForm(); // Diese Funktion wird aufgerufen, wenn Enter gedrückt wird.
-                  },
-                  controller: ctrlPassword,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: context.l10n.hintPassword,
-                    prefixIcon: const Icon(Icons.lock),
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                ElevatedButton(
-                  onPressed: () => _submitForm(),
-                  child: Text(context.l10n.logIn),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    ).then((value) {
-      if (value == null) {
-        Provider.of<ModelMapData>(context, listen: false).loadLocationsCBAPI();
-      }
-    });
-  }
-
   List<Widget> _filterMenuItems(ModelMapData map) {
     List<Widget> filters = <Widget>[];
 
@@ -1519,8 +1453,9 @@ class _CBAppMainState extends State<CBAppMain> {
                   (MapEntry<dynamic, dynamic> entry) => MenuItemButton(
                     leadingIcon: (e.key == map.currentHost && entry.key == map.currentUser)
                         ? Icon(
-                            Icons.check_outlined,
-                            color: map.isCache ? Colors.amber : Colors.lightGreen,
+                            Icons.person_outline_outlined,
+                            // Icons.check_outlined,
+                            color: map.isCache ? Colors.amber : (map.isLoggedIn ? Colors.lightGreen : Colors.red),
                           )
                         : const Icon(null),
                     child: Text(
@@ -1671,7 +1606,7 @@ class _CBAppMainState extends State<CBAppMain> {
 
   Map<String, dynamic> _userStyleParams(ModelMapData map, String hostKey, String userKey) {
     if (hostKey == map.currentHost && userKey == map.currentUser) {
-      Color userColor = map.isCache ? Colors.amber : Colors.lightGreen;
+      Color userColor = map.isCache ? Colors.amber : (map.isLoggedIn ? Colors.lightGreen : Colors.red);
       return {
         "color": userColor,
         "textStyle": TextStyle(

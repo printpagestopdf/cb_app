@@ -444,8 +444,8 @@ class Medium {
 
   Medium.fromJson(Map<String, dynamic> json) {
     file = json['file'];
-    width = json['width'];
-    height = json['height'];
+    width = _tryInt(json['width']);
+    height = _tryInt(json['height']);
     mimeType = json['mime_type'];
     sourceUrl = json['source_url'];
   }
@@ -458,5 +458,11 @@ class Medium {
     data['mime_type'] = this.mimeType;
     data['source_url'] = this.sourceUrl;
     return data;
+  }
+
+  int? _tryInt(dynamic value) {
+    if (value is int) return value;
+    if (value is String) return int.tryParse(value);
+    return null;
   }
 }
