@@ -20,4 +20,4 @@ jobs:
           clean-exclude: |
             app
           single-commit: true
-          dry-run: true
+          # dry-run: true
