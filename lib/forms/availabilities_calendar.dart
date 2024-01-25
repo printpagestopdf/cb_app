@@ -485,7 +485,7 @@ class _AvailabilitiesCalendar extends State<AvailabilitiesCalendar> {
                                       if (value.isError) {
                                         _showBottomMsg("${value.msg} (${value.statusCode.toString()})", true);
                                       } else {
-                                        _showBottomMsg(value.msg, false);
+                                        _showBottomMsg(stripHtmlIfNeeded(value.msg), false);
 
                                         DateTime current = bookingDates["rangeMinDate"];
                                         while (current.isSameDayOrBefore(bookingDates["rangeMaxDate"])) {

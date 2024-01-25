@@ -483,3 +483,7 @@ Future<bool> yesNoDialog(BuildContext context, String title, String description,
 
   return ret ?? false;
 }
+
+String stripHtmlIfNeeded(String text) {
+  return text.replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ');
+}

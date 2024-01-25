@@ -1,0 +1,23 @@
+name: Build Web Pages only
+
+on:
+    workflow_dispatch
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Deploy to gh pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./tools/gh-page # The folder the action should deploy
+          clean: true
+          clean-exclude: |
+            app
+          single-commit: true
+          dry-run: true
