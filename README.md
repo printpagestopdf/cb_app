@@ -1,6 +1,6 @@
 # cb_app
 
-Cb_app is a Flutter based App that provides Access to [CommonsBooking](#commonsbooking) driven Sites.  It provides an alternative User Interface as a local running App for different Operating Systems.
+Cb_app is a Flutter based App that provides Access to [CommonsBooking](#user-content-what-is-commonsbooking) driven Sites.  It provides an alternative User Interface as a local running App for different Operating Systems.
 
 ### Prerequisits
 
