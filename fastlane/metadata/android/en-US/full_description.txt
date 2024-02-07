@@ -1,0 +1,23 @@
+<b>cb_app</b>
+Cb_app is a Flutter based App that provides Access to <a href="https://github.com/wielebenwir/commonsbooking">CommonsBooking</a> driven Sites.  It provides an alternative User Interface as a local running App for different Operating Systems.<br>
+<b>Prerequisits</b>
+<ul>
+<li>For read access, the site must have the CommonsAPI enabled</li>
+<li>For write access (login and booking), the companion Plugin (cb-appapi) has to be installed</li>
+</ul>
+<b>Functions</b>
+<em>With CommonsAPI enabled:</em>
+<ul>
+<li>View available Stations in a Map and List View</li>
+<li>Show Location information</li>
+<li>Show Item Information</li>
+<li>View availability of items in Calendar View</li>
+<li>Caching of information for offline view</li>
+</ul>
+<em>With companion Plugin (cb-appapi):</em>
+<ul>
+<li>Login as User</li>
+<li>Make Bookings</li>
+<li>List current and future privae bookings</li>
+<li>Manage current and future private bookings</li>
+</ul>
