@@ -393,7 +393,8 @@ class ModelMapData extends ChangeNotifier {
     }
   }
 
-  LocationPermission _locationPermission = LocationPermission.unableToDetermine;
+  // LocationPermission _locationPermission = LocationPermission.unableToDetermine;
+  LocationPermission _locationPermission = LocationPermission.denied;
   LocationPermission get locationPermission => _locationPermission;
   set locationPermission(LocationPermission value) {
     if (value != _locationPermission) {
