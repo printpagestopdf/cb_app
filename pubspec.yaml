@@ -74,6 +74,13 @@ dependencies:
 #f       ref: master
 #f       path: geolocator
 
+#x dependency_overrides:
+#x   geolocator_android:
+#x     hosted:
+#x       name: geolocator_android
+#x       url: https://hanntech-gmbh.gitlab.io/free2pass/flutter-geolocator-floss
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
