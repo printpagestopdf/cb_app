@@ -30,7 +30,8 @@ None of the binaries are currently on public stores. You can find downloadable V
 
 ### What is CommonsBooking?
 
-> Short explanation from the CommonsBooking GitHub Page:  
+_Short explanation from the CommonsBooking GitHub Page:_
+
 > "CommonsBooking is a plugin for the management and booking of common goods. This plugin provides associations, groups, and individuals with the ability to share items (such as cargo bikes and tools) among users. It is based on the concept of Commons, where resources are shared for the benefit of the community"
 
 Find more Information about the CommonsBooking Plugin at:  

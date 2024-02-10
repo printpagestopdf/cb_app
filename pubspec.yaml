@@ -67,13 +67,6 @@ dependencies:
   osm_nominatim: ^3.0.0
   flutter_svg: ^2.0.9
 
-#f dependency_overrides:
-#f   geolocator:
-#f     git:
-#f       url: https://gitlab.com/free2pass/flutter-geolocator-floss.git
-#f       ref: master
-#f       path: geolocator
-
 #x dependency_overrides:
 #x   geolocator_android:
 #x     hosted:
