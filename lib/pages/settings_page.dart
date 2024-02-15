@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cb_app/forms/register_host.dart';
 import 'package:cb_app/parts/utils.dart';
 import 'dart:math';
-import 'dart:convert';
+// import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
@@ -1138,67 +1138,67 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
     });
   }
 
-  Widget _infoTab() {
-    // WpApi.getBookingStats();
-    JsonEncoder encoder = const JsonEncoder.withIndent('  ');
-    String jSettings = encoder.convert(modelMap.settings.settingsBox.toMap());
-    String jEnc =
-        encoder.convert(modelMap.settings.encryptedBox.toMap()..updateAll((key, value) => value = "*************"));
+  // Widget _infoTab() {
+  //   // WpApi.getBookingStats();
+  //   JsonEncoder encoder = const JsonEncoder.withIndent('  ');
+  //   String jSettings = encoder.convert(modelMap.settings.settingsBox.toMap());
+  //   String jEnc =
+  //       encoder.convert(modelMap.settings.encryptedBox.toMap()..updateAll((key, value) => value = "*************"));
 
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /*
-          TextButton(
-              onPressed: () async {
-                String cache = encoder.convert(modelMap.settings.encryptedBox.toMap());
-                // Map<dynamic, dynamic>? mapLocations =
-                //     await Hive.lazyBox('cbappCaching').get("maplocations_https://laptrr.rr.net.eu.org");
-                // if (mapLocations == null || (mapLocations["json"] == null && mapLocations["jsonCBAPI"] == null)) {
-                //   //no cache data available
-                //   throw Exception("No Service connection and empty cache");
-                // } else {
-                //   // if (mapLocations["date"] != null) locationCacheDateTime = mapLocations["date"];
-                //   cache = (mapLocations["json"] != null) ? mapLocations["json"] : mapLocations["jsonCBAPI"];
-                // }
+  //   return Container(
+  //     padding: const EdgeInsets.all(10),
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.start,
+  //       mainAxisSize: MainAxisSize.max,
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         /*
+  //         TextButton(
+  //             onPressed: () async {
+  //               String cache = encoder.convert(modelMap.settings.encryptedBox.toMap());
+  //               // Map<dynamic, dynamic>? mapLocations =
+  //               //     await Hive.lazyBox('cbappCaching').get("maplocations_https://laptrr.rr.net.eu.org");
+  //               // if (mapLocations == null || (mapLocations["json"] == null && mapLocations["jsonCBAPI"] == null)) {
+  //               //   //no cache data available
+  //               //   throw Exception("No Service connection and empty cache");
+  //               // } else {
+  //               //   // if (mapLocations["date"] != null) locationCacheDateTime = mapLocations["date"];
+  //               //   cache = (mapLocations["json"] != null) ? mapLocations["json"] : mapLocations["jsonCBAPI"];
+  //               // }
 
-                FileSaver.instance.saveFile(
-                  name: "settings.json",
-                  bytes: const Utf8Encoder().convert(cache),
-                  // ext: "json",
-                  mimeType: MimeType.other,
-                );
+  //               FileSaver.instance.saveFile(
+  //                 name: "settings.json",
+  //                 bytes: const Utf8Encoder().convert(cache),
+  //                 // ext: "json",
+  //                 mimeType: MimeType.other,
+  //               );
 
-                // WpApi.getBookingStats().then((value) => setState(
-                //       () {
-                //         print(value);
-                //         _bookingStats = encoder.convert(value);
-                //       },
-                //     ));
-              },
-              child: const Text("Export")),
-              */
-          Text(
-            "Settings",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          Text(
-            jSettings,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          Text(
-            "Secrets",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          Text(jEnc, style: Theme.of(context).textTheme.bodyLarge),
-        ],
-      ),
-    );
-  }
+  //               // WpApi.getBookingStats().then((value) => setState(
+  //               //       () {
+  //               //         print(value);
+  //               //         _bookingStats = encoder.convert(value);
+  //               //       },
+  //               //     ));
+  //             },
+  //             child: const Text("Export")),
+  //             */
+  //         Text(
+  //           "Settings",
+  //           style: Theme.of(context).textTheme.titleLarge,
+  //         ),
+  //         Text(
+  //           jSettings,
+  //           style: Theme.of(context).textTheme.bodyLarge,
+  //         ),
+  //         Text(
+  //           "Secrets",
+  //           style: Theme.of(context).textTheme.titleLarge,
+  //         ),
+  //         Text(jEnc, style: Theme.of(context).textTheme.bodyLarge),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   List<DropdownMenuItem<String>> _userItems() {
     if (!modelMap.settings.hostList.containsKey(currentHostKey)) return <DropdownMenuItem<String>>[];
