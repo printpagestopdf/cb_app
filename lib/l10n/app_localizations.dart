@@ -393,11 +393,23 @@ abstract class AppLocalizations {
   /// **'Show current location'**
   String get gotoCurrentLocation;
 
+  /// No description provided for @hdrNoService.
+  ///
+  /// In en, this message translates to:
+  /// **'Servicelist empty'**
+  String get hdrNoService;
+
   /// No description provided for @hdrStartupAction.
   ///
   /// In en, this message translates to:
   /// **'App startup action'**
   String get hdrStartupAction;
+
+  /// No description provided for @hdrUseHttp.
+  ///
+  /// In en, this message translates to:
+  /// **'unsecure Link'**
+  String get hdrUseHttp;
 
   /// No description provided for @hintPassword.
   ///
@@ -567,6 +579,12 @@ abstract class AppLocalizations {
   /// **'Rest API available!'**
   String get msgRestAPIAvailable;
 
+  /// No description provided for @msgUseHttp.
+  ///
+  /// In en, this message translates to:
+  /// **'Http Url entered. Does this provider really use http: instead of https:? '**
+  String get msgUseHttp;
+
   /// No description provided for @netTimeoutInSeconds.
   ///
   /// In en, this message translates to:
@@ -650,6 +668,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'please select'**
   String get pleaseSelect;
+
+  /// No description provided for @questionLoadDemo.
+  ///
+  /// In en, this message translates to:
+  /// **'Should the demo site be opened?'**
+  String get questionLoadDemo;
 
   /// No description provided for @questStillContinue.
   ///

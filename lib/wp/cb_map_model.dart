@@ -264,11 +264,11 @@ class ModelMapData extends ChangeNotifier {
       _locationServiceEnabled = false;
     }
 
-    if (await onHostlistEmpty()) return;
-    // if (settings.hostList.isEmpty) {
-    //   fireRegisterNewHost();
-    //   return;
-    // }
+    if (settings.hostList.isEmpty) {
+      askForDemo = true;
+      onChange();
+      return;
+    }
 
     onChange();
     if (startupAction == "none") return;
@@ -282,10 +282,8 @@ class ModelMapData extends ChangeNotifier {
     }
   }
 
-  Future<bool> onHostlistEmpty() async {
-    if (settings.hostList.isNotEmpty) return false;
-    // if (settings.hostList["cbappapi.rr.net.eu.org"] != null) return false;
-
+  bool? askForDemo;
+  Future<bool> openDemoHost() async {
     Map<dynamic, dynamic> demo;
     try {
       String demositeJsonStr = (await WpApi.dio
@@ -311,8 +309,9 @@ class ModelMapData extends ChangeNotifier {
       'host': hostKey,
       'user': (demo["user"] != null) ? demo["user"]["key"] : '',
     });
-
-    return false;
+    askForDemo = false;
+    openHost(hostKey, (demo["user"] != null) ? demo["user"]["key"] : '');
+    return true;
   }
 
   bool displayStartup = true;

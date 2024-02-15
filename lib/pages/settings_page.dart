@@ -158,7 +158,7 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
     super.initState();
     modelMap = Provider.of<ModelMapData>(context, listen: false);
 
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2 /* 3 */, vsync: this);
     currentTab = 0;
 
     updateCurrentSettingDefaults();
@@ -265,39 +265,39 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
               ),
             ),
           ),
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.onSecondary, // Text Color
-            ),
-            onPressed: () => goTo(2),
-            child: Container(
-              padding: const EdgeInsets.only(
-                bottom: 3,
-              ),
-              decoration: currentTab == 2
-                  ? BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          width: 2.0,
-                          color: Theme.of(context).colorScheme.onSecondary,
-                        ),
-                      ),
-                    )
-                  : null,
-              child: Row(
-                children: [
-                  const Tooltip(
-                    message: 'Info',
-                    child: Icon(Icons.info_outline),
-                  ),
-                  if (!context.isMobile)
-                    const Text(
-                      ' Info',
-                    ),
-                ],
-              ),
-            ),
-          ),
+          // TextButton(
+          //   style: TextButton.styleFrom(
+          //     foregroundColor: Theme.of(context).colorScheme.onSecondary, // Text Color
+          //   ),
+          //   onPressed: () => goTo(2),
+          //   child: Container(
+          //     padding: const EdgeInsets.only(
+          //       bottom: 3,
+          //     ),
+          //     decoration: currentTab == 2
+          //         ? BoxDecoration(
+          //             border: Border(
+          //               bottom: BorderSide(
+          //                 width: 2.0,
+          //                 color: Theme.of(context).colorScheme.onSecondary,
+          //               ),
+          //             ),
+          //           )
+          //         : null,
+          //     child: Row(
+          //       children: [
+          //         const Tooltip(
+          //           message: 'Info',
+          //           child: Icon(Icons.info_outline),
+          //         ),
+          //         if (!context.isMobile)
+          //           const Text(
+          //             ' Info',
+          //           ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       ),
       body: TabBarView(
@@ -309,9 +309,9 @@ class _SettingsPage extends State<SettingsPage> with TickerProviderStateMixin {
           SingleChildScrollView(
             child: _hostsForm(),
           ),
-          SingleChildScrollView(
-            child: _infoTab(),
-          ),
+          // SingleChildScrollView(
+          //   child: _infoTab(),
+          // ),
         ],
       ),
     );

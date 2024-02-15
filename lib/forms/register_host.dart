@@ -322,9 +322,16 @@ class _RegisterHost extends State<RegisterHost> with TickerProviderStateMixin {
                   label: Text(context.l10n.cancel),
                 ),
                 TextButton.icon(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
+
+                      Uri? parsed = Uri.tryParse(formHostDataMap['hostUrl']);
+                      if (parsed != null && parsed.scheme == "http") {
+                        if (!(await yesNoDialog(context, context.l10n.hdrUseHttp, context.l10n.msgUseHttp))) {
+                          return;
+                        }
+                      }
                       widget.params['currentHostKey'] = modelMap.addHostSync(formHostDataMap);
                       goTo(ActiveTab.loginTab.index);
                     }

@@ -394,6 +394,8 @@ class _CBAppMainState extends State<CBAppMain> {
     } else {
       CBApp.currentPlattform = Theme.of(context).platform.toString();
     }
+
+    // WidgetsBinding.instance!.addPostFrameCallback((_) => yesNoDialog(context, "NoService", "questionLoadDemo"));
     // print(CBApp.currentPlattform);
     return Scaffold(
       key: CBApp.cbAppKey,
@@ -523,7 +525,18 @@ class _CBAppMainState extends State<CBAppMain> {
         ),
       ),
       body: Consumer<ModelMapData>(builder: (context, value, child) {
-        if (value.displayStartup) {
+        if (value.askForDemo == true) {
+          value.askForDemo = false;
+          WidgetsBinding.instance.addPostFrameCallback((_) async {
+            if (await yesNoDialog(context, context.l10n.hdrNoService, context.l10n.questionLoadDemo)) {
+              if (context.mounted) {
+                Provider.of<ModelMapData>(context, listen: false).openDemoHost();
+              }
+            }
+          });
+        }
+
+        if (value.displayStartup || value.settings.hostList.isEmpty) {
           return Stack(
             children: [
               Center(
@@ -573,13 +586,8 @@ class _CBAppMainState extends State<CBAppMain> {
 
         LatLng lastMapCenter = LatLng(lastCenter['latitude'] ?? 0, lastCenter['longitude'] ?? 0);
 
-        return /* Expanded(
-          child: */
-            PopupScope(
+        return PopupScope(
           popupController: _popupController,
-          // onPopupEvent: (event, selectedMarkers) => debugPrint(
-          //   '$event: selected: $selectedMarkers',
-          // ),
           child: Stack(
             children: [
               FlutterMap(

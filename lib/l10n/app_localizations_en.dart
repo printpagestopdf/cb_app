@@ -201,7 +201,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gotoCurrentLocation => 'Show current location';
 
   @override
+  String get hdrNoService => 'Servicelist empty';
+
+  @override
   String get hdrStartupAction => 'App startup action';
+
+  @override
+  String get hdrUseHttp => 'unsecure Link';
 
   @override
   String get hintPassword => 'Password';
@@ -290,6 +296,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get msgRestAPIAvailable => 'Rest API available!';
 
   @override
+  String get msgUseHttp => 'Http Url entered. Does this provider really use http: instead of https:? ';
+
+  @override
   String get netTimeoutInSeconds => 'Network timeout in seconds';
 
   @override
@@ -341,6 +350,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseSelect => 'please select';
+
+  @override
+  String get questionLoadDemo => 'Should the demo site be opened?';
 
   @override
   String get questStillContinue => 'Changes exist do you still want to continue';
