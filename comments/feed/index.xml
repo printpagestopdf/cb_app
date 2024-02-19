@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Kommentare für App für CommonsBooking	</title>
+	<atom:link href="/cb_app//comments/feed/" rel="self" type="application/rss+xml" />
+	<link>/cb_app//</link>
+	<description></description>
+	<lastBuildDate>Tue, 13 Feb 2024 12:30:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.2</generator>
+	<item>
+		<title>
+		Kommentar zu Hallo Welt! von Ein WordPress-Kommentator		</title>
+		<link>/cb_app//hallo-welt/#comment-1</link>
+
+		<dc:creator><![CDATA[Ein WordPress-Kommentator]]></dc:creator>
+		<pubDate>Tue, 13 Feb 2024 12:30:52 +0000</pubDate>
+		<guid isPermaLink="false">/cb_app//?p=1#comment-1</guid>
+
+					<description><![CDATA[Hallo, dies ist ein Kommentar.
+Um mit dem Freischalten, Bearbeiten und Löschen von Kommentaren zu beginnen, besuche bitte die Kommentare-Ansicht im Dashboard.
+Die Avatare der Kommentatoren kommen von &lt;a href=&quot;https://de.gravatar.com/&quot;&gt;Gravatar&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>Hallo, dies ist ein Kommentar.<br />
+Um mit dem Freischalten, Bearbeiten und Löschen von Kommentaren zu beginnen, besuche bitte die Kommentare-Ansicht im Dashboard.<br />
+Die Avatare der Kommentatoren kommen von <a href="https://de.gravatar.com/">Gravatar</a>.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,65 @@
+/*
+Theme Name: BlankSlate Child
+Theme URI: https://github.com/tidythemes/blankslate
+Template: blankslate
+Author: TidyThemes
+Author URI: https://github.com/tidythemes
+Description: Donations: https://calmestghost.com/donate. BlankSlate is the definitive WordPress boilerplate starter theme. We've carefully constructed the most clean and minimalist theme possible for designers and developers to use as a base to build websites for clients or to build completely custom themes from scratch. Clean, simple, unstyled, semi-minified, unformatted, and valid code, SEO-friendly, jQuery-enabled, no programmer comments, standardized and as white label as possible, and most importantly, the CSS is reset for cross-browser-compatability and no intrusive visual CSS styles have been added whatsoever. A perfect skeleton theme. For support and suggestions, go to: https://github.com/tidythemes/blankslate/issues. Thank you.
+Tags: accessibility-ready,one-column,two-columns,custom-menu,featured-images,microformats,sticky-post,threaded-comments,translation-ready
+Version: 2023.1707831764
+Updated: 2024-02-13 14:42:44
+
+*/
+
+.slider-sidebar .ms-slide-info.ms-dir-h {
+	font-size: 60%;
+	text-align: center;
+	
+}
+
+.slider-sidebar .master-slider {
+	background-color: rgba(206, 212, 218, 0.5);
+}
+
+#footer {
+background-color: rgba(206, 212, 218, 0.2);
+  font-size: 60%;
+}
+
+section.menu_section .lang-item {
+  display: inline;
+}
+
+section.menu_section .lang-item img{
+	width: 18px !important;
+	height: 15px !important;
+}
+
+
+section.menu_section {
+	display: flex;
+}
+
+section.menu_section .lang_switcher {
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 1rem;	
+}
+
+section.menu_section .lang-item a {
+	color: #666666;
+}
+
+section.menu_section .lang-item span {
+	vertical-align: middle;
+}
+
+section.menu_section .navbar {
+	margin-left: auto;
+}
+
+ul.sub-menu {
+	margin-left: 2rem;
+}
+
