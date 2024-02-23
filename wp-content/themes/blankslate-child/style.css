@@ -63,3 +63,8 @@ ul.sub-menu {
 	margin-left: 2rem;
 }
 
+ul.circle {
+	list-style-position: inside;
+	list-style-type: circle;
+}
+

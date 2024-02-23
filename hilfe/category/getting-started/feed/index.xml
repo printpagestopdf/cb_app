@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Erste Schritte | App für CommonsBooking</title>
+	<atom:link href="/cb_app//hilfe/category/getting-started/feed/" rel="self" type="application/rss+xml" />
+	<link>/cb_app//</link>
+	<description></description>
+	<lastBuildDate>Fri, 23 Feb 2024 22:28:04 +0000</lastBuildDate>
+	<language>de-DE</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.4.2</generator>
+	<item>
+		<title>Installation</title>
+		<link>/cb_app//hilfe/installation/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 23 Feb 2024 17:33:16 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=125</guid>
+
+					<description><![CDATA[Allgemein Abgesehen von der Android Version bei F-Droid befindet sich keines der anderen downloadbaren Installationsfiles in einem offiziellen Plattformstore. Installationen müssen deshalb manuell durchgeführt werden unter Beachtung der betriebssystemspezifischen Eigenheiten. Android Im Downloadbereich befinden sich vier .apk Varianten: Die ersten drei sind jeweils für das spezifische ABI (Hardware des Phones) gedachte Versionen, während die letzte <a href="/cb_app//hilfe/installation/" class="more-link">...<span class="screen-reader-text">  Installation</span></a>]]></description>
+										<content:encoded><![CDATA[
+<h2 class="wp-block-heading">Allgemein</h2>
+
+
+
+<p>Abgesehen von der Android Version bei F-Droid befindet sich keines der anderen <a href="https://github.com/printpagestopdf/cb_app/releases/tag/latest" target="_blank" rel="noreferrer noopener">downloadbaren </a>Installationsfiles in einem offiziellen Plattformstore.</p>
+
+
+
+<p>Installationen müssen deshalb manuell durchgeführt werden unter Beachtung der betriebssystemspezifischen Eigenheiten.</p>
+
+
+
+<h2 class="wp-block-heading">Android</h2>
+
+
+
+<p>Im Downloadbereich befinden sich vier .apk Varianten:</p>
+
+
+
+<ul>
+<li><a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app-arm64-v8a.apk" target="_blank" rel="noreferrer noopener">cb_app-arm64-v8a.apk</a></li>
+
+
+
+<li><a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app-armeabi-v7a.apk" target="_blank" rel="noreferrer noopener">cb_app-armeabi-v7a.apk</a></li>
+
+
+
+<li><a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app-x86_64.apk">cb_app-x86_64.apk</a></li>
+
+
+
+<li><a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app.apk" target="_blank" rel="noreferrer noopener">cb_app.apk</a></li>
+</ul>
+
+
+
+<p>Die ersten drei sind jeweils für das spezifische ABI (Hardware des Phones) gedachte Versionen, während die letzte alle drei vorhergehenden enthält.  Wenn sie unsicher sind welche ABI ihr Phone ist sollten sie die letzte installieren. Nachteil davon ist, dass diese entsprechend größer ist. Um die .apk Dateien installieren zu können müssen sie die Installation von .apk Dateien auf ihrem Phone erlauben.</p>
+
+
+
+<p>Die gesamtversion können sie auch direkt vom offiziellen F-Droid Store installieren. Je nach ihren Sicherheitseinstellungen kann es sein, dass Android meldet, dass es sich nicht um eine offizielle Signatur aus dem Google Play Store handelt (was ja auch stimmt), in dem Fall müssen sie der Installation zustimmen.</p>
+
+
+
+<a href="https://f-droid.org/packages/com.theripper.cb_app/" target="_blank" rel="noopener">
+    <img decoding="async" src="https://fdroid.gitlab.io/artwork/badge/get-it-on-de.png"
+    alt="Get it on F-Droid"
+    height="80">
+</a>
+
+
+
+<h2 class="wp-block-heading">IOS</h2>
+
+
+
+<p>IOS erlaubt dauerhafte Installationen nur für Apps aus dem Apple Store. Sie können die Datei <a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app.ipa">cb_app.ipa</a> deshalb nur über Sideloading im Developer mode installieren.</p>
+
+
+
+<h2 class="wp-block-heading">Linux</h2>
+
+
+
+<p>Bei der Installation <a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app-linux.zip">cb_app-linux.zip</a> für Linux handelt es sich um ein .zip Archiv, welches die ausführbare Datei und die Bibliotheken der App enthält.</p>
+
+
+
+<p>Entpacken sie das Archiv und führen sie die Datei <strong>cb_app </strong>aus. <br>(<em>Anmerkung</em>: möglicherweise fehlen der Linux Installation Bibliotheken, diese müssen nachinstalliert werden)</p>
+
+
+
+<h2 class="wp-block-heading">Web</h2>
+
+
+
+<p>Das .zip Archiv <a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app-web.zip">cb_app-web.zip</a> enthält die notwendigen Dateien um die Webversion der App auf einem Webserver zu installieren. </p>
+
+
+
+<p>Entpacken sie dazu die .zip Datei in das Root Verzeichnis des Webservers. Falls sie die App in einem Unterverzeichnis des Webservers installieren editieren sie die Datei index.html entsprechend dem darin angegebenem Kommentar.</p>
+
+
+
+<p>Es handelt sich hier um eine Progressive Web App (PWA), die Anwendern die Möglichkeit bietet, sofern der Browser dies unterstützt, die App Lokal zu speichern.</p>
+
+
+
+<h2 class="wp-block-heading">MS Windows</h2>
+
+
+
+<p>Hier befinden sich zwei Dateien im Downloadbereich, die jeweils unterschiedliche Installationswege bieten.</p>
+
+
+
+<p>Die Datei <a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/cb_app-windows.zip">cb_app-windows.zip</a> ist ein .zip Archiv welches eine portable Ausführung der App ermöglicht. Entpacken sie dazu die .zip Datei und führen sie die Datei cb_app.exe aus. Da die .exe Datei nicht aus dem Microsoft Store installiert wurde ist es möglich, dass sie die Ausführung explizit erlauben/freigeben müssen.</p>
+
+
+
+<p>Die Datei <a href="https://github.com/printpagestopdf/cb_app/releases/download/latest/CBAppSetup.exe">CBAppSetup.exe</a> ist ein Windows Setup Archiv. Damit können sie die App mit entsprechenden Menü/Desktop Einträgen installieren. In Abhängigkeit von den Sicherheitsrestriktionen ihrer Windows Installation kann es sein, dass sie die Installation explizit erlauben/freigeben müssen.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Schnellstart</title>
+		<link>/cb_app//hilfe/schnellstart/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 22 Feb 2024 21:44:33 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=99</guid>
+
+					<description><![CDATA[App starten Wenn sie die App nach der Installation das erste mal aufrufen werden sie gefragt, ob sie den Demoservice (eine Plattform mit CommonsBooking, welche einige Demoeinträge enthält) einrichten wollen. Falls sie bereits den Link eines Anbieters haben können sie hier auf Abbruch tippen und zum nächsten Schritt übergehen. Ansonsten klicken sie auf OK, damit <a href="/cb_app//hilfe/schnellstart/" class="more-link">...<span class="screen-reader-text">  Schnellstart</span></a>]]></description>
+										<content:encoded><![CDATA[
+<h2 class="wp-block-heading">App starten</h2>
+
+
+
+<p>Wenn sie die App nach der <a href="/cb_app//hilfe/installation/" data-type="link" data-id="/cb_app//hilfe/installation/">Installation </a>das erste mal aufrufen werden sie gefragt, ob sie den Demoservice (eine Plattform mit CommonsBooking, welche einige Demoeinträge enthält) einrichten wollen. </p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/ask_for_demo.png" alt="" class="wp-image-151" style="width:284px;height:auto"/></figure></div>
+
+
+<p>Falls sie bereits den Link eines Anbieters haben können sie hier auf Abbruch tippen und zum nächsten Schritt übergehen. Ansonsten klicken sie auf OK, damit können sie den nächsten Schritt &#8222;Service registrieren&#8220; überspringen und direkt zum Kapitel &#8222;<a href="#erste_schritte">Erste Schritt</a>e&#8220; gehen.</p>
+
+
+
+<h2 class="wp-block-heading">Service registrieren</h2>
+
+
+
+<p>Um einen Service zu registrieren benötigen sie zunächst die Url der Webseite eines Anbieters, der die CommonsAPI unterstützt.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/open_mainmenu.png" alt="" class="wp-image-152" style="width:284px"/></figure></div>
+
+
+<p>Es gibt verschiedene Möglichkeiten einen Serviceanbieter in der App zu registrieren, wobei hier der Weg über das Haupmenü gewählt wird. Sie öffnen das Hauptmenü über den Button am linken oberen Rand (drei horizontale Balken).</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/main_menu_1.png" alt="" class="wp-image-153" style="width:284px"/></figure></div>
+
+
+<p>Wählen sie hier den Menüpunkt &#8222;Service neu&#8220; und füllen sie die Dialogbox aus</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_service_1.png" alt="" class="wp-image-154" style="width:284px"/></figure></div>
+
+
+<p>Tragen sie dazu im Feld Service Url den Link zur Webseite des Anbieters ein. Optional können sie bei Anzeigename einen Namen für den Anbieter eintragen unter dem sie diesen später schneller finden. Klicken sie nun auf &#8222;Speichern&#8220;.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_login.png" alt="" class="wp-image-155" style="width:284px"/></figure></div>
+
+
+<p>Sollten sie noch kein Login beim Serviceanbieter haben klicken sie hier einfach auf Abbruch.</p>
+
+
+
+<p>Falls sie über ein Login beim Serviceanbieter verfügen geben sie hier die Anmeldedaten ein &#8222;Account Login Name&#8220; und &#8222;Accountpasswort&#8220; sind Pflichteingaben, unter Anzeigename können sie einen Namen eingeben, der ihnen in der App angezeigt wird. Bestätigen sie die Eingaben mit &#8222;Speichern&#8220;.</p>
+
+
+
+<h2 class="wp-block-heading" id="erste_schritte">Erste Schritte</h2>
+
+
+
+<p>Die verfügbaren Stationen des Anbieters werden auf der Karte mit einem Fahrradschild Symbol angezeigt.</p>
+
+
+
+<p>Wenn sie innerhalb der Karte auf eines der Symbole tippen erhalten sie eine Übersicht über die Station und deren Artikel.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/station_popup.png" alt="" class="wp-image-158" style="width:284px"/></figure></div>
+
+
+<p>Im Popup wird die Verfügbarkeit des Artikels für die nächsten sechs Tage gezeigt.</p>
+
+
+
+<p>Die Stationen werden als Symbole (01) dargestellt. Die aktive Station wird als rotes Fahrradsymbol angezeigt (02). Die Elemente des Stationspopup können geklickt werden und haben die folgende Funktion:</p>
+
+
+
+<p>03 &#8211; die Details des Artikels werden angezeigt<br>04 &#8211; die Deails der Station werden angezeigt<br>05 &#8211; der Buchungskalender für diesen Artikel wird angezeigt.</p>
+
+
+
+<h2 class="wp-block-heading">Buchungskalender</h2>
+
+
+
+<p>Wenn sie den Buchungskalender geöffnet haben werden ihnen die Verfügbarkeiten des Artikels angezeigt. Sind sie korrekt angemeldet, können sie auch eine Buchung durchführen.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungskalender.png" alt="" class="wp-image-161" style="width:284px"/></figure></div>
+
+
+<p>Wenn sie auf einen freien Tag (01) tippen wird ihnen durch einen grünen Rahmen angezeigt, wieviel Tage sie den Artikel maximal buchen können. Tippen sie auf einen zweiten Tag innerhalb des erlaubten Bereichs (02) können sie mit dem Button &#8222;Buchen&#8220; (03) die Buchung ausführen.</p>
+
+
+
+<h2 class="wp-block-heading">Buchungsliste</h2>
+
+
+
+<p>Wenn sie angemeldet sind können sie über das Hauptmenü den Punkt &#8222;Buchungsliste&#8220; aufrufen und erhalten eine Liste ihrer aktuellen und zukünftigen Buchungen.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungsliste.png" alt="" class="wp-image-162" style="width:284px"/></figure></div>
+
+
+<p>Sie bekommen die Details ihrer Buchungen angezeigt und können diese bei Bedarf stornieren.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

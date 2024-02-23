@@ -98,11 +98,11 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 <div id="slider-sidebar" class="slider-sidebar">
 <div id="master-slider-main-widget-4" class="widget master-slider-main-widget">
 		<!-- MasterSlider -->
-		<div id="P_MS65d3536f0128c" class="master-slider-parent msl ms-parent-id-1">
+		<div id="P_MS65d91df6486d2" class="master-slider-parent msl ms-parent-id-1">
 
 			
 			<!-- MasterSlider Main -->
-			<div id="MS65d3536f0128c" class="master-slider ms-skin-default">
+			<div id="MS65d91df6486d2" class="master-slider ms-skin-default">
 				 				 
 				<div class="ms-slide" data-delay="15" data-fill-mode="fill">
 					<img src="/cb_app//wp-content/plugins/master-slider/public/assets/css/blank.gif" alt="" title="" data-src="/cb_app//wp-content/uploads/2024/02/kristijan-arsov-GadRgmtVejs-unsplash.jpg">
@@ -226,13 +226,13 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 			"use strict";
 
 			$(function () {
-				var masterslider_128c = new MasterSlider();
+				var masterslider_86d2 = new MasterSlider();
 
 				// slider controls
-				masterslider_128c.control('arrows'     ,{ autohide:true, overVideo:true  });
-				masterslider_128c.control('slideinfo'  ,{ autohide:false, overVideo:false, dir:'h', align:'bottom',inset:false , margin:1  , size:5 });
+				masterslider_86d2.control('arrows'     ,{ autohide:true, overVideo:true  });
+				masterslider_86d2.control('slideinfo'  ,{ autohide:false, overVideo:false, dir:'h', align:'bottom',inset:false , margin:1  , size:5 });
 				// slider setup
-				masterslider_128c.setup("MS65d3536f0128c", {
+				masterslider_86d2.setup("MS65d91df6486d2", {
 						width           : 300,
 						height          : 150,
 						minHeight       : 0,
@@ -267,7 +267,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 				
 				window.masterslider_instances = window.masterslider_instances || [];
-				window.masterslider_instances.push( masterslider_128c );
+				window.masterslider_instances.push( masterslider_86d2 );
 			 });
 
 		})(jQuery);</script>
@@ -302,6 +302,14 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 	<li id="menu-item-39" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39"><a title="Quellcode der App auf GitHub" target="_blank" rel="noopener" href="https://github.com/printpagestopdf/cb_app" class="nav-link tm-text-gray" itemprop="url">Sourcecode (GitHub)</a></li>
 </ul>
 </li>
+<li id="menu-item-167" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-167">
+<a href="#" class="nav-link tm-text-gray" itemprop="url">Hilfe</a>
+<ul class="sub-menu">
+	<li id="menu-item-166" class="menu-item menu-item-type-post_type menu-item-object-epkb_post_type_1 menu-item-166"><a href="/cb_app//hilfe/schnellstart/" class="nav-link tm-text-gray" itemprop="url">Schnellstartanleitung</a></li>
+	<li id="menu-item-168" class="menu-item menu-item-type-post_type menu-item-object-epkb_post_type_1 menu-item-168"><a href="/cb_app//hilfe/installation/" class="nav-link tm-text-gray" itemprop="url">Installation</a></li>
+	<li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="/cb_app//hilfe/" class="nav-link tm-text-gray" itemprop="url">App Bedienungsanleitung</a></li>
+</ul>
+</li>
 </ul>		</div>
 	</nav>
 </section>
@@ -322,15 +330,35 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>Diese App bietet die Möglichkeit auf Funktionen einer Website, die mit dem CommonsBooking Plugin betrieben wird zuzugreifen.</p>
+<p>Diese App ermöglicht es, Funktionen einer Website, die mit dem CommonsBooking Plugin betrieben wird zu nutzen.</p>
 
 
 
-<p>Für reinen Lesezugriff ist es ausreichend, wenn die CommonsAPI aktiviert ist.</p>
+<p>CommonsBooking Websites bieten das kostenfreie Teilen von Gütern an (wohl in den meisten Fällen Lastenräder).</p>
 
 
 
-<p>Mit dem AddOn Plugin &#8222;API for CB App&#8220; ist es möglich sich als Benutzer anzumelden und Buchungen vorzunehmen.</p>
+<p>Die App stellt die Angebote auf einer Karte oder in Listenform dar. <br>Detailliertere Informationen zu den Artikeln und Verleihstationen werden angezeigt und in einem Kalender die Verfügbarkeit der jeweiligen Artikel. <br>Ist eine Anmeldung bei der Plattform vorhanden, können auch Buchungen ausgeführt und verwaltet werden.</p>
+
+
+
+<p>Damit dies möglich ist muss die Website folgende Voraussetzungen erfüllen:</p>
+
+
+
+<ul class="circle">
+<li>Die Plattform wird mit dem CommonsBooking Plugin betrieben</li>
+
+
+
+<li>
+<strong>Für die Anzeige der Angebote</strong>:<br>die CommonsAPI (Bestandteil von CommonsBooking) ist aktiviert und frei zugänglich</li>
+
+
+
+<li>
+<strong>Für Buchen und Verwalten von Buchungen</strong>:<br>Eine Anmeldung an der Website und Installation des Plugins &#8222;API for CB App&#8220;.</li>
+</ul>
 </div>
 
 
@@ -350,11 +378,11 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>Eine Vorschau auf die Web Version der App kann <a href="https://printpagestopdf.github.io/cb_app/app/index.html" target="_blank" rel="noreferrer noopener">hier</a> aufgerufen werden</p>
+<p>Neben anderen <a href="#icon_download">Betriebssystemen </a>ist von der App auch eine Web Version verfügbar.<br>Diese <a href="https://printpagestopdf.github.io/cb_app/app/index.html" target="_blank" rel="noreferrer noopener">Demoinstallation </a>zeigt den Funktionsumfang App kann <a href="https://printpagestopdf.github.io/cb_app/app/index.html" target="_blank" rel="noreferrer noopener">hier</a> aufgerufen werden</p>
 
 
 
-<div class="text-center"><i class="fa-solid fa-3x fa-download pb-3 pt-1"></i></div>
+<div class="text-center" id="icon_download"><i class="fa-solid fa-3x fa-download pb-3 pt-1"></i></div>
 
 
 
@@ -362,7 +390,47 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 
 
 
-<p>Preview Versionen für die unterschiedlichen Plattformen können <a href="https://github.com/printpagestopdf/cb_app/releases/tag/latest" target="_blank" rel="noreferrer noopener">hier</a> heruntergeladen werden.</p>
+<p>Beachten sie bitte unbedingt die <a href="/cb_app//hilfe/installation/" data-type="epkb_post_type_1" data-id="125">Installationshinweise </a>für das jeweilige Betriebssystem.</p>
+
+
+
+<p>Pre-Release Versionen für die unterschiedlichen Betriebssysteme</p>
+
+
+
+<ul class="circle">
+<li>Android</li>
+
+
+
+<li>IOS</li>
+
+
+
+<li>MS Windows</li>
+
+
+
+<li>Linux</li>
+
+
+
+<li>Web (PWA)</li>
+</ul>
+
+
+
+<p>können <a href="https://github.com/printpagestopdf/cb_app/releases/tag/latest" target="_blank" rel="noreferrer noopener">hier</a> heruntergeladen werden.</p>
+
+
+
+<p>Die Android App kann auch direkt aus dem F-Droid store installiert werden:</p>
+
+
+
+<a href="https://f-droid.org/packages/com.theripper.cb_app/" target="_blank" rel="noopener">
+    <img decoding="async" src="https://fdroid.gitlab.io/artwork/badge/get-it-on-de.png" alt="Get it on F-Droid" height="80">
+</a>
 </div>
 </div>
 <div class="entry-links"></div>
