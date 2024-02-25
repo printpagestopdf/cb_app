@@ -26,7 +26,11 @@ _With companion Plugin (cb-appapi):_
 
 ### Project status
 
-None of the binaries are currently on public stores. You can find downloadable Version at the [Releases](https://github.com/printpagestopdf/cb_app/releases/tag/latest) Section. And some more Informations on the [Webpage](https://printpagestopdf.github.io/cb_app/).
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.theripper.cb_app/)
+
+You can find downloadable Version at the [Releases](https://github.com/printpagestopdf/cb_app/releases/latest) Section. And some more Informations on the [Webpage](https://printpagestopdf.github.io/cb_app/).
 
 ### What is CommonsBooking?
 
