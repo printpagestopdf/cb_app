@@ -63,8 +63,125 @@ ul.sub-menu {
 	margin-left: 2rem;
 }
 
+em {
+	font-style: italic;
+}
+
 ul.circle {
 	list-style-position: inside;
 	list-style-type: circle;
+	text-indent: -1em;
+	margin-left: 1em;	
 }
 
+ul.circle.wp-block-list {
+	margin-left: auto;
+	padding-left: 1em;
+}
+
+ul.circle li div.rich-text
+{
+	display: inline;
+}
+
+
+ol.leading_zero { 
+    list-style-type: decimal-leading-zero;
+	margin-left: 2rem;
+}
+
+#eckb-article-content-body h2 {
+	margin-top: 2rem;
+	hyphens: auto;
+}
+
+#eckb-article-content-body h3 {
+	margin-top: 1.5rem;
+	font-size: 1.5rem;
+	hyphens: auto;
+}
+
+.two_digit_list p{
+	line-height: 1.5;
+	text-indent: -2.1em;
+	margin-left: 2em;
+	margin-bottom: 0;
+}
+
+ol.two_digit_list
+{
+    list-style: none;
+    margin-left: 2em;
+    text-indent: -2em;
+}
+
+ol.two_digit_list li div.rich-text
+{
+	display: inline;
+}
+
+ol.two_digit_list li
+{
+    counter-increment: custom;
+}
+
+ol.two_digit_list li:before
+{
+    content: "0" counter(custom) " - ";   
+}
+
+ol.two_digit_list li:first-child {
+  counter-reset: custom;
+}
+
+ul.conn-test {
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: .25rem;
+	padding: 0.2rem;
+	/* max-width: 320px; */
+}  
+
+ul.conn-test li {
+	box-shadow: 0.0rem .12rem rgba(0,0,0,.2) !important;
+	margin-bottom: 0.2rem;
+
+	position: relative;
+	display: block;
+	padding: .75rem 1.25rem;
+	/* margin-bottom: -1px; */
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);  
+	border-radius: .25rem;
+}
+
+div.conn-test {
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: .25rem;
+	padding: 0.2rem;
+	/* max-width: 320px; */
+}  
+
+div.conn-test > div > * {
+	box-shadow: 0.0rem .12rem rgba(0,0,0,.2) !important;
+	margin-bottom: 0.2rem;
+
+	position: relative;
+	/* display: block; */
+	padding: .75rem 1.25rem;
+	/* margin-bottom: -1px; */
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.125);  
+	border-radius: .25rem;
+}
+
+div.bedienungsanleitung .eckb-categories-list > div:first-child {
+	display: none !important;
+}
+
+.lh-1 {
+	line-height: 1;
+}
+
+.lh-12 {
+	line-height: 1.2;
+}

@@ -12,7 +12,7 @@
 	<atom:link href="/cb_app//hilfe/category/getting-started/feed/" rel="self" type="application/rss+xml" />
 	<link>/cb_app//</link>
 	<description></description>
-	<lastBuildDate>Fri, 23 Feb 2024 22:28:04 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 29 Feb 2024 15:55:45 +0000</lastBuildDate>
 	<language>de-DE</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -151,54 +151,106 @@
 
 
 
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-1 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Wenn sie die App nach der <a href="/cb_app//hilfe/installation/" data-type="link" data-id="/cb_app//hilfe/installation/">Installation </a>das erste mal aufrufen werden sie gefragt, ob sie den Demoservice (eine Plattform mit CommonsBooking, welche einige Demoeinträge enthält) einrichten wollen. </p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/ask_for_demo.png" alt="" class="wp-image-151" style="width:284px;height:auto"/></figure></div>
-
-
-<p>Falls sie bereits den Link eines Anbieters haben können sie hier auf Abbruch tippen und zum nächsten Schritt übergehen. Ansonsten klicken sie auf OK, damit können sie den nächsten Schritt &#8222;Service registrieren&#8220; überspringen und direkt zum Kapitel &#8222;<a href="#erste_schritte">Erste Schritt</a>e&#8220; gehen.</p>
+</div>
 
 
 
-<h2 class="wp-block-heading">Service registrieren</h2>
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/ask_for_demo.png" alt="" class="wp-image-151" style="width:284px"/></figure></div></div>
+</div>
 
 
 
+<p>Falls sie bereits den Link eines Anbieters haben können sie hier auf Abbruch tippen und zum nächsten Schritt übergehen. Ansonsten klicken sie auf OK, damit können sie den nächsten Schritt &#8222;<a href="#register_service">Service registrieren</a>&#8220; überspringen und direkt zum Kapitel &#8222;<a href="#erste_schritte">Erste Schritt</a>e&#8220; gehen.</p>
+
+
+
+<h2 class="wp-block-heading" id="register_service">Service registrieren</h2>
+
+
+
+<details class="wp-block-details is-layout-flow wp-block-details-is-layout-flow"><summary>Details &#8230;</summary>
 <p>Um einen Service zu registrieren benötigen sie zunächst die Url der Webseite eines Anbieters, der die CommonsAPI unterstützt.</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/open_mainmenu.png" alt="" class="wp-image-152" style="width:284px"/></figure></div>
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-2 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/open_mainmenu.png" alt="" class="wp-image-152" style="width:284px"/></figure></div></div>
 
 
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Es gibt verschiedene Möglichkeiten einen Serviceanbieter in der App zu registrieren, wobei hier der Weg über das Haupmenü gewählt wird. Sie öffnen das Hauptmenü über den Button am linken oberen Rand (drei horizontale Balken).</p>
+</div>
+</div>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/main_menu_1.png" alt="" class="wp-image-153" style="width:284px"/></figure></div>
+
+<div style="height:2rem" aria-hidden="true" class="wp-block-spacer"></div>
 
 
+
+<h3 class="wp-block-heading has-text-align-left">&#8222;Service neu&#8220; Dialog öffnen</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-3 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/main_menu_1.png" alt="" class="wp-image-153" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Wählen sie hier den Menüpunkt &#8222;Service neu&#8220; und füllen sie die Dialogbox aus</p>
+</div>
+</div>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_service_1.png" alt="" class="wp-image-154" style="width:284px"/></figure></div>
+
+<h3 class="wp-block-heading has-text-align-left">Servicedaten eintragen</h3>
 
 
-<p>Tragen sie dazu im Feld Service Url den Link zur Webseite des Anbieters ein. Optional können sie bei Anzeigename einen Namen für den Anbieter eintragen unter dem sie diesen später schneller finden. Klicken sie nun auf &#8222;Speichern&#8220;.</p>
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-4 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_service_1.png" alt="" class="wp-image-154" style="width:284px"/></figure></div></div>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_login.png" alt="" class="wp-image-155" style="width:284px"/></figure></div>
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Tragen sie dazu im Feld Service Url (01) den Link zur Webseite des Anbieters ein. Optional können sie bei Anzeigename (03) einen Namen für den Anbieter eintragen unter dem sie diesen später schneller finden. Klicken sie nun auf &#8222;Speichern&#8220; (05).</p>
+</div>
+</div>
 
 
+
+<h3 class="wp-block-heading has-text-align-left">Logindaten Serviceprovider (optional)</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-5 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_login.png" alt="" class="wp-image-155" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Sollten sie noch kein Login beim Serviceanbieter haben klicken sie hier einfach auf Abbruch.</p>
 
 
 
 <p>Falls sie über ein Login beim Serviceanbieter verfügen geben sie hier die Anmeldedaten ein &#8222;Account Login Name&#8220; und &#8222;Accountpasswort&#8220; sind Pflichteingaben, unter Anzeigename können sie einen Namen eingeben, der ihnen in der App angezeigt wird. Bestätigen sie die Eingaben mit &#8222;Speichern&#8220;.</p>
+</div>
+</div>
+
+
+
+<p></p>
+</details>
 
 
 
@@ -213,10 +265,18 @@
 <p>Wenn sie innerhalb der Karte auf eines der Symbole tippen erhalten sie eine Übersicht über die Station und deren Artikel.</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/station_popup.png" alt="" class="wp-image-158" style="width:284px"/></figure></div>
+
+<h3 class="wp-block-heading has-text-align-left">Stationsübersicht anzeigen</h3>
 
 
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-6 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/station_popup.png" alt="" class="wp-image-158" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Im Popup wird die Verfügbarkeit des Artikels für die nächsten sechs Tage gezeigt.</p>
 
 
@@ -225,37 +285,65 @@
 
 
 
-<p>03 &#8211; die Details des Artikels werden angezeigt<br>04 &#8211; die Deails der Station werden angezeigt<br>05 &#8211; der Buchungskalender für diesen Artikel wird angezeigt.</p>
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>03 &#8211; die Details des Artikels werden angezeigt</p>
 
 
 
-<h2 class="wp-block-heading">Buchungskalender</h2>
+<p>04 &#8211; die Details der Station werden angezeigt</p>
+
+
+
+<p>05 &#8211; der Buchungskalender für diesen Artikel wird angezeigt.</p>
+
+
+
+<p>06 &#8211; Umschalten auf die Listenansicht</p>
+</div></div>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading has-text-align-left">Verfügbarkeit/Buchung</h3>
 
 
 
 <p>Wenn sie den Buchungskalender geöffnet haben werden ihnen die Verfügbarkeiten des Artikels angezeigt. Sind sie korrekt angemeldet, können sie auch eine Buchung durchführen.</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungskalender.png" alt="" class="wp-image-161" style="width:284px"/></figure></div>
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungskalender.png" alt="" class="wp-image-161" style="width:284px"/></figure></div></div>
 
 
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Wenn sie auf einen freien Tag (01) tippen wird ihnen durch einen grünen Rahmen angezeigt, wieviel Tage sie den Artikel maximal buchen können. Tippen sie auf einen zweiten Tag innerhalb des erlaubten Bereichs (02) können sie mit dem Button &#8222;Buchen&#8220; (03) die Buchung ausführen.</p>
+</div>
+</div>
 
 
 
-<h2 class="wp-block-heading">Buchungsliste</h2>
+<h3 class="wp-block-heading has-text-align-left">Buchungen</h3>
 
 
 
 <p>Wenn sie angemeldet sind können sie über das Hauptmenü den Punkt &#8222;Buchungsliste&#8220; aufrufen und erhalten eine Liste ihrer aktuellen und zukünftigen Buchungen.</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungsliste.png" alt="" class="wp-image-162" style="width:284px"/></figure></div>
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-8 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungsliste.png" alt="" class="wp-image-162" style="width:284px"/></figure></div></div>
 
 
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Sie bekommen die Details ihrer Buchungen angezeigt und können diese bei Bedarf stornieren.</p>
+</div>
+</div>
 ]]></content:encoded>
 					
 		

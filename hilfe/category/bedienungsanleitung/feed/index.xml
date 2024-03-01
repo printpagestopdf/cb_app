@@ -12,7 +12,7 @@
 	<atom:link href="/cb_app//hilfe/category/bedienungsanleitung/feed/" rel="self" type="application/rss+xml" />
 	<link>/cb_app//</link>
 	<description></description>
-	<lastBuildDate>Fri, 23 Feb 2024 22:28:04 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 29 Feb 2024 15:11:53 +0000</lastBuildDate>
 	<language>de-DE</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,85 +20,1321 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.4.2</generator>
 	<item>
-		<title>Schnellstart</title>
-		<link>/cb_app//hilfe/schnellstart/</link>
+		<title>Offline (Cache)</title>
+		<link>/cb_app//hilfe/offline-daten-cache/</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Thu, 22 Feb 2024 21:44:33 +0000</pubDate>
-				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=99</guid>
+		<pubDate>Wed, 28 Feb 2024 22:34:04 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=330</guid>
 
-					<description><![CDATA[App starten Wenn sie die App nach der Installation das erste mal aufrufen werden sie gefragt, ob sie den Demoservice (eine Plattform mit CommonsBooking, welche einige Demoeinträge enthält) einrichten wollen. Falls sie bereits den Link eines Anbieters haben können sie hier auf Abbruch tippen und zum nächsten Schritt übergehen. Ansonsten klicken sie auf OK, damit <a href="/cb_app//hilfe/schnellstart/" class="more-link">...<span class="screen-reader-text">  Schnellstart</span></a>]]></description>
+					<description><![CDATA[Die App kann auch ohne eine Internetverbindung eingeschränkt verwendet werden. Dazu weren bei jeder online Verbindung zu einem Serviceanbieter ein Teil der Daten lokal gespeichert. (Dieses Verhalten kann pro Serviceanbieter in den Einstellungen deaktiviert werden (z.B. um lokalen Speicherplatz zu sparen)) Buchungen können im offline Modus nicht durchgeführt werden. Entsprechend wird der Verfügbarkeitskalender im nur <a href="/cb_app//hilfe/offline-daten-cache/" class="more-link">...<span class="screen-reader-text">  Offline (Cache)</span></a>]]></description>
 										<content:encoded><![CDATA[
-<h2 class="wp-block-heading">App starten</h2>
+<p>Die App kann auch ohne eine Internetverbindung eingeschränkt verwendet werden. Dazu weren bei jeder online Verbindung zu einem Serviceanbieter  ein Teil der Daten lokal gespeichert.</p>
 
 
 
-<p>Wenn sie die App nach der <a href="/cb_app//hilfe/installation/" data-type="link" data-id="/cb_app//hilfe/installation/">Installation </a>das erste mal aufrufen werden sie gefragt, ob sie den Demoservice (eine Plattform mit CommonsBooking, welche einige Demoeinträge enthält) einrichten wollen. </p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/ask_for_demo.png" alt="" class="wp-image-151" style="width:284px;height:auto"/></figure></div>
-
-
-<p>Falls sie bereits den Link eines Anbieters haben können sie hier auf Abbruch tippen und zum nächsten Schritt übergehen. Ansonsten klicken sie auf OK, damit können sie den nächsten Schritt &#8222;Service registrieren&#8220; überspringen und direkt zum Kapitel &#8222;<a href="#erste_schritte">Erste Schritt</a>e&#8220; gehen.</p>
+<p><em>(Dieses Verhalten kann pro Serviceanbieter in den <a href="/cb_app//hilfe/service-bearbeiten/" data-type="epkb_post_type_1" data-id="322">Einstellungen </a>deaktiviert werden (z.B. um lokalen Speicherplatz zu sparen))</em></p>
 
 
 
-<h2 class="wp-block-heading">Service registrieren</h2>
+<p>Buchungen können im offline Modus nicht durchgeführt werden. Entsprechend wird der Verfügbarkeitskalender im nur Lesemodus angezeigt.</p>
 
 
 
-<p>Um einen Service zu registrieren benötigen sie zunächst die Url der Webseite eines Anbieters, der die CommonsAPI unterstützt.</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/open_mainmenu.png" alt="" class="wp-image-152" style="width:284px"/></figure></div>
-
-
-<p>Es gibt verschiedene Möglichkeiten einen Serviceanbieter in der App zu registrieren, wobei hier der Weg über das Haupmenü gewählt wird. Sie öffnen das Hauptmenü über den Button am linken oberen Rand (drei horizontale Balken).</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/main_menu_1.png" alt="" class="wp-image-153" style="width:284px"/></figure></div>
-
-
-<p>Wählen sie hier den Menüpunkt &#8222;Service neu&#8220; und füllen sie die Dialogbox aus</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_service_1.png" alt="" class="wp-image-154" style="width:284px"/></figure></div>
-
-
-<p>Tragen sie dazu im Feld Service Url den Link zur Webseite des Anbieters ein. Optional können sie bei Anzeigename einen Namen für den Anbieter eintragen unter dem sie diesen später schneller finden. Klicken sie nun auf &#8222;Speichern&#8220;.</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_login.png" alt="" class="wp-image-155" style="width:284px"/></figure></div>
-
-
-<p>Sollten sie noch kein Login beim Serviceanbieter haben klicken sie hier einfach auf Abbruch.</p>
+<p>Auch die Buchungsliste steht im nur Lesemodus zur Verfügung, d.h. die Informationen können eingesehen aber eine Buchung kann nicht storniert werden (der Zeitpunkt zu dem die Daten zuletzt aktualisiert wurden wird in der obersten Zeile angezeigt).</p>
 
 
 
-<p>Falls sie über ein Login beim Serviceanbieter verfügen geben sie hier die Anmeldedaten ein &#8222;Account Login Name&#8220; und &#8222;Accountpasswort&#8220; sind Pflichteingaben, unter Anzeigename können sie einen Namen eingeben, der ihnen in der App angezeigt wird. Bestätigen sie die Eingaben mit &#8222;Speichern&#8220;.</p>
+<p>Ob sich die App im offline Modus befindet erkennen sie daran, dass sich das Icon neben dem Hauptmenü Button geändert hat. Zusätzlich werden dort Datum und Uhrzeit angezeigt, wann die Daten zum letzten mal online geladen wurden.</p>
 
 
 
-<h2 class="wp-block-heading" id="erste_schritte">Erste Schritte</h2>
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-1 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img fetchpriority="high" decoding="async" width="540" height="960" src="/cb_app//wp-content/uploads/2024/02/offline_main.png" alt="" class="wp-image-337" style="width:284px"/></figure></div></div>
 
 
 
-<p>Die verfügbaren Stationen des Anbieters werden auf der Karte mit einem Fahrradschild Symbol angezeigt.</p>
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p></p>
 
 
 
-<p>Wenn sie innerhalb der Karte auf eines der Symbole tippen erhalten sie eine Übersicht über die Station und deren Artikel.</p>
+<div class="wp-block-group is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Icon symbolisiert durch Fabe und Art den offline Modus</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/station_popup.png" alt="" class="wp-image-158" style="width:284px"/></figure></div>
+
+<p>02 &#8211; In dem Badge werden Datum und Uhrzeit angezeigt, wann die Daten zum letzten mal online geladen wurden </p>
+</div></div>
+</div></div>
+</div>
+</div>
 
 
+
+<p></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Service bearbeiten</title>
+		<link>/cb_app//hilfe/service-bearbeiten/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 28 Feb 2024 21:52:08 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=322</guid>
+
+					<description><![CDATA[In dieser Einstellungsseite können sie existierende Serviceanbieter und Account Registrierungen bearbeiten, neu anlegen oder löschen. 01 &#8211; Vorhandenen aus der Liste wählen 02 &#8211; Serviceurl bearbeiten 03 &#8211; Verbindungstest 04 &#8211; Anzeigename bearbeiten 05 &#8211; Offline Speicherung für diesen Service aktivieren/deaktivieren 06 &#8211; Letzten offline Speicher für diesen Service löschen 07 &#8211; Änderungen der Serviceregistrierung <a href="/cb_app//hilfe/service-bearbeiten/" class="more-link">...<span class="screen-reader-text">  Service bearbeiten</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>In dieser Einstellungsseite können sie existierende Serviceanbieter und Account Registrierungen bearbeiten, neu anlegen oder löschen.</p>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-2 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/settings_service1.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;540&quot;,
+						&quot;targetHeight&quot;: &quot;960&quot;,
+						&quot;scaleAttr&quot;: &quot;&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full is-resized wp-lightbox-container"><img decoding="async" width="540" height="960" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/settings_service1.png" alt="" class="wp-image-325" style="width:284px"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-325" style="width:284px"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-325" style="width:284px"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Vorhandenen aus der Liste wählen</p>
+
+
+
+<p>02 &#8211; Serviceurl bearbeiten</p>
+
+
+
+<p>03 &#8211; Verbindungstest</p>
+
+
+
+<p>04 &#8211; Anzeigename bearbeiten</p>
+
+
+
+<p>05 &#8211; <a href="/cb_app//hilfe/offline-daten-cache/" data-type="epkb_post_type_1" data-id="330">Offline Speicherung</a> für diesen Service aktivieren/deaktivieren</p>
+
+
+
+<p>06 &#8211; Letzten <a href="/cb_app//hilfe/offline-daten-cache/" data-type="epkb_post_type_1" data-id="330">offline Speicher</a> für diesen Service löschen</p>
+
+
+
+<p>07 &#8211; Änderungen der Serviceregistrierung speichern</p>
+
+
+
+<p>08 &#8211; Diese Serviceregistrierung löschen (löscht auch alle Accountregistrierungen dieses Services)</p>
+
+
+
+<p>09 &#8211; Neue Serviceregistrierung anlegen (Dialog)</p>
+
+
+
+<div style="height:2rem" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p>10 &#8211; Vorhandenen Account aus Liste wählen</p>
+
+
+
+<p>11 &#8211; Anmeldenamen des Accounts ändern</p>
+
+
+
+<p>12 &#8211; Anzeigename des Accounts ändern</p>
+
+
+
+<p>13 &#8211; Accountregistrierung entfernen</p>
+
+
+
+<p>14 &#8211; Neue Accountregistrierung (Dialog)</p>
+
+
+
+<p>15 &#8211; Änderungen der Accountregistrierung speichern</p>
+</div></div>
+</div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Allgemein</title>
+		<link>/cb_app//hilfe/allgemein/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 28 Feb 2024 21:51:24 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=320</guid>
+
+					<description><![CDATA[In dieser Einstellungsseite können verschiedene Einstellungen der App verändert werden. 01 &#8211; Was soll beim Start der App ausgeführt werden.1 02 &#8211; Sprache der App einstellen 03 &#8211; Zoom Buttons auf Karte ein-/ausblenden 04 &#8211; Slider um die Größe der Stationsmarker auf der Karte einzustellen 05 &#8211; Stationsmarkergröße auf Standard zurücksetzen 06 &#8211; Netzwerktimout über <a href="/cb_app//hilfe/allgemein/" class="more-link">...<span class="screen-reader-text">  Allgemein</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>In dieser Einstellungsseite können verschiedene Einstellungen der App verändert werden.</p>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-3 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/settings_general.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;540&quot;,
+						&quot;targetHeight&quot;: &quot;960&quot;,
+						&quot;scaleAttr&quot;: &quot;&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full is-resized wp-lightbox-container"><img decoding="async" width="540" height="960" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/settings_general.png" alt="" class="wp-image-327" style="width:284px"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-327" style="width:284px"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-327" style="width:284px"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Was soll beim Start der App ausgeführt werden.<strong><sup>1</sup></strong> </p>
+
+
+
+<p>02 &#8211; Sprache der App einstellen</p>
+
+
+
+<p>03 &#8211; Zoom Buttons auf Karte ein-/ausblenden</p>
+
+
+
+<p>04 &#8211; Slider um die Größe der Stationsmarker auf der Karte einzustellen</p>
+
+
+
+<p>05 &#8211; Stationsmarkergröße auf Standard zurücksetzen</p>
+
+
+
+<p>06 &#8211; Netzwerktimout über Zahlentastatur eingeben<strong><sup>2</sup></strong></p>
+
+
+
+<p>07 &#8211; Netzwerktimeout auf unbegrenzt setzen<strong><sup>2</sup></strong></p>
+
+
+
+<p>08 &#8211; Netzwerktimeout mit Slider einstellen<strong><sup>2</sup></strong></p>
+
+
+
+<p>09 &#8211; Testurl um festzustellen ob das Internet erreichbar ist</p>
+
+
+
+<p>10 &#8211; Speichern der vorgenommenen Änderungen</p>
+</div></div>
+</div>
+</div>
+
+
+
+<p><strong><sup>1</sup></strong> Es stehen die folgenden Auswahlmöglichkeiten zur Verfügung:<br><em>Letzer Service/Benutzer (Online)</em> => Die App versucht die letzte online Verbindung wieder herzustellen<br><em>Letzer Service/Benutzer (Offline)</em> => Die App geht nicht über das Netzwerk sondern lädt die letzten bekannten Daten aus dem Cache<br><em>Keine </em>=> Die App startet ohne eine initiale Aktion</p>
+
+
+
+<p><strong><sup>2</sup></strong> Grundsätzlich versucht wartet die App bei einem Netzwerkrequest bis eine Antwort oder ein Timeout Abbruch durch das Gerät erfolgt. Es ist möglich, dass dies bei einigen Geräten zu extrem langen Wartezeiten führt bevor die App bemerkt, dass sie keine Antwort erhält. In diesem Fall können sie über diese Einstellung einen Zeitraum in Sekunden angeben, welch die App maximal wartet.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Einstellungen öffnen</title>
+		<link>/cb_app//hilfe/einstellungen-oeffnen/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 28 Feb 2024 21:49:03 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=316</guid>
+
+					<description><![CDATA[Die Einstellungsseite kann entweder über das Hauptmenü oder die Werkzeugleiste geöffnet werden.]]></description>
+										<content:encoded><![CDATA[
+<p>Die Einstellungsseite kann entweder über das <a href="/cb_app//hilfe/das-menue/" data-type="epkb_post_type_1" data-id="194">Hauptmenü </a>oder die <a href="/cb_app//hilfe/werkzeugleiste/" data-type="epkb_post_type_1" data-id="218">Werkzeugleiste </a>geöffnet werden.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Benutzer*in (Account) registrieren</title>
+		<link>/cb_app//hilfe/benutzerin-account-registrieren/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 28 Feb 2024 21:17:52 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=312</guid>
+
+					<description><![CDATA[Wenn sie bei einem Serviceanbieter auch Artikel Buchen und die Buchungen verwalten möchten müssen sie über einen Account bei dem Serviceanbieter verfügen (folgen sie dem Registrierungsprozess des Anbieters). Darüberhinaus muss der Anbieter die App unterstützen, d.h. die CommonsAPI muss zugänglich sein und Extension API muss installiert und aktiviert sein. Um den Dialog zum registrieren einer <a href="/cb_app//hilfe/benutzerin-account-registrieren/" class="more-link">...<span class="screen-reader-text">  Benutzer*in (Account) registrieren</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Wenn sie bei einem Serviceanbieter auch Artikel Buchen und die Buchungen verwalten möchten müssen sie über einen Account bei dem Serviceanbieter verfügen (folgen sie dem Registrierungsprozess des Anbieters). <br>Darüberhinaus muss der Anbieter die App unterstützen, d.h. die CommonsAPI muss zugänglich  sein und Extension API muss installiert und aktiviert sein.</p>
+
+
+
+<p>Um den Dialog zum registrieren einer Benutzer*in aufzurufen gibt es drei Möglichkeiten:</p>
+
+
+
+<p></p>
+
+
+
+<h3 class="wp-block-heading has-text-align-left">Option1: Nach der Neuregistrierung eines Serviceanbieters</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-4 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_service_1.png" alt="" class="wp-image-154" style="width:350px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Wenn sie einen <a href="/cb_app//hilfe/serviceanbieter-registrieren/" data-type="epkb_post_type_1" data-id="240">Serviceanbieter neu erfasst haben</a> und in dem Dialog auf &#8222;Speichern&#8220; (5) tippen wird anschliessend automatisch der Dialog zum registrieren einer Benutzer*in aufgerufen.</p>
+
+
+
+<p><em><strong>Anmerkung</strong>:<br>Es ist nicht zwingend notwendig eine  Benutzer*in zu registrieren. Falls sie dies nicht wünschen können sie den Benutzer*in registrieren Dialog auch einfach abbrechen.</em></p>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading has-text-align-left">Option2: Benutzer*in registrieren Dialog über Hauptmenü</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-5 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="960" src="/cb_app//wp-content/uploads/2024/02/main_menu_2.png" alt="" class="wp-image-313" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Wenn sie im Haupmenü einen Serviceanbieter ausgwählt haben können sie mit dem Menüpunkt &#8222;Account neu&#8220; eine Benutzer*in in der App für diesen Anbieter registrieren.</p>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading has-text-align-left" id="settings_service">Option3: Benutzer*in registrieren Dialog über Einstellungen</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-6 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="960" src="/cb_app//wp-content/uploads/2024/02/settings_service.png" alt="" class="wp-image-243" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Den Button &#8222;Neu&#8220; unter &#8222;Account(s)&#8220; klicken , um die Dialogbox zum Erfassen der Daten der Benutzer*in zu öffnen.</p>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading has-text-align-left" id="settings_service">Benutzer*in (Account) registrieren</h3>
+
+
+
+<p>Zur Registrierung benötigen sie den Anmeldenamen und das Anmeldepasswort beim Serviceanbieter. Welche ihren Anmeldedaten an der Webseite entsprechen.<br><em>(Anmerkung: in Ausnahmefällen ist es auch möglich, dass sie das Anwendungspasswort separat vom Serviceanbieter erhalten, in diesem Fall benötigen sie das Anmeldepasswort nicht)</em></p>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-7 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_login-1.png" alt="" class="wp-image-314" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Geben sie die Daten im Dialog  ein, wobei Anzeigename optional ist.</p>
+
+
+
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Name der in der App für diese Benutzer*in angezeigt wird</p>
+
+
+
+<p>02 &#8211; Anmeldename beim Serviceanbieter</p>
+
+
+
+<p>03 &#8211; Anmeldepasswort beim Serviceanbieter</p>
+
+
+
+<p>04 &#8211; Falls sie ein Anwendungspasswort erhalten haben hier tippen und dieses eingeben.</p>
+
+
+
+<p>05 &#8211; Wenn sie den Vorgang abbrechen wollen hier tippen</p>
+
+
+
+<p>06 &#8211; Accountregistrierung speichern</p>
+</div></div>
+</div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Serviceanbieter registrieren</title>
+		<link>/cb_app//hilfe/serviceanbieter-registrieren/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 28 Feb 2024 12:09:15 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=240</guid>
+
+					<description><![CDATA[Ein Serviceanbieter ist eine Verleihorganisation, die Gemeingutartikel über eine Webplattform anbietet. Eine solche Webplattform ist über eine eindeutige Url (Link) erreichbar. Um mit der App auf die Angebote zugreifen zu können muss die Plattform die folgenden Voraussetzungen erfüllen: Es gib zwei Möglichkeiten einen Serviceprovider für die App zu registrieren, über das Menü oder über den <a href="/cb_app//hilfe/serviceanbieter-registrieren/" class="more-link">...<span class="screen-reader-text">  Serviceanbieter registrieren</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Ein Serviceanbieter ist eine Verleihorganisation, die Gemeingutartikel über eine Webplattform anbietet. Eine solche Webplattform ist über eine eindeutige Url (Link) erreichbar. Um mit der App auf die Angebote zugreifen zu können muss die Plattform die folgenden Voraussetzungen erfüllen:</p>
+
+
+
+<ul class="circle">
+<li>Die Plattform wird mit dem CommonsBooking Plugin betrieben</li>
+
+
+
+<li><strong>Für die Anzeige der Angebote</strong>:<br>die CommonsAPI (Bestandteil von CommonsBooking) ist aktiviert und frei zugänglich</li>
+
+
+
+<li><strong>Für Buchen und Verwalten von Buchungen</strong>:<br>Eine Anmeldung an der Website und Installation des Plugins „API for CB App“.</li>
+</ul>
+
+
+
+<p>Es gib zwei Möglichkeiten einen Serviceprovider für die App zu registrieren, über das Menü oder über den Einstellungen Dialog.</p>
+
+
+
+<h3 class="wp-block-heading has-text-align-left">Option1: Serviceanbieter Dialog über Menü</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-8 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/main_menu_1.png" alt="" class="wp-image-153" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Wählen sie hier den Menüpunkt &#8222;Service neu&#8220;, um die <a href="#dialog_serviceprovider">Dialogbox zum Erfassen der Daten des Serviceanbieters</a> zu öffnen.</p>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading has-text-align-left" id="settings_service">Option2: Serviceanbieterdialog über Einstellungen</h3>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-9 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="960" src="/cb_app//wp-content/uploads/2024/02/settings_service.png" alt="" class="wp-image-243" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Den Button &#8222;Neu&#8220; unter &#8222;Service bearbeiten&#8220; klicken , um die <a href="#dialog_serviceprovider">Dialogbox zum Erfassen der Daten des Serviceanbieters</a> zu öffnen.</p>
+</div>
+</div>
+
+
+
+<h2 class="wp-block-heading has-text-align-left" id="dialog_serviceprovider">Daten des Serviceanbieters erfassen</h2>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-10 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/register_service_1.png" alt="" class="wp-image-154" style="width:284px"/></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p></p>
+
+
+
+<div class="wp-block-group is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Link zur Webseite des Anbieters</p>
+
+
+
+<p>02 &#8211; <a href="#connection_test">Verbindung testen</a></p>
+
+
+
+<p>03 &#8211; Name der in der App für diesen Anbieter angezeigt wird</p>
+
+
+
+<p>04 &#8211; Abbruch ohne Speichern der Eingaben</p>
+
+
+
+<p>05 &#8211; Speichern der Servicedaten und weiter zu Account registrieren</p>
+</div></div>
+</div></div>
+</div>
+</div>
+
+
+
+<h2 class="wp-block-heading has-text-align-left" id="connection_test">Verbindung testen</h2>
+
+
+
+<p>Sie können die App testen lassen, ob die Url zum Serviceprovider erreichbar ist und welche Zugriffsmöglichkeiten (Schnittstellen) dieser unterstützt.</p>
+
+
+
+<p>Geben sie dazu im &#8222;<a href="#dialog_serviceprovider">Service registrieren</a>&#8220; oder über die Einstellungen &#8222;<a href="#settings_service">Service bearbeiten</a>&#8220; die Url ein und tippen sie auf &#8222;Verbindung testen&#8220; (02).</p>
+
+
+
+<p>Beispiele für die Testergebnisse</p>
+
+
+
+<h5 class="wp-block-heading has-medium-font-size"><strong>Beispiel1: Alle Funktionen werden vom Serviceanbieter unterstützt</strong></h5>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-11 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group conn-test is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-8 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-25">Netzwerkverbindung testen<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Netzwerk verfügbar</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-9 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-26">Website Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Link Adresse erreichbar</mark>!<br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-10 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-27">REST API Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Rest API Adresse erreichbar!</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-11 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-28">CommonsBooking API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">CommonsBooking API vorhanden</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-12 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-29">Login Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">App Login aktiviert</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-13 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-30">App Extension API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">App Extension API vorhanden!</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+</div></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<p><strong>Netzwerkverbindung testen</strong><br>Ermittelt ob dieses Gerät Netzwerkverbindung hat</p>
+
+
+
+<p><strong>Website Verbindungstest</strong><br>Ermittelt ob die Url über das Netzwerk erreichbar ist</p>
+
+
+
+<p><strong>REST API Verbindungstest</strong><br>Ermittelt ob über der Serviceanbieter die WordPress REST API aktiviert hat</p>
+
+
+
+<p><strong>CommonsBooking API Test</strong><br>Ermittelt ob der Serviceanbieter die CommonsAPI aktiviert hat</p>
+
+
+
+<p><strong>Login Test</strong><br>Ermittelt ob bei dem Serviceanbieter das Login über ein Anwendungspasswort möglich ist</p>
+
+
+
+<p><strong>App Extension API Test</strong><br>Ermittelt ob die Erweiterung für die CB App installiert und aktiviert ist</p>
+
+
+
+<p><strong>RESULTAT</strong>:<br><mark style="background-color:#abb8c3" class="has-inline-color">Die Informationen des Serviceanbieters können in der App angezeigt werden, falls ein Account vorhanden ist können Buchungen durchgeführt werden.</mark></p>
+</div>
+</div>
+
+
+
+<h5 class="wp-block-heading mt-5 has-medium-font-size"><strong>Beispiel2: Webseite erreichbar, CommonsBooking (API) verfügbar aber keine Extension API</strong></h5>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-12 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group conn-test is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-15 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-31">Netzwerkverbindung testen<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Netzwerk verfügbar</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-16 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-32">Website Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Link Adresse erreichbar</mark>!<br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-17 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-33">REST API Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Rest API Adresse erreichbar!</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-18 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-34">CommonsBooking API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">CommonsBooking API vorhanden</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-19 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-35">Login Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">App Login aktiviert</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-20 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-36">App Extension API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Fehler!</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+</div></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<p>In diesem Beispiel ist die Webseite der Url erreichbar und hat auch die WordPress REST API  und CommonsBooking inklusive API aktiviert. Die Extension API ist aber nicht verfügbar.</p>
+
+
+
+<p>Dies ist z.B. bei einer WordPress Site mit CommonsBooking aber ohne App Unterstützung der Fall.</p>
+
+
+
+<p><br><strong>RESULTAT</strong>:<br><mark style="background-color:#abb8c3" class="has-inline-color">Die Informationen des Serviceanbieters können in der App angezeigt werden,</mark> <mark style="background-color:#abb8c3" class="has-inline-color">Buchen ist nicht möglich.</mark></p>
+</div>
+</div>
+
+
+
+<h5 class="wp-block-heading mt-5 has-medium-font-size"><strong>Beispiel3: Webseite erreichbar, aber ohne CommonsBooking (API) und Extension API</strong></h5>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-13 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group conn-test is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-22 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-37">Netzwerkverbindung testen<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Netzwerk verfügbar</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-23 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-38">Website Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Link Adresse erreichbar</mark>!<br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-24 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-39">REST API Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Rest API Adresse erreichbar!</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-25 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-40">CommonsBooking API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Fehler!</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-26 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-41">Login Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">App Login aktiviert</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-27 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-42">App Extension API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Fehler!</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+</div></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<p>In diesem Beispiel ist die Webseite der Url erreichbar und hat auch die WordPress REST API aktiviert, aber es ist kein CommonsBooking installiert oder die API ist deaktiviert.</p>
+
+
+
+<p>Dies ist z.B. bei einer WordPress Site ohne CommonsBooking (oder nicht aktivierter API) der Fall.</p>
+
+
+
+<p><br><strong>RESULTAT</strong>:<br><mark style="background-color:#abb8c3" class="has-inline-color">Die App kann für diese Site weder Informationen anzeigen noch ist Buchen möglich.</mark></p>
+</div>
+</div>
+
+
+
+<h5 class="wp-block-heading mt-5 has-medium-font-size"><strong>Beispiel4: Url fehlerhaft</strong></h5>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-14 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group conn-test is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-29 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-43">Netzwerkverbindung testen<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Netzwerk verfügbar</mark><br></p>
+
+
+
+<p style="color: green;"><i class="fa-solid fa-check"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-30 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-44">Website Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Bad Request<br></mark></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-31 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-45">REST API Verbindungstest<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">FormatException: Unexpected character)</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-32 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-46">CommonsBooking API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Fehler!</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-33 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-47">Login Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Fehler!</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+
+
+
+<div class="wp-block-group is-nowrap is-layout-flex wp-container-core-group-layout-34 wp-block-group-is-layout-flex">
+<p style="color: lightgray;"><i class="fa-solid fa-earth-americas"> </i></p>
+
+
+
+<p class="lh-12 has-small-font-size wp-container-content-48">App Extension API Test<br><mark style="background-color:rgba(0, 0, 0, 0)" class="has-inline-color has-cyan-bluish-gray-color">Fehler!</mark><br></p>
+
+
+
+<p style="color: red;"><i class="fa-solid fa-xmark"> </i></p>
+</div>
+</div></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<p>Zu der angegebenen Url kann keine Verbindung aufgebaut werden.</p>
+
+
+
+<p>Dies ist z.B. bei einer fehlerhaften ode nicht existierenden Url der Fall.</p>
+
+
+
+<p><br><strong>RESULTAT</strong>:<br><mark style="background-color:#abb8c3" class="has-inline-color">Die App kann für diese Site weder Informationen anzeigen noch ist Buchen möglich.</mark></p>
+</div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Artikel buchen</title>
+		<link>/cb_app//hilfe/artikel-buchen/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Mon, 26 Feb 2024 20:46:32 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=237</guid>
+
+					<description><![CDATA[Sie können einen Artikel nur buchen, wenn sie angemeldet sind. Suchen sie dazu den gewünschten Artikel auf der Karte oder der Liste: Öffnen sie die Stationsanzeige indem sie auf das Icon der Station (01 hier 02) tippen. Rufen sie den Buchungskalender auf indem sie auf den Übersichtskalender (05) tippen. Buchbare Tage werden durch einen grünen <a href="/cb_app//hilfe/artikel-buchen/" class="more-link">...<span class="screen-reader-text">  Artikel buchen</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Sie können einen Artikel nur buchen, wenn sie angemeldet sind. Suchen sie dazu den gewünschten Artikel auf der Karte oder der Liste:</p>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-15 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/station_popup.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;540&quot;,
+						&quot;targetHeight&quot;: &quot;810&quot;,
+						&quot;scaleAttr&quot;: &quot;&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full is-resized wp-lightbox-container"><img loading="lazy" decoding="async" width="540" height="810" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/station_popup.png" alt="" class="wp-image-158" style="width:284px"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-158" style="width:284px"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-158" style="width:284px"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Öffnen sie die Stationsanzeige indem sie auf das Icon der Station (01 hier 02) tippen.</p>
+
+
+
+<p>Rufen sie den Buchungskalender auf indem sie auf den Übersichtskalender (05) tippen.</p>
+
+
+
+<p></p>
+</div>
+</div>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-16 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/buchungskalender-1.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;540&quot;,
+						&quot;targetHeight&quot;: &quot;810&quot;,
+						&quot;scaleAttr&quot;: &quot;&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full is-resized wp-lightbox-container"><img loading="lazy" decoding="async" width="540" height="810" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/buchungskalender-1.png" alt="" class="wp-image-238" style="width:284px"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-238" style="width:284px"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-238" style="width:284px"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Buchbare Tage werden durch einen grünen Kreis angezeigt.</p>
+
+
+
+<p>Wenn sie auf einen freien Tag (01) tippen wird ihnen durch einen grünen Rahmen angezeigt, wieviel Tage sie den Artikel maximal buchen können. <br>Um die Buchung durchführen zu können tippen sie auf einen zweiten Tag innerhalb des erlaubten Bereichs (02) (<em>falls sie nur einen Tag buchen wollen tippen sie noch einmal auf den bereits ausgewählten Tag</em>).</p>
+
+
+
+<p>Der Button Buchung ist nun grün. Falls sie noch eine Bemerkung für die Station hinzufügen wollen öffnen sie mit dem + (04) das Bemerkungsfeld.</p>
+
+
+
+<p>Schließen sie mit dem Button (03) die Buchung ab.</p>
+
+
+
+<p>(<em>Anmerkung: wenn sie eine Auswahl aufheben wollen tippen sie das Reset icon (05) oder indem sie doppelt auf einen freien Bereich im Buchungskalender tippen</em>.)</p>
+</div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Informationen anzeigen</title>
+		<link>/cb_app//hilfe/informationen-anzeigen/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 25 Feb 2024 22:52:58 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=225</guid>
+
+					<description><![CDATA[Es gibt zwei Hauptansichten, die Kartenansicht und die Listenansicht. Die App startet üblicherweise mit der Kartenansicht, merkt sich aber die letzte Ansicht und startet beim nächsten Aufruf dann damit. Sie können mit dem kreisförmigen Button unten rechts (06) zwischen den Ansichten wechseln. Kartenansicht Wenn die App mit einem Service verbunden ist werden die verfügbaren Stationen <a href="/cb_app//hilfe/informationen-anzeigen/" class="more-link">...<span class="screen-reader-text">  Informationen anzeigen</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Es gibt zwei Hauptansichten, die Kartenansicht und die Listenansicht. Die App startet üblicherweise mit der Kartenansicht, merkt sich aber die letzte Ansicht und startet beim nächsten Aufruf dann damit.</p>
+
+
+
+<p>Sie können mit dem kreisförmigen Button unten rechts (06) zwischen den Ansichten wechseln.</p>
+
+
+
+<h2 class="wp-block-heading">Kartenansicht</h2>
+
+
+
+<p>Wenn die App mit einem Service verbunden ist werden die verfügbaren Stationen des Anbieters auf der Karte mit einem Fahrradschild Symbol angezeigt.</p>
+
+
+
+<p>Wenn sie innerhalb der Karte auf eines der Symbole tippen erhalten sie eine Übersicht über diese Station und deren Artikel.</p>
+
+
+
+<p>Die Elemente des Popus sind anklickbar und zeigen jeweils unterschiedliche Informationen an:</p>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-17 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/station_popup.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;540&quot;,
+						&quot;targetHeight&quot;: &quot;810&quot;,
+						&quot;scaleAttr&quot;: &quot;&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full is-resized wp-lightbox-container"><img loading="lazy" decoding="async" width="540" height="810" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/station_popup.png" alt="" class="wp-image-158" style="width:284px"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-158" style="width:284px"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-158" style="width:284px"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
 <p>Im Popup wird die Verfügbarkeit des Artikels für die nächsten sechs Tage gezeigt.</p>
 
 
@@ -107,37 +1343,378 @@
 
 
 
-<p>03 &#8211; die Details des Artikels werden angezeigt<br>04 &#8211; die Deails der Station werden angezeigt<br>05 &#8211; der Buchungskalender für diesen Artikel wird angezeigt.</p>
+<p>03 &#8211; die <a href="#article_info">Details des Artikels</a> werden angezeigt<br>04 &#8211; die <a href="#station_info">Details der Station</a> werden angezeigt<br>05 &#8211; der Buchungskalender für diesen Artikel wird angezeigt.<br>06 &#8211; Umschalten auf die Listenansicht</p>
 
 
 
-<h2 class="wp-block-heading">Buchungskalender</h2>
+<p>Wenn eine Station über mehr als einen Artikel verfügt (wie in diesem Beispiel), dann wird dies durch eine gepunktete Linie unten angezeigt. Der Inhalt des Popups kann dann zu den weiteren Artikeln gescrollt werden.</p>
+</div>
+</div>
 
 
 
-<p>Wenn sie den Buchungskalender geöffnet haben werden ihnen die Verfügbarkeiten des Artikels angezeigt. Sind sie korrekt angemeldet, können sie auch eine Buchung durchführen.</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungskalender.png" alt="" class="wp-image-161" style="width:284px"/></figure></div>
-
-
-<p>Wenn sie auf einen freien Tag (01) tippen wird ihnen durch einen grünen Rahmen angezeigt, wieviel Tage sie den Artikel maximal buchen können. Tippen sie auf einen zweiten Tag innerhalb des erlaubten Bereichs (02) können sie mit dem Button &#8222;Buchen&#8220; (03) die Buchung ausführen.</p>
+<h2 class="wp-block-heading">Listenansicht</h2>
 
 
 
-<h2 class="wp-block-heading">Buchungsliste</h2>
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-18 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/listing.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;960&quot;,
+						&quot;targetHeight&quot;: &quot;720&quot;,
+						&quot;scaleAttr&quot;: &quot;cover&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full wp-lightbox-container"><img loading="lazy" decoding="async" width="960" height="720" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/listing.png" alt="" class="wp-image-229" style="object-fit:cover"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-229" style="object-fit:cover"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-229" style="object-fit:cover"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
 
 
 
-<p>Wenn sie angemeldet sind können sie über das Hauptmenü den Punkt &#8222;Buchungsliste&#8220; aufrufen und erhalten eine Liste ihrer aktuellen und zukünftigen Buchungen.</p>
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>Im Popup wird die Verfügbarkeit des Artikels für die nächsten sechs Tage gezeigt.</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/buchungsliste.png" alt="" class="wp-image-162" style="width:284px"/></figure></div>
+
+<p></p>
 
 
-<p>Sie bekommen die Details ihrer Buchungen angezeigt und können diese bei Bedarf stornieren.</p>
+
+<p>03 &#8211; die <a href="#article_info">Details des Artikels</a> werden angezeigt<br>04 &#8211; die <a href="#station_info">Details der Station</a> werden angezeigt<br>05 &#8211; der Buchungskalender für diesen Artikel wird angezeigt.<br>06 &#8211; Umschalten auf die Kartenansicht</p>
+
+
+
+<p>Wenn eine Station über mehr als einen Artikel verfügt, dann wird dies durch eine gepunktete Linie unten angezeigt. Der Inhalt des Popups kann dann zu den weiteren Artikeln gescrollt werden.</p>
+</div>
+</div>
+
+
+
+<h2 class="wp-block-heading" id="article_info">Anzeige der Artikelinformation</h2>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-19 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/article_info.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;960&quot;,
+						&quot;targetHeight&quot;: &quot;720&quot;,
+						&quot;scaleAttr&quot;: &quot;cover&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full wp-lightbox-container"><img loading="lazy" decoding="async" width="960" height="720" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/article_info.png" alt="" class="wp-image-230" style="object-fit:cover"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-230" style="object-fit:cover"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-230" style="object-fit:cover"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>In dem Popup werden die Informationen, welche der Serviceanbieter zu diesem Artikel zur Verfügung stellt angezeigt. </p>
+</div>
+</div>
+
+
+
+<h2 class="wp-block-heading" id="station_info">Anzeige der Stationsinformation</h2>
+
+
+
+<div class="wp-block-columns are-vertically-aligned-center is-layout-flex wp-container-core-columns-layout-20 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%"><div class="wp-block-image">
+<figure data-wp-context="{ &quot;core&quot;:
+				{ &quot;image&quot;:
+					{   &quot;imageLoaded&quot;: false,
+						&quot;initialized&quot;: false,
+						&quot;lightboxEnabled&quot;: false,
+						&quot;hideAnimationEnabled&quot;: false,
+						&quot;preloadInitialized&quot;: false,
+						&quot;lightboxAnimation&quot;: &quot;zoom&quot;,
+						&quot;imageUploadedSrc&quot;: &quot;/cb_app//wp-content/uploads/2024/02/station_info.png&quot;,
+						&quot;imageCurrentSrc&quot;: &quot;&quot;,
+						&quot;targetWidth&quot;: &quot;960&quot;,
+						&quot;targetHeight&quot;: &quot;720&quot;,
+						&quot;scaleAttr&quot;: &quot;cover&quot;,
+						&quot;dialogLabel&quot;: &quot;Vergrößertes Bild&quot;
+					}
+				}
+			}" data-wp-interactive class="aligncenter size-full wp-lightbox-container"><img loading="lazy" decoding="async" width="960" height="720" data-wp-effect--setStylesOnResize="effects.core.image.setStylesOnResize" data-wp-effect="effects.core.image.setButtonStyles" data-wp-init="effects.core.image.initOriginImage" data-wp-on--click="actions.core.image.showLightbox" data-wp-on--load="actions.core.image.handleLoad" src="/cb_app//wp-content/uploads/2024/02/station_info.png" alt="" class="wp-image-232" style="object-fit:cover"/><button
+			class="lightbox-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="Bild vergrößern"
+			data-wp-on--click="actions.core.image.showLightbox"
+			data-wp-style--right="context.core.image.imageButtonRight"
+			data-wp-style--top="context.core.image.imageButtonTop"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>        <div data-wp-body="" class="wp-lightbox-overlay zoom"
+            data-wp-bind--role="selectors.core.image.roleAttribute"
+            data-wp-bind--aria-label="selectors.core.image.dialogLabel"
+            data-wp-class--initialized="context.core.image.initialized"
+            data-wp-class--active="context.core.image.lightboxEnabled"
+            data-wp-class--hideAnimationEnabled="context.core.image.hideAnimationEnabled"
+            data-wp-bind--aria-modal="selectors.core.image.ariaModal"
+            data-wp-effect="effects.core.image.initLightbox"
+            data-wp-on--keydown="actions.core.image.handleKeydown"
+            data-wp-on--touchstart="actions.core.image.handleTouchStart"
+            data-wp-on--touchmove="actions.core.image.handleTouchMove"
+            data-wp-on--touchend="actions.core.image.handleTouchEnd"
+            data-wp-on--click="actions.core.image.hideLightbox"
+            tabindex="-1"
+            >
+                <button type="button" aria-label="Schließen" style="fill: #000" class="close-button" data-wp-on--click="actions.core.image.hideLightbox">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+                </button>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full responsive-image"><img decoding="async" data-wp-bind--src="context.core.image.imageCurrentSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-232" style="object-fit:cover"/></figure></div></div>
+                <div class="lightbox-image-container"><div class="wp-block-image">
+<figure class="aligncenter size-full enlarged-image"><img decoding="async" data-wp-bind--src="selectors.core.image.enlargedImgSrc" data-wp-style--object-fit="selectors.core.image.lightboxObjectFit" src="" alt="" class="wp-image-232" style="object-fit:cover"/></figure></div></div>
+                <div class="scrim" style="background-color: #fff" aria-hidden="true"></div>
+        </div></figure></div></div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p>In dem Popup werden die Informationen, welche der Serviceanbieter zu dieser Station zur Verfügung stellt angezeigt. </p>
+</div>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Werkzeugleiste</title>
+		<link>/cb_app//hilfe/werkzeugleiste/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 25 Feb 2024 21:24:53 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=218</guid>
+
+					<description><![CDATA[Ab einer bestimmten Bildschirmbreite (ca. 600px) wird in der Kopfzeile der App neben den Infoelementen die Werkzeugleiste angezeigt, mit der sie direkten Zugriff auf einen Teil der Funktionen haben, die auch über das Menü erreichbar sind. (In Abhängigkeit davon ob sie angemeldet sind oder z.B. bestimmte Funktionen des Phones erlaubt sind werden Icons ausgeblendet). 01 <a href="/cb_app//hilfe/werkzeugleiste/" class="more-link">...<span class="screen-reader-text">  Werkzeugleiste</span></a>]]></description>
+										<content:encoded><![CDATA[
+<p>Ab einer bestimmten Bildschirmbreite (ca. 600px) wird in der Kopfzeile der App neben den Infoelementen die Werkzeugleiste angezeigt, mit der sie direkten Zugriff auf einen Teil der Funktionen haben, die auch über das Menü erreichbar sind. (<em>In Abhängigkeit davon ob sie angemeldet sind oder z.B. bestimmte Funktionen des Phones erlaubt sind werden Icons ausgeblendet</em>).</p>
+
+
+<div class="wp-block-image mt-4 mb-2">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="286" height="100" src="/cb_app//wp-content/uploads/2024/02/toolbar.png" alt="" class="wp-image-219"/></figure></div>
+
+
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Serviceanbieter und Account wählen bzw hinzufügen. Es wird eine Popup-Liste angezeigt, welche die registrierten Serviceanbieter und Accounts bei diesen enthält. Das Icon besteht aus zwei Teilen, der Person und der Weltkugel. Beide können separat eingefärbt sein. Wobei die Farben bedeuten<br>weiß &#8211; Service ist online verbunden, bzw. Benutzer ist angemeldet<br><mark style="background-color:rgba(0, 0, 0, 0);color:#ffc107" class="has-inline-color">amber </mark>&#8211; Service ist nicht online, es werden Daten aus dem Cache angezeigt<br><mark style="background-color:rgba(0, 0, 0, 0);color:#f44336" class="has-inline-color">rot</mark> &#8211; Die Verbindung zum Service konnte nicht hergestellt werden, bzw. das Login ist Fehlgeschlagen  </p>
+
+
+
+<p>02 &#8211; Liste der Aktuellen und zukünftigen Buchungen anzeigen<br><em>(Nur sichtbar wenn angemeldet)</em> </p>
+
+
+
+<p>03 &#8211; Mit dem Filter können sie die Anzeige auf Artikel mit bestimmten Eigenschaften einschränken.<br>(<em>Nur sichtbar wenn der Service Filter anbietet</em>)</p>
+
+
+
+<p>04 &#8211; Lädt die Daten erneut vom Serviceanbieter oder aus dem Cache</p>
+
+
+
+<p>05 &#8211; Zentriert die Karte so, dass alle Stationen sichtbar sind</p>
+
+
+
+<p>06 &#8211; Zeigt den aktuellen Standort auf der Karte an<br>(<em>Nur sichtbar, wenn das Gerät über Positionsbestimmung verfügt und diese für App erlaubt wurde</em>)</p>
+
+
+
+<p>07 &#8211; Öffnet die Einstellungsseite</p>
+</div></div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Das Menü</title>
+		<link>/cb_app//hilfe/das-menue/</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Sun, 25 Feb 2024 18:56:13 +0000</pubDate>
+				<guid isPermaLink="false">/cb_app//?post_type=epkb_post_type_1#038;p=194</guid>
+
+					<description><![CDATA[Sie öffnen das Hauptmenü über den Button am linken oberen Rand (drei horizontale Balken). In Abhängigkeit davon ob sie angemeldet sind oder z.B. bestimmte Funktionen des Phones erlaubt sind werden Menüpunkte ausgeblendet. 01 &#8211; Aktueller Serviceanbieter (wenn mehr als ein Anbieter registriert ist kann die Liste aufgeklappt und ein Anbieter gewählt werden). Die Farbe symbolisiert:grün <a href="/cb_app//hilfe/das-menue/" class="more-link">...<span class="screen-reader-text">  Das Menü</span></a>]]></description>
+										<content:encoded><![CDATA[
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-layout-21 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<p>Sie öffnen das Hauptmenü über den Button am linken oberen Rand (drei horizontale Balken).</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow"><div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="540" height="810" src="/cb_app//wp-content/uploads/2024/02/open_mainmenu.png" alt="" class="wp-image-152" style="width:155px;height:auto"/></figure></div></div>
+</div>
+
+
+
+<p class="mt-2">In Abhängigkeit davon ob sie angemeldet sind oder z.B. bestimmte Funktionen des Phones erlaubt sind werden Menüpunkte ausgeblendet.</p>
+
+
+
+<p></p>
+
+
+
+<div class="wp-block-columns flex-wrap-reverse p-1 border rounded is-layout-flex wp-container-core-columns-layout-22 wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow">
+<div class="wp-block-group two_digit_list is-layout-constrained wp-block-group-is-layout-constrained"><div class="wp-block-group__inner-container">
+<p>01 &#8211; Aktueller Serviceanbieter (wenn mehr als ein Anbieter registriert ist kann die Liste aufgeklappt und ein Anbieter gewählt werden). Die Farbe symbolisiert:<br><mark style="background-color:rgba(0, 0, 0, 0);color:#8bc34a" class="has-inline-color">grün </mark>&#8211; online mit dem Service verbunden<br><mark style="background-color:rgba(0, 0, 0, 0);color:#ffc107" class="has-inline-color">amber </mark>&#8211; keine Verbindung zum Service aber Daten aus Cache<br><mark style="background-color:rgba(0, 0, 0, 0);color:#f44336" class="has-inline-color">rot</mark> &#8211; Serviceverbindung fehlgeschlagen und keine Cachedaten  </p>
+
+
+
+<p>02 &#8211; Serviceaccount, wobei die Farbe bedeutet:<br><mark style="background-color:rgba(0, 0, 0, 0);color:#8bc34a" class="has-inline-color">grün </mark>&#8211; Benutzer angemeldet<br><mark style="background-color:rgba(0, 0, 0, 0);color:#ffc107" class="has-inline-color">amber </mark>&#8211; Benutzer angemeldet aber nicht verbunden (Cache)<br><mark style="background-color:rgba(0, 0, 0, 0);color:#f44336" class="has-inline-color">rot</mark> &#8211; Benutzeranmeldung fehlgeschlagen (kein Cache)</p>
+
+
+
+<p>03 &#8211; Neuen Serviceanbieter hinzufügen</p>
+
+
+
+<p>04 &#8211; Account für den gewählten Serviceanbieter registrieren</p>
+
+
+
+<p>05 &#8211; Liste der Aktuellen und zukünftigen Buchungen anzeigen<br><em>(Nur sichtbar wenn angemeldet)</em></p>
+
+
+
+<p>06 &#8211; Mit dem Filter können sie die Anzeige auf Artikel mit bestimmten Eigenschaften einschränken.<br>(<em>Nur sichtbar wenn der Service Filter anbietet</em>)</p>
+
+
+
+<p>07 &#8211; Lädt die Daten erneut vom Serviceanbieter oder aus dem Cache</p>
+
+
+
+<p>08 &#8211; Aufklappmenü für Karteneigenschaften</p>
+
+
+
+<p>09 &#8211; Zentriert die Karte so, dass alle Stationen sichtbar sind</p>
+
+
+
+<p>10 &#8211; Zeigt den aktuellen Standort auf der Karte an<br>(<em>Nur sichtbar, wenn das Gerät über Positionsbestimmung verfügt und diese für App erlaubt wurde</em>)</p>
+
+
+
+<p>11 &#8211; Buttons zum Zoomen der Karte (+/-) anzeigen oder ausblenden</p>
+
+
+
+<p>12 &#8211; Wenn eine Position angezeigt wird (Standort (10) oder Adresse (14)) wird ein Kreis als Entfernungsradius um diesen Punkt angezeigt</p>
+
+
+
+<p>13 &#8211; Hier kann eine Adresse eingegeben werden, deren Position auf der Karte angezeigt wird.</p>
+
+
+
+<p>14 &#8211; Öffnet die Einstellungsseite</p>
+</div></div>
+</div>
+
+
+
+<div class="wp-block-column is-vertically-aligned-center is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:30%"><div class="wp-block-image">
+<figure class="alignright size-full"><img loading="lazy" decoding="async" width="402" height="832" src="/cb_app//wp-content/uploads/2024/02/menu.png" alt="" class="wp-image-195" style="object-fit:cover"/></figure></div></div>
+</div>
 ]]></content:encoded>
 					
 		
