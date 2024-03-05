@@ -1,4 +1,4 @@
-[:de: Deutsch]((https://github.com/printpagestopdf/cb_app/blob/main/README.de.md)
+[:de: Deutsch](https://github.com/printpagestopdf/cb_app/blob/main/README.de.md)
 
 # cb_app
 
